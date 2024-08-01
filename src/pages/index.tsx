@@ -1,3 +1,5 @@
+import api from '@/api';
+import { Modal } from '@/components';
 import ProCard from '@ant-design/pro-card';
 import { Button } from 'antd';
 
@@ -9,8 +11,11 @@ import { Button } from 'antd';
 const Index = () => {
   return (
     <>
-      <Button type="primary">INDEX</Button>
-      <ProCard title={'123123'}>123123</ProCard>
+      <Modal request={api.user.userInfo} trigger={<Button>创建租户</Button>}>
+        {(data) => {
+          return <ProCard title="标题">{JSON.stringify(data)}</ProCard>;
+        }}
+      </Modal>
     </>
   );
 };

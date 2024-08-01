@@ -68,7 +68,7 @@ export async function page(
   params: API.page4Params,
   options?: { [key: string]: any },
 ) {
-  return request<API.PageDTOMenuVO>(`/api/menu/page`, {
+  return request<API.MenuVO[]>(`/api/menu/page`, {
     method: 'GET',
     params: {
       ...params,

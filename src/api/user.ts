@@ -68,7 +68,7 @@ export async function page(
   params: API.pageParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.PageDTOUserVO>(`/api/user/page`, {
+  return request<API.UserVO[]>(`/api/user/page`, {
     method: 'GET',
     params: {
       ...params,

@@ -1,4 +1,5 @@
 import { useGlobalStore } from '@/stores/global';
+import { useSetTenantId } from '@/stores/localstore';
 import {
   AlipayOutlined,
   LockOutlined,
@@ -35,6 +36,7 @@ const Page = () => {
   const { token } = theme.useToken();
   const login = useGlobalStore((state) => state.login);
   let navigate = useNavigate();
+  const setTenant = useSetTenantId();
   return (
     <div
       style={{
@@ -53,12 +55,15 @@ const Page = () => {
         }}
         onFinish={async (values) => {
           const userInfo = await login(values.phone, values.password);
-          if (userInfo) {
-            message.success('登录成功！');
-            navigate('/');
-          } else {
+          if (!userInfo) {
             message.error('登录失败！');
+            return false;
           }
+          message.success('登录成功！');
+          if (userInfo.tenants!!.length > 1) {
+            setTenant(userInfo.tenants!![0].id);
+          }
+          navigate('/');
         }}
         subTitle="全球最大的代码托管平台"
         activityConfig={{

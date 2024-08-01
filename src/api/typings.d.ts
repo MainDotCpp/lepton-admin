@@ -191,7 +191,7 @@ declare namespace API {
 
   type PageDTOCustomerVO = {
     params?: PageParams;
-    records?: CustomerVO[];
+    data?: CustomerVO[];
     total?: number;
     offset?: number;
     hasNextPage?: boolean;
@@ -203,7 +203,7 @@ declare namespace API {
 
   type PageDTOMenuVO = {
     params?: PageParams;
-    records?: MenuVO[];
+    data?: MenuVO[];
     total?: number;
     offset?: number;
     hasNextPage?: boolean;
@@ -215,7 +215,7 @@ declare namespace API {
 
   type PageDTORoleVO = {
     params?: PageParams;
-    records?: RoleVO[];
+    data?: RoleVO[];
     total?: number;
     offset?: number;
     hasNextPage?: boolean;
@@ -227,7 +227,7 @@ declare namespace API {
 
   type PageDTOSysPackageVO = {
     params?: PageParams;
-    records?: SysPackageVO[];
+    data?: SysPackageVO[];
     total?: number;
     offset?: number;
     hasNextPage?: boolean;
@@ -239,7 +239,7 @@ declare namespace API {
 
   type PageDTOTenantVO = {
     params?: PageParams;
-    records?: TenantVO[];
+    data?: TenantVO[];
     total?: number;
     offset?: number;
     hasNextPage?: boolean;
@@ -251,7 +251,7 @@ declare namespace API {
 
   type PageDTOUserVO = {
     params?: PageParams;
-    records?: UserVO[];
+    data?: UserVO[];
     total?: number;
     offset?: number;
     hasNextPage?: boolean;
@@ -286,6 +286,10 @@ declare namespace API {
     menus?: Menu[];
   };
 
+  type SysPackageDto = {
+    id?: number;
+  };
+
   type SysPackageSaveDTO = {
     id?: number;
     name?: string;
@@ -299,25 +303,44 @@ declare namespace API {
 
   type Tenant = {
     id?: number;
+    logo?: string;
     name?: string;
     type?: 'ACTIVE' | 'INACTIVE';
+    code?: string;
     sysPackage?: SysPackage;
+  };
+
+  type TenantDto = {
+    id?: number;
+    name?: string;
+    logo?: string;
   };
 
   type TenantSaveDTO = {
     id?: number;
+    logo?: string;
+    name?: string;
+    type?: 'ACTIVE' | 'INACTIVE';
+    code?: string;
+    sysPackage?: SysPackageDto;
   };
 
   type TenantVO = {
     id?: number;
+    logo?: string;
+    name?: string;
+    type?: 'ACTIVE' | 'INACTIVE';
+    code?: string;
+    packageId?: number;
+    packageName?: string;
   };
 
   type TreeLong = {
     name?: { empty?: boolean };
     id?: number;
-    parentId?: number;
     config?: TreeNodeConfig;
     weight?: Record<string, any>;
+    parentId?: number;
     empty?: boolean;
   };
 
@@ -334,9 +357,9 @@ declare namespace API {
     id?: number;
     name?: string;
     phone?: string;
-    tenants?: number[];
     roles?: string[];
     permissions?: string[];
+    tenants?: TenantDto[];
     enabled?: boolean;
     accountNonExpired?: boolean;
     accountNonLocked?: boolean;

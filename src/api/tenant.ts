@@ -68,7 +68,7 @@ export async function page(
   params: API.page1Params,
   options?: { [key: string]: any },
 ) {
-  return request<API.PageDTOTenantVO>(`/api/tenant/page`, {
+  return request<API.TenantVO[]>(`/api/tenant/page`, {
     method: 'GET',
     params: {
       ...params,

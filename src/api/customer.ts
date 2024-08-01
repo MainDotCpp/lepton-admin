@@ -53,7 +53,7 @@ export async function page(
   params: API.page5Params,
   options?: { [key: string]: any },
 ) {
-  return request<API.PageDTOCustomerVO>(`/api/customer/page`, {
+  return request<API.CustomerVO[]>(`/api/customer/page`, {
     method: 'GET',
     params: {
       ...params,

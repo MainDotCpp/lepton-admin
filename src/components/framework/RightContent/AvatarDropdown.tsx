@@ -1,41 +1,48 @@
 import api from '@/api';
+import { Modal } from '@/components';
 import { useUserInfo } from '@/stores/global';
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { useTenantId } from '@/stores/localstore';
+import { LogoutOutlined, SettingOutlined, SwapOutlined, UserOutlined } from '@ant-design/icons';
 import { history } from '@umijs/max';
-import { Spin } from 'antd';
-import { createStyles } from 'antd-style';
+import { Dropdown, Spin } from 'antd';
 import { stringify } from 'querystring';
 import type { MenuInfo } from 'rc-menu/lib/interface';
 import React, { useCallback } from 'react';
-import HeaderDropdown from '../HeaderDropdown';
+import styled from 'styled-components';
+import { Action } from './AvatarDropdown.styled';
+import TenantSwitch from './TenantSwitch';
 
 export type GlobalHeaderRightProps = {
   menu?: boolean;
   children?: React.ReactNode;
 };
 
-export const AvatarName = () => {
+export const AvatarName = styled((props: any) => {
   let userInfo = useUserInfo();
-  return <span className="anticon">{userInfo?.name}</span>;
-};
+  let tenantId = useTenantId();
 
-const useStyles = createStyles(({ token }) => {
-  return {
-    action: {
-      display: 'flex',
-      height: '48px',
-      marginLeft: 'auto',
-      overflow: 'hidden',
-      alignItems: 'center',
-      padding: '0 8px',
-      cursor: 'pointer',
-      borderRadius: token.borderRadius,
-      '&:hover': {
-        backgroundColor: token.colorBgTextHover,
-      },
-    },
-  };
-});
+  let tenantName = userInfo?.tenants?.find((tenant) => tenant.id === tenantId)?.name;
+  return (
+    <div {...props}>
+      <div className="user-name">{userInfo?.name}</div>
+      <div className="tenant-name">{tenantName}</div>
+    </div>
+  );
+})`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #d500f9;
+
+  .tenant-name {
+    color: #666;
+    font-size: 0.8em;
+  }
+
+  & > div {
+    line-height: 1.5;
+  }
+`;
 
 export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, children }) => {
   /**
@@ -57,12 +64,12 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
       });
     }
   };
-  const { styles } = useStyles();
 
   let userInfo = useUserInfo();
 
   const onMenuClick = useCallback((event: MenuInfo) => {
     const { key } = event;
+    if (['switch-tenant'].includes(key)) return;
     if (key === 'logout') {
       loginOut().then();
     }
@@ -70,7 +77,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
   }, []);
 
   const loading = (
-    <span className={styles.action}>
+    <Action>
       <Spin
         size="small"
         style={{
@@ -78,7 +85,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
           marginRight: 8,
         }}
       />
-    </span>
+    </Action>
   );
 
   if (!userInfo) {
@@ -96,8 +103,20 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
       icon: <SettingOutlined />,
       label: '个人设置',
     },
+
     {
       type: 'divider' as const,
+    },
+    {
+      key: 'switch-tenant',
+      icon: <SwapOutlined />,
+      label: (
+        <>
+          <Modal closable={false} trigger={<span>切换企业</span>} footer={false}>
+            <TenantSwitch />
+          </Modal>
+        </>
+      ),
     },
     {
       key: 'logout',
@@ -107,14 +126,14 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
   ];
 
   return (
-    <HeaderDropdown
+    <Dropdown
       menu={{
         selectedKeys: [],
-        onClick: onMenuClick,
         items: menuItems,
+        onClick: onMenuClick,
       }}
     >
       {children}
-    </HeaderDropdown>
+    </Dropdown>
   );
 };

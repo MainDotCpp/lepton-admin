@@ -5,8 +5,9 @@
 /**
  * 布局组件
  */
-import Footer from './Footer';
-import { Question, SelectLang } from './RightContent';
-import { AvatarDropdown, AvatarName } from './RightContent/AvatarDropdown';
+import Footer from './framework/Footer';
+import Modal from './framework/Modal';
+import { Question, SelectLang } from './framework/RightContent';
+import { AvatarDropdown, AvatarName } from './framework/RightContent/AvatarDropdown';
 
-export { Footer, Question, SelectLang, AvatarDropdown, AvatarName };
+export { AvatarDropdown, AvatarName, Footer, Modal, Question, SelectLang };

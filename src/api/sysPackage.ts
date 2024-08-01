@@ -68,7 +68,7 @@ export async function page(
   params: API.page2Params,
   options?: { [key: string]: any },
 ) {
-  return request<API.PageDTOSysPackageVO>(`/api/sysPackage/page`, {
+  return request<API.SysPackageVO[]>(`/api/sysPackage/page`, {
     method: 'GET',
     params: {
       ...params,

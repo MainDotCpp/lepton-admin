@@ -6,7 +6,7 @@ import { LinkOutlined } from '@ant-design/icons'; // @ts-ignore
 import { PageLoading, SettingDrawer } from '@ant-design/pro-layout';
 import { Link } from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
-import { API } from '../types';
+import { useLocalStore } from './stores/localstore';
 
 // @ts-ignore
 const isDev = process.env.NODE_ENV === 'development';
@@ -130,6 +130,20 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
  */
 export const request = {
   dataField: 'data',
+  requestInterceptors: [
+    [
+      (url, options) => {
+        const tenantId = useLocalStore.getState().tenantId;
+        if (tenantId) {
+          options.headers = {
+            ...options.headers,
+            'tenant-id': tenantId,
+          };
+        }
+        return { url, options };
+      },
+    ],
+  ],
   responseInterceptors: [
     // 直接写一个 function，作为拦截器
     (response) => {

@@ -11,13 +11,14 @@
  * @doc https://umijs.org/docs/guides/routes
  */
 const frameworkRoutes = [
-  { path: '/', name: '首页', component: '@/layouts/RootLayout', routes: [] },
+  { path: '/', name: '首页', component: 'index' },
   { path: '/login', name: '登陆', component: 'framework/Login', layout: false },
   {
     path: '/system',
     name: '系统管理',
     routes: [
-      { path: '/system/user', name: '用户管理', component: '@/pages/framework/system/User' },
+      { path: '/system/user', name: '用户管理', component: 'framework/system/User' },
+      { path: '/system/tenant', name: '租户管理', component: 'framework/system/Tenant' },
     ],
   },
   {

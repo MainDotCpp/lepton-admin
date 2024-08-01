@@ -68,7 +68,7 @@ export async function page(
   params: API.page3Params,
   options?: { [key: string]: any },
 ) {
-  return request<API.PageDTORoleVO>(`/api/role/page`, {
+  return request<API.RoleVO[]>(`/api/role/page`, {
     method: 'GET',
     params: {
       ...params,
