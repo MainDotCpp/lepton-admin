@@ -2,9 +2,9 @@ import api from "@/api";
 import { ProColumns } from "@ant-design/pro-components";
 import { useAccess } from "@umijs/max";
 import { Button, Popconfirm } from "antd";
-import {{pascalCase name}}SaveForm from "./{{pascalCase name}}SaveForm";
+import MenuSaveForm from "./MenuSaveForm";
 
-export const use{{pascalCase name}}Columns = (): ProColumns<API.{{pascalCase name}}VO>[] => {
+export const useMenuColumns = (): ProColumns<API.MenuVO>[] => {
   const access = useAccess();
   return [
     { dataIndex: "id", title: "ID" , hideInSearch: true, sorter: true, filters: true, hidden: true},
@@ -18,8 +18,8 @@ export const use{{pascalCase name}}Columns = (): ProColumns<API.{{pascalCase nam
       render(dom, record, index, action, schema) {
         return (
           <>
-            {access.{{ constantCase module.name}}__{{ constantCase name}}__UPDATE && (
-              <{{pascalCase name}}SaveForm
+            {access.SYSTEM__MENU__UPDATE && (
+              <MenuSaveForm
                 id={record.id}
                 onFinish={action?.reload}
                 trigger={
@@ -29,11 +29,11 @@ export const use{{pascalCase name}}Columns = (): ProColumns<API.{{pascalCase nam
                 }
               />
             )}
-            {access.{{ constantCase module.name}}__{{ constantCase name}}__DELETE && (
+            {access.SYSTEM__MENU__DELETE && (
               <Popconfirm
                 title="确定删除吗？"
                 onConfirm={() =>
-                  api.{{camelCase name}}.deleteById({ id: record.id! }).then(action?.reload)
+                  api.menu.deleteById({ id: record.id! }).then(action?.reload)
                 }>
                 <Button size="small" type="link" danger>
                   删除

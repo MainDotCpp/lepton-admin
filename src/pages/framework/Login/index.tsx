@@ -17,11 +17,9 @@ import {
 } from '@ant-design/pro-components';
 import { useNavigate } from '@umijs/max';
 import { Button, Divider, message, Space, Tabs, theme } from 'antd';
-import { createBrowserHistory } from 'history';
 import type { CSSProperties } from 'react';
 import { useState } from 'react';
 
-const history = createBrowserHistory();
 type LoginType = 'phone' | 'account';
 
 const iconStyles: CSSProperties = {

@@ -3,7 +3,7 @@ import { Modal } from "@/components";
 import { ProFormText } from "@ant-design/pro-components";
 import { message } from "antd";
 
-const UserSaveFormItems = () => {
+const MenuSaveFormItems = () => {
   return (
     <>
       <ProFormText name="id" label="ID" hidden />
@@ -17,38 +17,38 @@ type SaveFormProps = {
   onFinish?: () => void,
 };
 
-const UserSaveForm = (props: SaveFormProps) => {
+const MenuSaveForm = (props: SaveFormProps) => {
   /**
    * 获取表单初始数据
    * @returns 表单初始数据
    */
   const getInitialValues = async () => {
-    let initialValue: API.UserSaveDTO = {
+    let initialValue: API.MenuSaveDTO = {
     };
-    if (props.id) initialValue = await api.user.getById({ id: props.id });
+    if (props.id) initialValue = await api.menu.getById({ id: props.id });
 
     return initialValue;
   };
   /**
    * 处理表单提交事件
-   * @param values 保存用户传输层对象
+   * @param values 保存菜单传输层对象
    * @returns 是否保存成功
    */
-  const handleFinish = async (values: API.UserSaveDTO) => {
-    await api.user.save(values);
-    message.success("保存用户成功");
+  const handleFinish = async (values: API.MenuSaveDTO) => {
+    await api.menu.save(values);
+    message.success("保存菜单成功");
     props.onFinish?.();
     return true;
   };
   return (
     <Modal
-      title={props.id ? "编辑用户" : "创建用户"}
+      title={props.id ? "编辑菜单" : "创建菜单"}
       request={getInitialValues}
       trigger={props.trigger}
       onFinish={handleFinish}>
-      <UserSaveFormItems />
+      <MenuSaveFormItems />
     </Modal>
   );
 };
 
-export default UserSaveForm;
+export default MenuSaveForm;

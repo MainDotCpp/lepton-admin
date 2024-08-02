@@ -52,7 +52,6 @@ export const AvatarName = styled((props: any) => {
 `;
 
 export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({
-  menu,
   children,
 }) => {
   const [switchTenantModal, setSwitchTenantModal] = useState(false);
@@ -150,7 +149,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({
       <Dropdown
         menu={{
           selectedKeys: [],
-          items: menuItems,
+          items: menuItems as any[],
           onClick: onMenuClick,
         }}>
         {children}

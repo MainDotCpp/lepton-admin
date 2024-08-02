@@ -2,14 +2,9 @@ import { ModalForm, ModalFormProps } from '@ant-design/pro-components';
 import { useRequest } from 'ahooks';
 import React, { ReactNode } from 'react';
 
-interface LeptonModalAction {
-  close: () => void;
-  ok?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  cancel?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  refresh: () => void;
-}
 
-interface LeptonModalProps<T extends any> extends Omit<ModalFormProps, 'children'> {
+// @ts-ignore
+interface LeptonModalProps<T extends any> extends ModalFormProps {
   request?: (options?: any) => Promise<T>;
   children: ReactNode | ReactNode[] | ((data: T) => ReactNode | ReactNode[]);
 }

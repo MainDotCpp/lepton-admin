@@ -1,0 +1,10 @@
+// 路由定义 START
+$1
+{
+  name: "{{comment}}管理",
+  icon: "AppstoreOutlined",
+  path: "/{{module.name}}/{{name}}",
+  access: "{{ constantCase module.name}}__{{ constantCase name}}__MENU",
+  component: "{{replace module.dir "src/pages/" ""}}/{{pascalCase name}}",
+},
+// 路由定义 END

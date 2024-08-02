@@ -46,6 +46,7 @@ const TenantSaveForm = (props: TenantSaveFormProps) => {
   };
   return (
     <Modal
+      title={props.id ? "编辑租户" : "创建租户"}
       request={getInitialValues}
       trigger={props.trigger}
       onFinish={handleFinish}>

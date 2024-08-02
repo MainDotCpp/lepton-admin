@@ -36,12 +36,13 @@ const {{pascalCase name}}SaveForm = (props: SaveFormProps) => {
    */
   const handleFinish = async (values: API.{{pascalCase name}}SaveDTO) => {
     await api.{{camelCase name}}.save(values);
-    message.success("保存成功");
+    message.success("保存{{comment}}成功");
     props.onFinish?.();
     return true;
   };
   return (
     <Modal
+      title={props.id ? "编辑{{comment}}" : "创建{{comment}}"}
       request={getInitialValues}
       trigger={props.trigger}
       onFinish={handleFinish}>

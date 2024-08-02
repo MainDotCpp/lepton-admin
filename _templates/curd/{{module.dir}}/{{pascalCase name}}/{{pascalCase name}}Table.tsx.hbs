@@ -5,11 +5,14 @@ import { Button } from 'antd';
 import { useRef } from 'react';
 import { use{{pascalCase name}}Columns } from './use{{pascalCase name}}Columns';
 import {{pascalCase name}}SaveForm from './{{pascalCase name}}SaveForm';
+import { useAccess } from '@umijs/max';
+
 
 const pageRequest = async (params: any, sort: any, filter: any) =>
   api.{{camelCase name}}.page(queryParams(params, sort, filter));
 
 const {{pascalCase name}}Table = () => {
+  const access = useAccess()
   const actionRef = useRef<ActionType>(null);
   const columns = use{{pascalCase name}}Columns();
   return (
@@ -20,7 +23,7 @@ const {{pascalCase name}}Table = () => {
       columns={columns}
       toolbar={ {
         actions: [
-          <{{pascalCase name}}SaveForm
+          access.{{ constantCase module.name}}__{{ constantCase name}}__CREATE && <{{pascalCase name}}SaveForm
             key="save"
             onFinish={actionRef.current?.reload}
             trigger={<Button type="primary">创建{{ comment }}</Button>}

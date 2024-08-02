@@ -1,5 +1,5 @@
 const moduleMapping = {
-  framework: {
+  system: {
       name: 'system',
       dir: 'src/pages/framework/system',
   },
@@ -10,6 +10,9 @@ const moduleMapping = {
 }
 
 export default function Plopfile(plop) {
+  plop.setHelper('replace', function (text, search, replace) {
+    return text.replace(new RegExp(search, 'g'), replace);
+});
   plop.setGenerator('curd', {
     prompts: [
       {
@@ -32,6 +35,7 @@ export default function Plopfile(plop) {
     actions: (data) => {
       console.log(`plop ${data.module} ${data.name} ${data.comment}`)
       data.module = moduleMapping[data.module]
+      console.log(plop.getActionTypeList())
       return [
           {
               type: 'addMany',
@@ -42,6 +46,18 @@ export default function Plopfile(plop) {
               data: {
                   basePackage: 'com.leuan.lepton',
               }
+          },
+          {
+            type: 'modify',
+            pattern: /return {(.*?)}/gms,
+            templateFile: '_templates/access.ts.hbs',
+            path: 'src/access.ts',
+          },
+          {
+            type: 'modify',
+            pattern: /\/\/ 路由定义 START(.*?)\/\/ 路由定义 END/gms,
+            templateFile: '_templates/routes.ts.hbs',
+            path: 'config/routes/{{module.name}}.ts',
           },
         ]
     }})

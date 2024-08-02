@@ -10,21 +10,10 @@
  * @param icon 配置路由的图标，取值参考 https://ant.design/components/icon-cn， 注意去除风格后缀和大小写，如想要配置图标为 <StepBackwardOutlined /> 则取值应为 stepBackward 或 StepBackward，如想要配置图标为 <UserOutlined /> 则取值应为 user 或者 User
  * @doc https://umijs.org/docs/guides/routes
  */
-const frameworkRoutes = [
-  { path: '/', name: '首页', component: 'index' },
-  { path: '/login', name: '登陆', component: 'framework/Login', layout: false },
-  {
-    path: '/system',
-    name: '系统管理',
-    routes: [
-      { path: '/system/user', name: '用户管理', component: 'framework/system/User' },
-      { path: '/system/tenant', name: '租户管理', component: 'framework/system/Tenant' },
-    ],
-  },
-  {
-    path: '*',
-    layout: false,
-    component: '@/pages/framework/404',
-  },
-];
-export default [...frameworkRoutes];
+
+import base from "./routes/base";
+import customer from "./routes/customer";
+import framework from "./routes/system";
+
+// 读取某个目录下的所有文件
+export default [...base, ...customer, ...framework];

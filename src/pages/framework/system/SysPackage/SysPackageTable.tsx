@@ -3,30 +3,30 @@ import { queryParams } from '@/utils/request';
 import { ActionType, ProTable } from '@ant-design/pro-components';
 import { Button } from 'antd';
 import { useRef } from 'react';
-import { useUserColumns } from './useUserColumns';
-import UserSaveForm from './UserSaveForm';
+import { useSysPackageColumns } from './useSysPackageColumns';
+import SysPackageSaveForm from './SysPackageSaveForm';
 import { useAccess } from '@umijs/max';
 
 
 const pageRequest = async (params: any, sort: any, filter: any) =>
-  api.user.page(queryParams(params, sort, filter));
+  api.sysPackage.page(queryParams(params, sort, filter));
 
-const UserTable = () => {
+const SysPackageTable = () => {
   const access = useAccess()
   const actionRef = useRef<ActionType>(null);
-  const columns = useUserColumns();
+  const columns = useSysPackageColumns();
   return (
-    <ProTable<API.UserVO>
+    <ProTable<API.SysPackageVO>
       rowKey="id"
       actionRef={actionRef}
       request={pageRequest}
       columns={columns}
       toolbar={ {
         actions: [
-          access.SYSTEM__USER__CREATE && <UserSaveForm
+          access.SYSTEM__SYS_PACKAGE__CREATE && <SysPackageSaveForm
             key="save"
             onFinish={actionRef.current?.reload}
-            trigger={<Button type="primary">创建用户</Button>}
+            trigger={<Button type="primary">创建套餐</Button>}
           />,
         ],
       } }
@@ -34,4 +34,4 @@ const UserTable = () => {
   );
 };
 
-export default UserTable;
+export default SysPackageTable;
