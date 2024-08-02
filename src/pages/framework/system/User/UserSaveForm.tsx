@@ -3,43 +3,39 @@ import { Modal } from "@/components";
 import { ProFormText } from "@ant-design/pro-components";
 import { message } from "antd";
 
-const TenantSaveFormItems = () => {
+const UserSaveFormItems = () => {
   return (
     <>
       <ProFormText name="id" label="ID" hidden />
-      <ProFormText name="name" label="租户名称" />
-      <ProFormText name="code" label="租户编码" />
-      <ProFormText name="type" label="状态" />
     </>
   );
 };
 
-type TenantSaveFormProps = {
+type SaveFormProps = {
   id?: number,
   trigger: React.JSX.Element,
   onFinish?: () => void,
 };
 
-const TenantSaveForm = (props: TenantSaveFormProps) => {
+const UserSaveForm = (props: SaveFormProps) => {
   /**
    * 获取表单初始数据
    * @returns 表单初始数据
    */
   const getInitialValues = async () => {
-    let initialValue: API.TenantSaveDTO = {
-      type: "INACTIVE",
+    let initialValue: API.UserSaveDTO = {
     };
-    if (props.id) initialValue = await api.tenant.getById({ id: props.id });
+    if (props.id) initialValue = await api.user.getById({ id: props.id });
 
     return initialValue;
   };
   /**
    * 处理表单提交事件
-   * @param values 保存租户传输层对象
+   * @param values 保存用户传输层对象
    * @returns 是否保存成功
    */
-  const handleFinish = async (values: API.TenantSaveDTO) => {
-    await api.tenant.save(values);
+  const handleFinish = async (values: API.UserSaveDTO) => {
+    await api.user.save(values);
     message.success("保存成功");
     props.onFinish?.();
     return true;
@@ -49,9 +45,9 @@ const TenantSaveForm = (props: TenantSaveFormProps) => {
       request={getInitialValues}
       trigger={props.trigger}
       onFinish={handleFinish}>
-      <TenantSaveFormItems />
+      <UserSaveFormItems />
     </Modal>
   );
 };
 
-export default TenantSaveForm;
+export default UserSaveForm;

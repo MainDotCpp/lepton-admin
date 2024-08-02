@@ -1,27 +1,34 @@
-import api from '@/api';
-import { Modal } from '@/components';
-import { useUserInfo } from '@/stores/global';
-import { useTenantId } from '@/stores/localstore';
-import { LogoutOutlined, SettingOutlined, SwapOutlined, UserOutlined } from '@ant-design/icons';
-import { history } from '@umijs/max';
-import { Dropdown, Spin } from 'antd';
-import { stringify } from 'querystring';
-import type { MenuInfo } from 'rc-menu/lib/interface';
-import React, { useCallback } from 'react';
-import styled from 'styled-components';
-import { Action } from './AvatarDropdown.styled';
-import TenantSwitch from './TenantSwitch';
+import api from "@/api";
+import { Modal } from "@/components";
+import { useUserInfo } from "@/stores/global";
+import { useTenantId } from "@/stores/localstore";
+import {
+  LogoutOutlined,
+  SettingOutlined,
+  SwapOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { history } from "@umijs/max";
+import { Dropdown, Spin } from "antd";
+import { stringify } from "querystring";
+import type { MenuInfo } from "rc-menu/lib/interface";
+import React, { useCallback, useState } from "react";
+import styled from "styled-components";
+import { Action } from "./AvatarDropdown.styled";
+import TenantSwitch from "./TenantSwitch";
 
 export type GlobalHeaderRightProps = {
-  menu?: boolean;
-  children?: React.ReactNode;
+  menu?: boolean,
+  children?: React.ReactNode,
 };
 
 export const AvatarName = styled((props: any) => {
   let userInfo = useUserInfo();
   let tenantId = useTenantId();
 
-  let tenantName = userInfo?.tenants?.find((tenant) => tenant.id === tenantId)?.name;
+  let tenantName = userInfo?.tenants?.find(
+    tenant => tenant.id === tenantId
+  )?.name;
   return (
     <div {...props}>
       <div className="user-name">{userInfo?.name}</div>
@@ -44,7 +51,11 @@ export const AvatarName = styled((props: any) => {
   }
 `;
 
-export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, children }) => {
+export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({
+  menu,
+  children,
+}) => {
+  const [switchTenantModal, setSwitchTenantModal] = useState(false);
   /**
    * 退出登录，并且将当前的 url 保存
    */
@@ -52,12 +63,12 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
     const { search, pathname } = window.location;
     const urlParams = new URL(window.location.href).searchParams;
     /** 此方法会跳转到 redirect 参数所在的位置 */
-    const redirect = urlParams.get('redirect');
+    const redirect = urlParams.get("redirect");
     await api.auth.logout();
     // Note: There may be security issues, please note
-    if (window.location.pathname !== '/login' && !redirect) {
+    if (window.location.pathname !== "/login" && !redirect) {
       history.replace({
-        pathname: '/login',
+        pathname: "/login",
         search: stringify({
           redirect: pathname + search,
         }),
@@ -69,8 +80,12 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
 
   const onMenuClick = useCallback((event: MenuInfo) => {
     const { key } = event;
-    if (['switch-tenant'].includes(key)) return;
-    if (key === 'logout') {
+
+    if (key === "switch-tenant") {
+      setSwitchTenantModal(true);
+      return;
+    }
+    if (key === "logout") {
       loginOut().then();
     }
     history.push(key);
@@ -94,46 +109,52 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
 
   const menuItems = [
     {
-      key: '/user/center',
+      key: "/user/center",
       icon: <UserOutlined />,
-      label: '个人中心',
+      label: "个人中心",
     },
     {
-      key: '/user/settings',
+      key: "/user/settings",
       icon: <SettingOutlined />,
-      label: '个人设置',
+      label: "个人设置",
     },
 
     {
-      type: 'divider' as const,
+      type: "divider",
     },
     {
-      key: 'switch-tenant',
+      key: "switch-tenant",
       icon: <SwapOutlined />,
-      label: (
-        <>
-          <Modal closable={false} trigger={<span>切换企业</span>} footer={false}>
-            <TenantSwitch />
-          </Modal>
-        </>
-      ),
+      label: "切换企业",
     },
     {
-      key: 'logout',
+      key: "logout",
       icon: <LogoutOutlined />,
-      label: '退出登录',
+      label: "退出登录",
     },
   ];
 
   return (
-    <Dropdown
-      menu={{
-        selectedKeys: [],
-        items: menuItems,
-        onClick: onMenuClick,
-      }}
-    >
-      {children}
-    </Dropdown>
+    <>
+      <Modal
+        width={500}
+        open={switchTenantModal}
+        onOpenChange={setSwitchTenantModal}
+        submitter={false}
+        modalProps={{
+          closable: false,
+          footer: null,
+        }}>
+        <TenantSwitch />
+      </Modal>
+      <Dropdown
+        menu={{
+          selectedKeys: [],
+          items: menuItems,
+          onClick: onMenuClick,
+        }}>
+        {children}
+      </Dropdown>
+    </>
   );
 };

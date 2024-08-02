@@ -3,31 +3,32 @@ import { queryParams } from '@/utils/request';
 import { ActionType, ProTable } from '@ant-design/pro-components';
 import { Button } from 'antd';
 import { useRef } from 'react';
-import { useTenantColumns } from './columnsData';
-import TenantSaveForm from './TenantSaveForm';
+import { useUserColumns } from './useUserColumns';
+import UserSaveForm from './UserSaveForm';
 
 const pageRequest = async (params: any, sort: any, filter: any) =>
-  api.tenant.page(queryParams(params, sort, filter));
+  api.user.page(queryParams(params, sort, filter));
 
-const TenantTable = () => {
+const UserTable = () => {
   const actionRef = useRef<ActionType>(null);
-  const columns = useTenantColumns();
+  const columns = useUserColumns();
   return (
-    <ProTable<API.TenantVO, API.TenantDto>
+    <ProTable<API.UserVO>
+      rowKey="id"
       actionRef={actionRef}
       request={pageRequest}
       columns={columns}
-      toolbar={{
+      toolbar={ {
         actions: [
-          <TenantSaveForm
+          <UserSaveForm
             key="save"
             onFinish={actionRef.current?.reload}
-            trigger={<Button type="primary">创建租户</Button>}
+            trigger={<Button type="primary">创建用户</Button>}
           />,
         ],
-      }}
+      } }
     ></ProTable>
   );
 };
 
-export default TenantTable;
+export default UserTable;

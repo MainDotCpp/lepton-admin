@@ -1,5 +1,12 @@
+import { PageContainer } from '@ant-design/pro-components';
+import UserTable from './UserTable';
+
 const User = () => {
-  return <div>User</div>;
+  return (
+    <PageContainer>
+      <UserTable />
+    </PageContainer>
+  );
 };
 
 export default User;

@@ -1,0 +1,34 @@
+import api from '@/api';
+import { queryParams } from '@/utils/request';
+import { ActionType, ProTable } from '@ant-design/pro-components';
+import { Button } from 'antd';
+import { useRef } from 'react';
+import { use{{pascalCase name}}Columns } from './use{{pascalCase name}}Columns';
+import {{pascalCase name}}SaveForm from './{{pascalCase name}}SaveForm';
+
+const pageRequest = async (params: any, sort: any, filter: any) =>
+  api.{{camelCase name}}.page(queryParams(params, sort, filter));
+
+const {{pascalCase name}}Table = () => {
+  const actionRef = useRef<ActionType>(null);
+  const columns = use{{pascalCase name}}Columns();
+  return (
+    <ProTable<API.{{pascalCase name}}VO>
+      rowKey="id"
+      actionRef={actionRef}
+      request={pageRequest}
+      columns={columns}
+      toolbar={ {
+        actions: [
+          <{{pascalCase name}}SaveForm
+            key="save"
+            onFinish={actionRef.current?.reload}
+            trigger={<Button type="primary">创建{{ comment }}</Button>}
+          />,
+        ],
+      } }
+    ></ProTable>
+  );
+};
+
+export default {{pascalCase name}}Table;

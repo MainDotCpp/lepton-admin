@@ -5,8 +5,10 @@ import { RunTimeLayoutConfig } from '@@/plugin-layout/types';
 import { LinkOutlined } from '@ant-design/icons'; // @ts-ignore
 import { PageLoading, SettingDrawer } from '@ant-design/pro-layout';
 import { Link } from '@umijs/max';
+import queryString from 'query-string';
 import defaultSettings from '../config/defaultSettings';
 import { useLocalStore } from './stores/localstore';
+import { message } from 'antd';
 
 // @ts-ignore
 const isDev = process.env.NODE_ENV === 'development';
@@ -130,6 +132,9 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
  */
 export const request = {
   dataField: 'data',
+  paramsSerializer(params) {
+    return queryString.stringify(params);
+  },
   requestInterceptors: [
     [
       (url, options) => {
@@ -148,9 +153,12 @@ export const request = {
     // 直接写一个 function，作为拦截器
     (response) => {
       // 不再需要异步处理读取返回体内容，可直接在data中读出，部分字段可在 config 中找到
-      const { data = {} as any, config } = response;
-      // do something
-      return data;
+      const {data:body}  = response;
+      
+      if (body.code !== 200) {
+        message.error(body.message);
+      }
+      return body;
     },
   ],
 };

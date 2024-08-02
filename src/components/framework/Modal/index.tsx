@@ -12,13 +12,17 @@ interface LeptonModalAction {
 interface LeptonModalProps<T extends any> extends Omit<ModalFormProps, 'children'> {
   request?: (options?: any) => Promise<T>;
   children: ReactNode | ReactNode[] | ((data: T) => ReactNode | ReactNode[]);
-  trigger: React.JSX.Element;
 }
 
-const defaultRequest = async (): Promise<any> => ({});
+const defaultRequest = async (): Promise<any> => {
+  console.log('Please provide a request function');
+  return {};
+};
 
 function LeptonModal<T>({ request, ...props }: LeptonModalProps<T>) {
-  const { data, runAsync } = useRequest(request || defaultRequest, {});
+  const { data, runAsync } = useRequest(request || defaultRequest, {
+    manual: true,
+  });
 
   return (
     <>
