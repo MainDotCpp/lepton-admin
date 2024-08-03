@@ -19,6 +19,8 @@ const {{pascalCase name}}Table = () => {
     <ProTable<API.{{pascalCase name}}VO>
       rowKey="id"
       actionRef={actionRef}
+      scroll={ { x: 'max-content' } }
+      columnsState={ {persistenceType: 'localStorage', persistenceKey: '{{name}}_table_columns_state'} }
       request={pageRequest}
       columns={columns}
       toolbar={ {

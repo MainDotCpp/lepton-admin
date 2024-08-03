@@ -21,11 +21,13 @@ const RoleTable = () => {
       actionRef={actionRef}
       request={pageRequest}
       columns={columns}
+      scroll={{ x: 'max-content' }}
+      columnsState={{persistenceType: 'localStorage', persistenceKey: 'role_table_columns_state'}}
       toolbar={ {
         actions: [
           access.SYSTEM__ROLE__CREATE && <RoleSaveForm
             key="save"
-            onFinish={actionRef.current?.reload}
+            onFinish={actionRef.current?.reload.bind(null)}
             trigger={<Button type="primary">创建角色</Button>}
           />,
         ],

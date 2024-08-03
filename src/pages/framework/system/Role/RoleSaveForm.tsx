@@ -7,6 +7,8 @@ const RoleSaveFormItems = () => {
   return (
     <>
       <ProFormText name="id" label="ID" hidden />
+      <ProFormText name="name" label="角色名称" />
+      <ProFormText name="code" label="角色编码" />
     </>
   );
 };
@@ -23,8 +25,7 @@ const RoleSaveForm = (props: SaveFormProps) => {
    * @returns 表单初始数据
    */
   const getInitialValues = async () => {
-    let initialValue: API.RoleSaveDTO = {
-    };
+    let initialValue: API.RoleSaveDTO = {};
     if (props.id) initialValue = await api.role.getById({ id: props.id });
 
     return initialValue;

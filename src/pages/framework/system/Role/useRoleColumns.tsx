@@ -8,7 +8,12 @@ export const useRoleColumns = (): ProColumns<API.RoleVO>[] => {
   const access = useAccess();
   return [
     { dataIndex: "id", title: "ID" , hideInSearch: true, sorter: true, filters: true, hidden: true},
-    { dataIndex: "id", title: "ID" , hideInSearch: true, sorter: true, filters: true},
+    { dataIndex: "name", title: "名称" , hideInSearch: true, sorter: true, filters: true, width:200},
+    { dataIndex: "code", title: "代码" , hideInSearch: true, sorter: true, filters: true, width:200},
+    { dataIndex: "builtin", title: "内置角色" , hideInSearch: true, sorter: true, filters: true, width:200},
+    { dataIndex: "createdBy", title: "创建人" , hideInSearch: true, sorter: true, filters: true, width:200},
+    { dataIndex: "createdAt", title: "创建时间" , hideInSearch: true, sorter: true, filters: true, width:200},
+
     {
       valueType: "index",
       title: "操作",
