@@ -1,9 +1,9 @@
 return {
     $1
     // -------- {{comment}} --------
-    {{ constantCase module.name}}__{{ constantCase name}}__MENU: permissions.includes("{{ module.name}}:{{ lowerCase name }}:menu"),
-    {{ constantCase module.name}}__{{ constantCase name}}__CREATE: permissions.includes("{{ module.name}}:{{ lowerCase name }}:create"),
-    {{ constantCase module.name}}__{{ constantCase name}}__UPDATE: permissions.includes("{{ module.name}}:{{ lowerCase name }}:update"),
-    {{ constantCase module.name}}__{{ constantCase name}}__DELETE: permissions.includes("{{ module.name}}:{{ lowerCase name }}:delete"),
-    {{ constantCase module.name}}__{{ constantCase name}}__EXPORT: permissions.includes("{{ module.name}}:{{ lowerCase name }}:export"),
+    {{ constantCase module.name}}__{{ constantCase name}}__MENU: permissions.includes("{{ module.name}}:{{ name }}:menu"),
+    {{ constantCase module.name}}__{{ constantCase name}}__CREATE: permissions.includes("{{ module.name}}:{{ name }}:create"),
+    {{ constantCase module.name}}__{{ constantCase name}}__UPDATE: permissions.includes("{{ module.name}}:{{ name }}:update"),
+    {{ constantCase module.name}}__{{ constantCase name}}__DELETE: permissions.includes("{{ module.name}}:{{ name }}:delete"),
+    {{ constantCase module.name}}__{{ constantCase name}}__EXPORT: permissions.includes("{{ module.name}}:{{ name }}:export"),
 }

@@ -1,6 +1,6 @@
 import api from "@/api";
 import { Modal } from "@/components";
-import { ProFormText } from "@ant-design/pro-components";
+import { ProFormText, ProFormTreeSelect } from "@ant-design/pro-components";
 import { message } from "antd";
 
 const RoleSaveFormItems = () => {
@@ -9,6 +9,16 @@ const RoleSaveFormItems = () => {
       <ProFormText name="id" label="ID" hidden />
       <ProFormText name="name" label="角色名称" />
       <ProFormText name="code" label="角色编码" />
+      <ProFormTreeSelect
+        name="menuIds"
+        label="菜单"
+        request={async () => await api.menu.tree({}) as any}
+        fieldProps={{
+          maxTagCount: 5,
+          treeCheckable: true,
+          fieldNames: { label: "name", value: "id", children: "children" },
+        }}
+      />
     </>
   );
 };

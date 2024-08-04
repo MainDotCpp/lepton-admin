@@ -15,7 +15,7 @@ export const use{{pascalCase name}}Columns = (): ProColumns<API.{{pascalCase nam
       align: 'center',
       width: 200,
       fixed: 'right',
-      render(dom, record, index, action, schema) {
+      render(dom, record, index, action) {
         return (
           <>
             {access.{{ constantCase module.name}}__{{ constantCase name}}__UPDATE && (
@@ -33,7 +33,7 @@ export const use{{pascalCase name}}Columns = (): ProColumns<API.{{pascalCase nam
               <Popconfirm
                 title="确定删除吗？"
                 onConfirm={() =>
-                  api.{{camelCase name}}.deleteById({ id: record.id! }).then(action?.reload)
+                  api.{{camelCase name}}.deleteById({ id: record.id || 0 }).then(action?.reload)
                 }>
                 <Button size="small" type="link" danger>
                   删除

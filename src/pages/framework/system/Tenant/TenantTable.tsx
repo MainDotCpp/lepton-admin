@@ -14,6 +14,7 @@ const TenantTable = () => {
   const columns = useTenantColumns();
   return (
     <ProTable<API.TenantVO, API.TenantDto>
+      rowKey="id"
       actionRef={actionRef}
       request={pageRequest}
       columns={columns}

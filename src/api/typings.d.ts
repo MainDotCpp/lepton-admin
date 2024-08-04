@@ -1,4 +1,10 @@
 declare namespace API {
+  type BaseQueryDTO = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type CustomerSaveDTO = {
     id?: number;
     name?: string;
@@ -42,33 +48,40 @@ declare namespace API {
   };
 
   type export1Params = {
-    id?: number;
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type export2Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type export3Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type export4Params = {
     id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type exportParams = {
     id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type getById1Params = {
@@ -97,39 +110,47 @@ declare namespace API {
   };
 
   type list1Params = {
-    id?: number;
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type list2Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type list3Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type list4Params = {
     id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type list5Params = {
     id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type listParams = {
     id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type LoginDTO = {
@@ -151,6 +172,10 @@ declare namespace API {
     permission?: string;
   };
 
+  type MenuDto = {
+    id?: number;
+  };
+
   type MenuSaveDTO = {
     id?: number;
   };
@@ -160,104 +185,111 @@ declare namespace API {
   };
 
   type page1Params = {
-    id?: number;
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type page2Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type page3Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type page4Params = {
     id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type page5Params = {
     id?: number;
     current?: number;
     pageSize?: number;
+    sorter?: string[];
   };
 
   type PageDTOCustomerVO = {
-    params?: PageParams;
+    params?: BaseQueryDTO;
     data?: CustomerVO[];
     total?: number;
     offset?: number;
+    current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
-    current?: number;
     pages?: number;
   };
 
   type PageDTOMenuVO = {
-    params?: PageParams;
+    params?: BaseQueryDTO;
     data?: MenuVO[];
     total?: number;
     offset?: number;
+    current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
-    current?: number;
     pages?: number;
   };
 
   type PageDTORoleVO = {
-    params?: PageParams;
+    params?: BaseQueryDTO;
     data?: RoleVO[];
     total?: number;
     offset?: number;
+    current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
-    current?: number;
     pages?: number;
   };
 
   type PageDTOSysPackageVO = {
-    params?: PageParams;
+    params?: BaseQueryDTO;
     data?: SysPackageVO[];
     total?: number;
     offset?: number;
+    current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
-    current?: number;
     pages?: number;
   };
 
   type PageDTOTenantVO = {
-    params?: PageParams;
+    params?: BaseQueryDTO;
     data?: TenantVO[];
     total?: number;
     offset?: number;
+    current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
-    current?: number;
     pages?: number;
   };
 
   type PageDTOUserVO = {
-    params?: PageParams;
+    params?: BaseQueryDTO;
     data?: UserVO[];
     total?: number;
     offset?: number;
+    current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
-    current?: number;
     pages?: number;
   };
 
@@ -265,19 +297,23 @@ declare namespace API {
     id?: number;
     current?: number;
     pageSize?: number;
-  };
-
-  type PageParams = {
-    pageSize?: number;
-    current?: number;
+    sorter?: string[];
   };
 
   type RoleSaveDTO = {
     id?: number;
+    name?: string;
+    code?: string;
+    menus?: MenuDto[];
   };
 
   type RoleVO = {
     id?: number;
+    createdByName?: string;
+    createdAt?: string;
+    name?: string;
+    code?: string;
+    builtin?: boolean;
   };
 
   type SysPackage = {
@@ -299,6 +335,7 @@ declare namespace API {
   type SysPackageVO = {
     id?: number;
     name?: string;
+    menuIds?: number[];
   };
 
   type Tenant = {
@@ -338,9 +375,9 @@ declare namespace API {
   type TreeLong = {
     name?: { empty?: boolean };
     id?: number;
+    parentId?: number;
     config?: TreeNodeConfig;
     weight?: Record<string, any>;
-    parentId?: number;
     empty?: boolean;
   };
 

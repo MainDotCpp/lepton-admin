@@ -1,12 +1,23 @@
 import api from "@/api";
 import { Modal } from "@/components";
-import { ProFormText } from "@ant-design/pro-components";
+import { ProFormText, ProFormTreeSelect } from "@ant-design/pro-components";
 import { message } from "antd";
 
 const SysPackageSaveFormItems = () => {
   return (
     <>
       <ProFormText name="id" label="ID" hidden />
+      <ProFormText name="name" label="名称" />
+      <ProFormTreeSelect
+        name="menuIds"
+        label="菜单"
+        request={async () => await api.menu.tree({})}
+        fieldProps={{
+          maxTagCount: 5,
+          treeCheckable: true,
+          fieldNames: { label: "name", value: "id", children: "children" },
+        }}
+      />
     </>
   );
 };
@@ -23,8 +34,7 @@ const SysPackageSaveForm = (props: SaveFormProps) => {
    * @returns 表单初始数据
    */
   const getInitialValues = async () => {
-    let initialValue: API.SysPackageSaveDTO = {
-    };
+    let initialValue: API.SysPackageSaveDTO = {};
     if (props.id) initialValue = await api.sysPackage.getById({ id: props.id });
 
     return initialValue;

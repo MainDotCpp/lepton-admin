@@ -1,15 +1,30 @@
 import api from "@/api";
+import { useSysPackageList } from "@/api/querys/sysPackageQuery";
 import { Modal } from "@/components";
-import { ProFormText } from "@ant-design/pro-components";
+import { ProFormSelect, ProFormText } from "@ant-design/pro-components";
 import { message } from "antd";
 
 const TenantSaveFormItems = () => {
+  const { sysPackageOptions } = useSysPackageList();
+
   return (
     <>
       <ProFormText name="id" label="ID" hidden />
       <ProFormText name="name" label="租户名称" />
       <ProFormText name="code" label="租户编码" />
-      <ProFormText name="type" label="状态" />
+      <ProFormSelect
+        name="type"
+        label="状态"
+        valueEnum={{
+          ACTIVE: "启用",
+          INACTIVE: "禁用",
+        }}
+      />
+      <ProFormSelect
+        name="packageId"
+        label="套餐"
+        request={async () => sysPackageOptions}
+      />
     </>
   );
 };

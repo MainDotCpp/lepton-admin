@@ -1,3 +1,5 @@
+import MenuTree from "@/components/framework/MenuTree";
+
 /**
  * title: 标题
  * name: 标题
@@ -6,7 +8,7 @@
 const Index = () => {
   return (
     <>
-      <div>ROOT</div>
+      <MenuTree />
     </>
   );
 };

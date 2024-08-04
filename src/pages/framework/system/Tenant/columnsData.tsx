@@ -1,9 +1,12 @@
 import api from "@/api";
+import { useSysPackageList } from "@/api/querys/sysPackageQuery";
 import { ProColumns } from "@ant-design/pro-components";
 import { Button, Popconfirm } from "antd";
 import TenantSaveForm from "./TenantSaveForm";
 
 export const useTenantColumns = (): ProColumns<API.TenantVO>[] => {
+  const { sysPackageOptions, sysPackageEnums } = useSysPackageList();
+
   return [
     { dataIndex: "id", title: "ID" },
     {
@@ -26,11 +29,15 @@ export const useTenantColumns = (): ProColumns<API.TenantVO>[] => {
       sorter: true,
       filters: true,
     },
-    { dataIndex: "packageName", title: "套餐", search: false },
+    {
+      dataIndex: "packageId",
+      title: "套餐",
+      valueEnum: sysPackageEnums,
+    },
     {
       valueType: "index",
       title: "操作",
-      render(dom, record, index, action, schema) {
+      render(dom, record, index, action) {
         return (
           <>
             <TenantSaveForm
@@ -45,8 +52,9 @@ export const useTenantColumns = (): ProColumns<API.TenantVO>[] => {
             <Popconfirm
               title="确定删除吗？"
               onConfirm={() =>
-                api.tenant.deleteById({ id: record.id!! })
-                .then(action?.reload)
+                api.tenant
+                  .deleteById({ id: record.id || 0 })
+                  .then(action?.reload)
               }>
               <Button size="small" type="link" danger>
                 删除

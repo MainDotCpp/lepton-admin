@@ -36,10 +36,10 @@ export default function access() {
     SYSTEM__ROLE__EXPORT: permissions.includes("system:role:export"),
   
     // -------- 套餐 --------
-    SYSTEM__SYS_PACKAGE__MENU: permissions.includes("system:syspackage:menu"),
-    SYSTEM__SYS_PACKAGE__CREATE: permissions.includes("system:syspackage:create"),
-    SYSTEM__SYS_PACKAGE__UPDATE: permissions.includes("system:syspackage:update"),
-    SYSTEM__SYS_PACKAGE__DELETE: permissions.includes("system:syspackage:delete"),
-    SYSTEM__SYS_PACKAGE__EXPORT: permissions.includes("system:syspackage:export"),
+    SYSTEM__SYS_PACKAGE__MENU: permissions.includes("system:sysPackage:menu"),
+    SYSTEM__SYS_PACKAGE__CREATE: permissions.includes("system:sysPackage:create"),
+    SYSTEM__SYS_PACKAGE__UPDATE: permissions.includes("system:sysPackage:update"),
+    SYSTEM__SYS_PACKAGE__DELETE: permissions.includes("system:sysPackage:delete"),
+    SYSTEM__SYS_PACKAGE__EXPORT: permissions.includes("system:sysPackage:export"),
 };
 }
