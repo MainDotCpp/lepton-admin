@@ -47,7 +47,7 @@ export const useUserColumns = (): ProColumns<API.UserVO>[] => {
       sorter: true,
       filters: true,
       width: 200,
-      valueType: "tagList",
+      valueType: "select",
       request: api.role.list,
       fieldProps: {
         fieldNames: { label: "name", value: "id" },
