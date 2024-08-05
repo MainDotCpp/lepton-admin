@@ -1,4 +1,4 @@
-import MenuTree from "@/components/framework/MenuTree";
+import { useGlobalStore } from "@/stores/global";
 
 /**
  * title: 标题
@@ -6,11 +6,8 @@ import MenuTree from "@/components/framework/MenuTree";
  * @constructor
  */
 const Index = () => {
-  return (
-    <>
-      <MenuTree />
-    </>
-  );
+  const globalStore = useGlobalStore(state => state.userInfo);
+  return <>{JSON.stringify(globalStore)}</>;
 };
 
 export default Index;

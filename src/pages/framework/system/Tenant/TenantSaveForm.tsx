@@ -1,11 +1,11 @@
 import api from "@/api";
-import { useSysPackageList } from "@/api/querys/sysPackageQuery";
 import { Modal } from "@/components";
+import convert from "@/utils/convert";
 import { ProFormSelect, ProFormText } from "@ant-design/pro-components";
 import { message } from "antd";
 
 const TenantSaveFormItems = () => {
-  const { sysPackageOptions } = useSysPackageList();
+  // const { sysPackageOptions } = useSysPackageList();
 
   return (
     <>
@@ -23,7 +23,12 @@ const TenantSaveFormItems = () => {
       <ProFormSelect
         name="packageId"
         label="套餐"
-        request={async () => sysPackageOptions}
+        request={async () =>
+          convert.fetchOptions(api.sysPackage.list, {
+            label: "name",
+            value: "id",
+          })
+        }
       />
     </>
   );

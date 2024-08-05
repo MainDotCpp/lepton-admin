@@ -91,7 +91,7 @@ export async function save(body: API.MenuSaveDTO, options?: { [key: string]: any
 
 /** 获取系统菜单树 GET /menu/tree */
 export async function tree(options?: { [key: string]: any }) {
-  return request<API.TreeLong>(`/api/menu/tree`, {
+  return request<API.TreeLong[]>(`/api/menu/tree`, {
     method: 'GET',
     ...(options || {}),
   });

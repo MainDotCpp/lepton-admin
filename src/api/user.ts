@@ -89,6 +89,14 @@ export async function save(body: API.UserSaveDTO, options?: { [key: string]: any
   });
 }
 
+/** 此处后端没有提供注释 GET /user/test */
+export async function test(options?: { [key: string]: any }) {
+  return request<Record<string, any>>(`/api/user/test`, {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
 /** 获取用户信息 GET /user/userInfo */
 export async function userInfo(options?: { [key: string]: any }) {
   return request<API.UserInfoVO>(`/api/user/userInfo`, {

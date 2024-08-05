@@ -10,7 +10,6 @@ export const useLocalStore = create(
         },
         (set) => ({
           setTenantId: (tenantId?: number) => {
-            console.log(`设置租户 -> ${tenantId}`);
             set({ tenantId });
           },
         }),

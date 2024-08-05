@@ -158,24 +158,6 @@ declare namespace API {
     password?: string;
   };
 
-  type Menu = {
-    id?: number;
-    name?: string;
-    parentId?: number;
-    type?: 'CATALOG' | 'MENU' | 'BUTTON';
-    path?: string;
-    icon?: string;
-    sort?: number;
-    hidden?: boolean;
-    cache?: boolean;
-    component?: string;
-    permission?: string;
-  };
-
-  type MenuDto = {
-    id?: number;
-  };
-
   type MenuSaveDTO = {
     id?: number;
   };
@@ -226,10 +208,10 @@ declare namespace API {
     data?: CustomerVO[];
     total?: number;
     offset?: number;
-    current?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
     pages?: number;
   };
 
@@ -238,10 +220,10 @@ declare namespace API {
     data?: MenuVO[];
     total?: number;
     offset?: number;
-    current?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
     pages?: number;
   };
 
@@ -250,10 +232,10 @@ declare namespace API {
     data?: RoleVO[];
     total?: number;
     offset?: number;
-    current?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
     pages?: number;
   };
 
@@ -262,10 +244,10 @@ declare namespace API {
     data?: SysPackageVO[];
     total?: number;
     offset?: number;
-    current?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
     pages?: number;
   };
 
@@ -274,10 +256,10 @@ declare namespace API {
     data?: TenantVO[];
     total?: number;
     offset?: number;
-    current?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
     pages?: number;
   };
 
@@ -286,10 +268,10 @@ declare namespace API {
     data?: UserVO[];
     total?: number;
     offset?: number;
-    current?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
     pages?: number;
   };
 
@@ -304,26 +286,17 @@ declare namespace API {
     id?: number;
     name?: string;
     code?: string;
-    menus?: MenuDto[];
+    menuIds?: number[];
   };
 
   type RoleVO = {
     id?: number;
+    menuIds?: number[];
     createdByName?: string;
     createdAt?: string;
     name?: string;
     code?: string;
     builtin?: boolean;
-  };
-
-  type SysPackage = {
-    id?: number;
-    name?: string;
-    menus?: Menu[];
-  };
-
-  type SysPackageDto = {
-    id?: number;
   };
 
   type SysPackageSaveDTO = {
@@ -338,15 +311,6 @@ declare namespace API {
     menuIds?: number[];
   };
 
-  type Tenant = {
-    id?: number;
-    logo?: string;
-    name?: string;
-    type?: 'ACTIVE' | 'INACTIVE';
-    code?: string;
-    sysPackage?: SysPackage;
-  };
-
   type TenantDto = {
     id?: number;
     name?: string;
@@ -359,7 +323,7 @@ declare namespace API {
     name?: string;
     type?: 'ACTIVE' | 'INACTIVE';
     code?: string;
-    sysPackage?: SysPackageDto;
+    packageId?: number;
   };
 
   type TenantVO = {
@@ -376,8 +340,8 @@ declare namespace API {
     name?: { empty?: boolean };
     id?: number;
     parentId?: number;
-    config?: TreeNodeConfig;
     weight?: Record<string, any>;
+    config?: TreeNodeConfig;
     empty?: boolean;
   };
 
@@ -397,6 +361,7 @@ declare namespace API {
     roles?: string[];
     permissions?: string[];
     tenants?: TenantDto[];
+    avatar?: string;
     enabled?: boolean;
     accountNonExpired?: boolean;
     accountNonLocked?: boolean;
@@ -408,12 +373,15 @@ declare namespace API {
     name?: string;
     phone?: string;
     password?: string;
+    avatar?: string;
+    roleIds?: number[];
   };
 
   type UserVO = {
     id?: number;
     name?: string;
     phone?: string;
-    tenants?: Tenant[];
+    avatar?: string;
+    roleIds?: number[];
   };
 }

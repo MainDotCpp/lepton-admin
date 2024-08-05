@@ -8,4 +8,12 @@ export default {
         return acc;
         }, {} as Record<any, any>);
     },
+
+  fetchOptions: async <T extends any>(request: (args:any) => Promise<T[]>,{label = "name",value='id'}:any) => {
+    const data = await request();
+    const l = typeof label === "function" ? label : (it:T) => it[label];
+    const v = typeof value === "function" ? value : (it:T) => it[value];
+    return data.map(it => ({ label: l(it), value: v(it) }));
+
+  }
 };

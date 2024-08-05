@@ -1,3 +1,4 @@
+import api from "@/api";
 import { ProColumns } from "@ant-design/pro-components";
 import { useAccess } from "@umijs/max";
 import { Button, Popconfirm } from "antd";
@@ -15,11 +16,42 @@ export const useUserColumns = (): ProColumns<API.UserVO>[] => {
       hidden: true,
     },
     {
-      dataIndex: "id",
-      title: "ID",
+      dataIndex: "avatar",
+      title: "头像",
       hideInSearch: true,
       sorter: true,
       filters: true,
+      width: 200,
+      valueType: "avatar",
+    },
+    {
+      dataIndex: "name",
+      title: "姓名",
+      hideInSearch: true,
+      sorter: true,
+      filters: true,
+      width: 200,
+    },
+
+    {
+      dataIndex: "phone",
+      title: "手机号",
+      hideInSearch: true,
+      sorter: true,
+      filters: true,
+      width: 200,
+    },
+    {
+      dataIndex: "roleIds",
+      title: "角色",
+      sorter: true,
+      filters: true,
+      width: 200,
+      valueType: "tagList",
+      request: api.role.list,
+      fieldProps: {
+        fieldNames: { label: "name", value: "id" },
+      },
     },
     {
       valueType: "index",
@@ -27,7 +59,7 @@ export const useUserColumns = (): ProColumns<API.UserVO>[] => {
       align: "center",
       width: 200,
       fixed: "right",
-      render(dom, record, index, action, schema) {
+      render(dom, record, index, action) {
         return (
           <>
             {access.SYSTEM__USER__UPDATE && (
@@ -42,7 +74,7 @@ export const useUserColumns = (): ProColumns<API.UserVO>[] => {
               />
             )}
             {access.SYSTEM__USER__DELETE && (
-              <Popconfirm title="确定删除吗？">
+              <Popconfirm title="确定删除吗">
                 <Button size="small" type="link" danger>
                   删除
                 </Button>

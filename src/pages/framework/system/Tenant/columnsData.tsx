@@ -1,11 +1,11 @@
 import api from "@/api";
-import { useSysPackageList } from "@/api/querys/sysPackageQuery";
+import convert from "@/utils/convert";
 import { ProColumns } from "@ant-design/pro-components";
 import { Button, Popconfirm } from "antd";
 import TenantSaveForm from "./TenantSaveForm";
 
 export const useTenantColumns = (): ProColumns<API.TenantVO>[] => {
-  const { sysPackageOptions, sysPackageEnums } = useSysPackageList();
+  // const { sysPackageOptions, sysPackageEnums } = useSysPackageList();
 
   return [
     { dataIndex: "id", title: "ID" },
@@ -32,7 +32,12 @@ export const useTenantColumns = (): ProColumns<API.TenantVO>[] => {
     {
       dataIndex: "packageId",
       title: "套餐",
-      valueEnum: sysPackageEnums,
+      valueType: "select",
+      request: async () =>
+        convert.fetchOptions(api.sysPackage.list, {
+          label: "name",
+          value: "id",
+        }),
     },
     {
       valueType: "index",

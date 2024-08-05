@@ -34,10 +34,6 @@
     "test:update": "npm run jest -- -u",
     "tsc": "tsc --noEmit"
   },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": ["prettier --write"]
-  },
   "browserslist": ["> 1%", "last 2 versions", "not ie <= 10"],
   "dependencies": {
     "@ant-design/icons": "^4.8.1",
@@ -84,7 +80,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^10.5.4",
     "mockjs": "^1.1.0",
-    "prettier": "^3.0.0",
+    "prettier": "^2.8.8",
     "react-dev-inspector": "^1.9.0",
     "swagger-ui-dist": "^4.19.1",
     "ts-node": "^10.9.2",

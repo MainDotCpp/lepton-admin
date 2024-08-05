@@ -1,3 +1,4 @@
+import api from '@/api';
 import { useGlobalStore } from '@/stores/global';
 import { useSetTenantId } from '@/stores/localstore';
 import {
@@ -33,6 +34,7 @@ const Page = () => {
   const [loginType, setLoginType] = useState<LoginType>('account');
   const { token } = theme.useToken();
   const login = useGlobalStore((state) => state.login);
+  const setUserInfo = useGlobalStore(state => state.setUserInfo)
   let navigate = useNavigate();
   const setTenant = useSetTenantId();
   return (
@@ -61,6 +63,9 @@ const Page = () => {
           if (userInfo.tenants!!.length > 1) {
             setTenant(userInfo.tenants!![0].id);
           }
+          setUserInfo(await api.user.userInfo());
+
+
           navigate('/');
         }}
         subTitle="全球最大的代码托管平台"
