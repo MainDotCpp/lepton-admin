@@ -7,6 +7,10 @@ export default function access() {
   const permissions = useGlobalStore.getState()?.userInfo?.permissions || [];
   return {
     
+    
+    
+    
+    
     // -------- 用户 --------
     SYSTEM__USER__MENU: permissions.includes("system:user:menu"),
     SYSTEM__USER__CREATE: permissions.includes("system:user:create"),
@@ -41,5 +45,33 @@ export default function access() {
     SYSTEM__SYS_PACKAGE__UPDATE: permissions.includes("system:sysPackage:update"),
     SYSTEM__SYS_PACKAGE__DELETE: permissions.includes("system:sysPackage:delete"),
     SYSTEM__SYS_PACKAGE__EXPORT: permissions.includes("system:sysPackage:export"),
+
+    // -------- 客资渠道 --------
+    CUSTOMER__CHANNEL__MENU: permissions.includes("customer:channel:menu"),
+    CUSTOMER__CHANNEL__CREATE: permissions.includes("customer:channel:create"),
+    CUSTOMER__CHANNEL__UPDATE: permissions.includes("customer:channel:update"),
+    CUSTOMER__CHANNEL__DELETE: permissions.includes("customer:channel:delete"),
+    CUSTOMER__CHANNEL__EXPORT: permissions.includes("customer:channel:export"),
+
+    // -------- 客资渠道 --------
+    CUSTOMER__CUSTOMER_CHANNEL__MENU: permissions.includes("customer:customerChannel:menu"),
+    CUSTOMER__CUSTOMER_CHANNEL__CREATE: permissions.includes("customer:customerChannel:create"),
+    CUSTOMER__CUSTOMER_CHANNEL__UPDATE: permissions.includes("customer:customerChannel:update"),
+    CUSTOMER__CUSTOMER_CHANNEL__DELETE: permissions.includes("customer:customerChannel:delete"),
+    CUSTOMER__CUSTOMER_CHANNEL__EXPORT: permissions.includes("customer:customerChannel:export"),
+
+    // -------- 客资渠道 --------
+    CUSTOMER__CHANNEL__MENU: permissions.includes("customer:channel:menu"),
+    CUSTOMER__CHANNEL__CREATE: permissions.includes("customer:channel:create"),
+    CUSTOMER__CHANNEL__UPDATE: permissions.includes("customer:channel:update"),
+    CUSTOMER__CHANNEL__DELETE: permissions.includes("customer:channel:delete"),
+    CUSTOMER__CHANNEL__EXPORT: permissions.includes("customer:channel:export"),
+
+    // -------- 客资 --------
+    CUSTOMER__CUSTOMER__MENU: permissions.includes("customer:customer:menu"),
+    CUSTOMER__CUSTOMER__CREATE: permissions.includes("customer:customer:create"),
+    CUSTOMER__CUSTOMER__UPDATE: permissions.includes("customer:customer:update"),
+    CUSTOMER__CUSTOMER__DELETE: permissions.includes("customer:customer:delete"),
+    CUSTOMER__CUSTOMER__EXPORT: permissions.includes("customer:customer:export"),
 };
 }

@@ -12,8 +12,8 @@ const Settings: ProLayoutProps & {
   // 风格配置
   navTheme: "light",
   colorPrimary: "#52C41A",
-  layout: "side",
-  contentWidth: "Fluid",
+  layout: "top",
+  contentWidth: "Fixed",
   fixedHeader: true,
   fixSiderbar: true,
   pwa: true,
