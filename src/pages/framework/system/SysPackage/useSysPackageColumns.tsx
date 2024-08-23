@@ -1,40 +1,40 @@
-import api from "@/api";
-import { ProColumns } from "@ant-design/pro-components";
-import { useAccess } from "@umijs/max";
-import { Button, Popconfirm } from "antd";
-import SysPackageSaveForm from "./SysPackageSaveForm";
+import type { ProColumns } from '@ant-design/pro-components'
+import { useAccess } from '@umijs/max'
+import { Button, Popconfirm } from 'antd'
+import SysPackageSaveForm from './SysPackageSaveForm'
+import api from '@/api'
 
-export const useSysPackageColumns = (): ProColumns<API.SysPackageVO>[] => {
-  const access = useAccess();
+export function useSysPackageColumns(): ProColumns<API.SysPackageVO>[] {
+  const access = useAccess()
   return [
     {
-      dataIndex: "id",
-      title: "ID",
+      dataIndex: 'id',
+      title: 'ID',
       hideInSearch: true,
       sorter: true,
       filters: true,
       hidden: true,
     },
     {
-      dataIndex: "id",
-      title: "ID",
+      dataIndex: 'id',
+      title: 'ID',
       hideInSearch: true,
       sorter: true,
       filters: true,
     },
     {
-      dataIndex: "name",
-      title: "套餐名称",
+      dataIndex: 'name',
+      title: '套餐名称',
       hideInSearch: true,
       sorter: true,
       filters: true,
     },
     {
-      valueType: "index",
-      title: "操作",
-      align: "center",
+      valueType: 'index',
+      title: '操作',
+      align: 'center',
       width: 200,
-      fixed: "right",
+      fixed: 'right',
       render(dom, record, index, action) {
         return (
           <>
@@ -42,11 +42,11 @@ export const useSysPackageColumns = (): ProColumns<API.SysPackageVO>[] => {
               <SysPackageSaveForm
                 id={record.id}
                 onFinish={action?.reload}
-                trigger={
+                trigger={(
                   <Button size="small" type="link">
                     编辑
                   </Button>
-                }
+                )}
               />
             )}
             {access.SYSTEM__SYS_PACKAGE__DELETE && (
@@ -55,16 +55,16 @@ export const useSysPackageColumns = (): ProColumns<API.SysPackageVO>[] => {
                 onConfirm={() =>
                   api.sysPackage
                     .deleteById({ id: record.id || 0 })
-                    .then(action?.reload)
-                }>
+                    .then(action?.reload)}
+              >
                 <Button size="small" type="link" danger>
                   删除
                 </Button>
               </Popconfirm>
             )}
           </>
-        );
+        )
       },
     },
-  ];
-};
+  ]
+}

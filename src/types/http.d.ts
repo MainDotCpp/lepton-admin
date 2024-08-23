@@ -1,13 +1,13 @@
-import { SortOrder } from 'antd/es/table/interface';
+import type { SortOrder } from 'antd/es/table/interface'
 
 declare namespace REQUEST {
-  type PageParams<T> = {
+  interface PageParams<T> {
     params: T & {
-      pageSize?: number;
-      current?: number;
-      keyword?: string;
-    };
-    sort: Record<string, SortOrder>;
-    filter: Record<string, (string | number)[] | null>;
-  };
+      pageSize?: number
+      current?: number
+      keyword?: string
+    }
+    sort: Record<string, SortOrder>
+    filter: Record<string, (string | number)[] | null>
+  }
 }

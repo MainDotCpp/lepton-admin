@@ -1,3 +1,3 @@
-import { ProRenderFieldPropsType } from "@ant-design/pro-components";
+import type { ProRenderFieldPropsType } from '@ant-design/pro-components'
 
-export const valueTypeMap: Record<string, ProRenderFieldPropsType> = {};
+export const valueTypeMap: Record<string, ProRenderFieldPropsType> = {}

@@ -1,17 +1,19 @@
-import api from '@/api';
-import { queryParams } from '@/utils/request';
-import { ActionType, ProTable } from '@ant-design/pro-components';
-import { Button } from 'antd';
-import { useRef } from 'react';
-import { useTenantColumns } from './columnsData';
-import TenantSaveForm from './TenantSaveForm';
+import type { ActionType } from '@ant-design/pro-components'
+import { ProTable } from '@ant-design/pro-components'
+import { Button } from 'antd'
+import { useRef } from 'react'
+import { useTenantColumns } from './columnsData'
+import TenantSaveForm from './TenantSaveForm'
+import { queryParams } from '@/utils/request'
+import api from '@/api'
 
-const pageRequest = async (params: any, sort: any, filter: any) =>
-  api.tenant.page(queryParams(params, sort, filter));
+async function pageRequest(params: any, sort: any, filter: any) {
+  return api.tenant.page(queryParams(params, sort, filter))
+}
 
-const TenantTable = () => {
-  const actionRef = useRef<ActionType>(null);
-  const columns = useTenantColumns();
+function TenantTable() {
+  const actionRef = useRef<ActionType>(null)
+  const columns = useTenantColumns()
   return (
     <ProTable<API.TenantVO, API.TenantDto>
       rowKey="id"
@@ -27,8 +29,9 @@ const TenantTable = () => {
           />,
         ],
       }}
-    ></ProTable>
-  );
-};
+    >
+    </ProTable>
+  )
+}
 
-export default TenantTable;
+export default TenantTable

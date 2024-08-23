@@ -1,15 +1,15 @@
-import { useUserInfo } from '@/stores/global';
-import { useSetTenantId, useTenantId } from '@/stores/localstore';
-import { CheckOutlined, SendOutlined, SwapOutlined } from '@ant-design/icons';
-import { Button, Divider, Empty, Form, Input } from 'antd';
+import { CheckOutlined, SendOutlined, SwapOutlined } from '@ant-design/icons'
+import { Button, Divider, Empty, Form, Input } from 'antd'
 
-import styled from 'styled-components';
+import styled from 'styled-components'
+import { useSetTenantId, useTenantId } from '@/stores/localstore'
+import { useUserInfo } from '@/stores/global'
 
 const InlineForm = styled(Form)`
   .ant-form-item {
     flex: 1;
   }
-`;
+`
 const Tenant = styled.div`
   height: 80px;
   border: 1px solid #00000010;
@@ -43,15 +43,15 @@ const Tenant = styled.div`
       width: 100%;
     }
   }
-`;
-const TenantSwitch = () => {
-  const tenantId = useTenantId();
-  const setTenantId = useSetTenantId();
-  const userInfo = useUserInfo();
+`
+function TenantSwitch() {
+  const tenantId = useTenantId()
+  const setTenantId = useSetTenantId()
+  const userInfo = useUserInfo()
   return (
     <div>
       {userInfo?.tenants?.length === 0 && <Empty description="暂未加入任何企业" />}
-      {userInfo?.tenants?.map((tenant) => (
+      {userInfo?.tenants?.map(tenant => (
         <Tenant key={tenant.id}>
           <div className="avatar">
             <img src={tenant.logo} alt="" />
@@ -65,8 +65,8 @@ const TenantSwitch = () => {
               icon={tenantId === tenant.id ? <CheckOutlined /> : <SwapOutlined />}
               disabled={tenantId === tenant.id}
               onClick={() => {
-                window.location.reload();
-                setTenantId(tenant.id);
+                window.location.reload()
+                setTenantId(tenant.id)
               }}
             >
               {tenantId === tenant.id ? '当前企业' : '切换企业'}
@@ -84,7 +84,7 @@ const TenantSwitch = () => {
         </Button>
       </InlineForm>
     </div>
-  );
-};
+  )
+}
 
-export default TenantSwitch;
+export default TenantSwitch

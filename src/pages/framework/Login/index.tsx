@@ -1,6 +1,3 @@
-import api from '@/api';
-import { useGlobalStore } from '@/stores/global';
-import { useSetTenantId } from '@/stores/localstore';
 import {
   AlipayOutlined,
   LockOutlined,
@@ -8,35 +5,38 @@ import {
   TaobaoOutlined,
   UserOutlined,
   WeiboOutlined,
-} from '@ant-design/icons';
+} from '@ant-design/icons'
 import {
   LoginFormPage,
   ProConfigProvider,
   ProFormCaptcha,
   ProFormCheckbox,
   ProFormText,
-} from '@ant-design/pro-components';
-import { useNavigate } from '@umijs/max';
-import { Button, Divider, message, Space, Tabs, theme } from 'antd';
-import type { CSSProperties } from 'react';
-import { useState } from 'react';
+} from '@ant-design/pro-components'
+import { useNavigate } from '@umijs/max'
+import { Button, Divider, Space, Tabs, message, theme } from 'antd'
+import type { CSSProperties } from 'react'
+import { useState } from 'react'
+import { useSetTenantId } from '@/stores/localstore'
+import { useGlobalStore } from '@/stores/global'
+import api from '@/api'
 
-type LoginType = 'phone' | 'account';
+type LoginType = 'phone' | 'account'
 
 const iconStyles: CSSProperties = {
   color: 'rgba(0, 0, 0, 0.2)',
   fontSize: '18px',
   verticalAlign: 'middle',
   cursor: 'pointer',
-};
+}
 
-const Page = () => {
-  const [loginType, setLoginType] = useState<LoginType>('account');
-  const { token } = theme.useToken();
-  const login = useGlobalStore((state) => state.login);
+function Page() {
+  const [loginType, setLoginType] = useState<LoginType>('account')
+  const { token } = theme.useToken()
+  const login = useGlobalStore(state => state.login)
   const setUserInfo = useGlobalStore(state => state.setUserInfo)
-  let navigate = useNavigate();
-  const setTenant = useSetTenantId();
+  const navigate = useNavigate()
+  const setTenant = useSetTenantId()
   return (
     <div
       style={{
@@ -54,19 +54,18 @@ const Page = () => {
           backdropFilter: 'blur(4px)',
         }}
         onFinish={async (values) => {
-          const userInfo = await login(values.phone, values.password);
+          const userInfo = await login(values.phone, values.password)
           if (!userInfo) {
-            message.error('登录失败！');
-            return false;
+            message.error('登录失败！')
+            return false
           }
-          message.success('登录成功！');
-          if (userInfo.tenants!!.length > 1) {
-            setTenant(userInfo.tenants!![0].id);
+          message.success('登录成功！')
+          if (userInfo.tenants!.length > 1) {
+            setTenant(userInfo.tenants![0].id)
           }
-          setUserInfo(await api.user.userInfo());
+          setUserInfo(await api.user.userInfo())
 
-
-          navigate('/');
+          navigate('/')
         }}
         subTitle="全球最大的代码托管平台"
         activityConfig={{
@@ -93,7 +92,7 @@ const Page = () => {
             </Button>
           ),
         }}
-        actions={
+        actions={(
           <div
             style={{
               display: 'flex',
@@ -122,7 +121,7 @@ const Page = () => {
                   flexDirection: 'column',
                   height: 40,
                   width: 40,
-                  border: '1px solid ' + token.colorPrimaryBorder,
+                  border: `1px solid ${token.colorPrimaryBorder}`,
                   borderRadius: '50%',
                 }}
               >
@@ -136,7 +135,7 @@ const Page = () => {
                   flexDirection: 'column',
                   height: 40,
                   width: 40,
-                  border: '1px solid ' + token.colorPrimaryBorder,
+                  border: `1px solid ${token.colorPrimaryBorder}`,
                   borderRadius: '50%',
                 }}
               >
@@ -150,7 +149,7 @@ const Page = () => {
                   flexDirection: 'column',
                   height: 40,
                   width: 40,
-                  border: '1px solid ' + token.colorPrimaryBorder,
+                  border: `1px solid ${token.colorPrimaryBorder}`,
                   borderRadius: '50%',
                 }}
               >
@@ -158,15 +157,15 @@ const Page = () => {
               </div>
             </Space>
           </div>
-        }
+        )}
       >
         <Tabs
           centered
           activeKey={loginType}
-          onChange={(activeKey) => setLoginType(activeKey as LoginType)}
+          onChange={activeKey => setLoginType(activeKey as LoginType)}
         >
-          <Tabs.TabPane key={'account'} tab={'账号密码登录'} />
-          <Tabs.TabPane key={'phone'} tab={'手机号登录'} />
+          <Tabs.TabPane key="account" tab="账号密码登录" />
+          <Tabs.TabPane key="phone" tab="手机号登录" />
         </Tabs>
         {loginType === 'account' && (
           <>
@@ -179,11 +178,11 @@ const Page = () => {
                     style={{
                       color: token.colorText,
                     }}
-                    className={'prefixIcon'}
+                    className="prefixIcon"
                   />
                 ),
               }}
-              placeholder={'手机号'}
+              placeholder="手机号"
               rules={[
                 {
                   required: true,
@@ -200,7 +199,7 @@ const Page = () => {
                     style={{
                       color: token.colorText,
                     }}
-                    className={'prefixIcon'}
+                    className="prefixIcon"
                   />
                 ),
               }}
@@ -223,12 +222,12 @@ const Page = () => {
                     style={{
                       color: token.colorText,
                     }}
-                    className={'prefixIcon'}
+                    className="prefixIcon"
                   />
                 ),
               }}
               name="mobile"
-              placeholder={'手机号'}
+              placeholder="手机号"
               rules={[
                 {
                   required: true,
@@ -248,19 +247,19 @@ const Page = () => {
                     style={{
                       color: token.colorText,
                     }}
-                    className={'prefixIcon'}
+                    className="prefixIcon"
                   />
                 ),
               }}
               captchaProps={{
                 size: 'large',
               }}
-              placeholder={'请输入验证码'}
+              placeholder="请输入验证码"
               captchaTextRender={(timing, count) => {
                 if (timing) {
-                  return `${count} ${'获取验证码'}`;
+                  return `${count} ${'获取验证码'}`
                 }
-                return '获取验证码';
+                return '获取验证码'
               }}
               name="captcha"
               rules={[
@@ -270,7 +269,7 @@ const Page = () => {
                 },
               ]}
               onGetCaptcha={async () => {
-                message.success('获取验证码成功！验证码为：1234');
+                message.success('获取验证码成功！验证码为：1234')
               }}
             />
           </>
@@ -293,13 +292,13 @@ const Page = () => {
         </div>
       </LoginFormPage>
     </div>
-  );
-};
+  )
+}
 
 export default () => {
   return (
     <ProConfigProvider dark>
       <Page />
     </ProConfigProvider>
-  );
-};
+  )
+}

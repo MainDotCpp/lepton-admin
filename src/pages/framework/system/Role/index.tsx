@@ -1,12 +1,12 @@
-import { PageContainer } from '@ant-design/pro-components';
-import RoleTable from './RoleTable';
+import { PageContainer } from '@ant-design/pro-components'
+import RoleTable from './RoleTable'
 
-const Role = () => {
+function Role() {
   return (
     <PageContainer>
       <RoleTable />
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Role;
+export default Role

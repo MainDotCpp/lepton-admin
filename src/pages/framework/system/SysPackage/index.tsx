@@ -1,12 +1,12 @@
-import { PageContainer } from '@ant-design/pro-components';
-import SysPackageTable from './SysPackageTable';
+import { PageContainer } from '@ant-design/pro-components'
+import SysPackageTable from './SysPackageTable'
 
-const SysPackage = () => {
+function SysPackage() {
   return (
     <PageContainer>
       <SysPackageTable />
     </PageContainer>
-  );
-};
+  )
+}
 
-export default SysPackage;
+export default SysPackage

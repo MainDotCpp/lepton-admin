@@ -57,4 +57,4 @@ export default {
     'لیست کارها به صورت نامه ای از ایستگاه اطلاع داده می شود',
   'app.settings.open': 'باز کن',
   'app.settings.close': 'بستن',
-};
+}

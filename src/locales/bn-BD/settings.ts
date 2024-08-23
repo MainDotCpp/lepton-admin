@@ -35,7 +35,7 @@ export default {
   'app.settings.security.email-description': 'বাউন্ড ইমেইল',
   'app.settings.security.mfa': 'MFA ডিভাইস',
   'app.settings.security.mfa-description':
-    "আনবাউন্ড এমএফএ ডিভাইস, বাঁধাইয়ের পরে, দু'বার নিশ্চিত করা যায়",
+    'আনবাউন্ড এমএফএ ডিভাইস, বাঁধাইয়ের পরে, দু\'বার নিশ্চিত করা যায়',
   'app.settings.security.modify': 'পরিবর্তন করুন',
   'app.settings.security.set': 'সেট',
   'app.settings.security.bind': 'বাঁধাই',
@@ -56,4 +56,4 @@ export default {
   'app.settings.notification.todo-description': 'করণীয় তালিকাটি স্টেশন থেকে চিঠি আকারে জানানো হবে',
   'app.settings.open': 'খোলা',
   'app.settings.close': 'বন্ধ',
-};
+}

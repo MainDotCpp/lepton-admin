@@ -14,4 +14,4 @@ export default {
   'component.noticeIcon.cleared': 'Limpo',
   'component.noticeIcon.empty': 'Sem notificações',
   'component.noticeIcon.view-more': 'Veja mais',
-};
+}

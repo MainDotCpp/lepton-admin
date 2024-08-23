@@ -1,8 +1,8 @@
-import api from "@/api";
-import convert from "@/utils/convert";
-import { create } from "zustand";
-import { combine } from "zustand/middleware";
-import { immer } from "zustand/middleware/immer";
+import { create } from 'zustand'
+import { combine } from 'zustand/middleware'
+import { immer } from 'zustand/middleware/immer'
+import convert from '@/utils/convert'
+import api from '@/api'
 
 export const useSysPackageStore = create(
   immer(
@@ -10,20 +10,19 @@ export const useSysPackageStore = create(
       {
         packageList: [] as API.SysPackageVO[],
       },
-      (set,get )=> ({
+      (set, get) => ({
         fetchPackageList: async () => {
-          const sysPackageList = await api.sysPackage.list({});
-          set({ packageList: sysPackageList });
-          return sysPackageList;
+          const sysPackageList = await api.sysPackage.list({})
+          set({ packageList: sysPackageList })
+          return sysPackageList
         },
         get packageOptions() {
-            return  convert.convertOptions(get().packageList,{label:"name",value:"id"}) 
+          return convert.convertOptions(get().packageList, { label: 'name', value: 'id' })
         },
         get packageEnums() {
-            return convert.convertEnums(get().packageList,{label:(it) => it.name ,value:"id"})
-        }
-      })
-    )
-  )
-);
-
+          return convert.convertEnums(get().packageList, { label: it => it.name, value: 'id' })
+        },
+      }),
+    ),
+  ),
+)

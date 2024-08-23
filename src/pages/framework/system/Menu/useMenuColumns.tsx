@@ -1,17 +1,17 @@
-import api from "@/api";
-import { ProColumns } from "@ant-design/pro-components";
-import { useAccess } from "@umijs/max";
-import { Button, Popconfirm } from "antd";
-import MenuSaveForm from "./MenuSaveForm";
+import type { ProColumns } from '@ant-design/pro-components'
+import { useAccess } from '@umijs/max'
+import { Button, Popconfirm } from 'antd'
+import MenuSaveForm from './MenuSaveForm'
+import api from '@/api'
 
-export const useMenuColumns = (): ProColumns<API.MenuVO>[] => {
-  const access = useAccess();
+export function useMenuColumns(): ProColumns<API.MenuVO>[] {
+  const access = useAccess()
   return [
-    { dataIndex: "id", title: "ID" , hideInSearch: true, sorter: true, filters: true, hidden: true},
-    { dataIndex: "id", title: "ID" , hideInSearch: true, sorter: true, filters: true},
+    { dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true, hidden: true },
+    { dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true },
     {
-      valueType: "index",
-      title: "操作",
+      valueType: 'index',
+      title: '操作',
       align: 'center',
       width: 200,
       fixed: 'right',
@@ -22,27 +22,27 @@ export const useMenuColumns = (): ProColumns<API.MenuVO>[] => {
               <MenuSaveForm
                 id={record.id}
                 onFinish={action?.reload}
-                trigger={
+                trigger={(
                   <Button size="small" type="link">
                     编辑
                   </Button>
-                }
+                )}
               />
             )}
             {access.SYSTEM__MENU__DELETE && (
               <Popconfirm
                 title="确定删除吗？"
                 onConfirm={() =>
-                  api.menu.deleteById({ id: record.id! }).then(action?.reload)
-                }>
+                  api.menu.deleteById({ id: record.id! }).then(action?.reload)}
+              >
                 <Button size="small" type="link" danger>
                   删除
                 </Button>
               </Popconfirm>
             )}
           </>
-        );
+        )
       },
     },
-  ];
-};
+  ]
+}

@@ -1,12 +1,12 @@
-import { configUmiAlias, createConfig } from '@umijs/max/test';
+import { configUmiAlias, createConfig } from '@umijs/max/test'
 
 export default async () => {
   const config = await configUmiAlias({
     ...createConfig({
       target: 'browser',
     }),
-  });
-  console.log(JSON.stringify(config));
+  })
+  console.log(JSON.stringify(config))
 
   return {
     ...config,
@@ -19,5 +19,5 @@ export default async () => {
       ...config.globals,
       localStorage: null,
     },
-  };
-};
+  }
+}

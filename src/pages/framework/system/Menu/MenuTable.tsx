@@ -1,37 +1,41 @@
-import api from '@/api';
-import { queryParams } from '@/utils/request';
-import { ActionType, ProTable } from '@ant-design/pro-components';
-import { Button } from 'antd';
-import { useRef } from 'react';
-import { useMenuColumns } from './useMenuColumns';
-import MenuSaveForm from './MenuSaveForm';
-import { useAccess } from '@umijs/max';
+import type { ActionType } from '@ant-design/pro-components'
+import { ProTable } from '@ant-design/pro-components'
+import { Button } from 'antd'
+import { useRef } from 'react'
+import { useAccess } from '@umijs/max'
+import { useMenuColumns } from './useMenuColumns'
+import MenuSaveForm from './MenuSaveForm'
+import { queryParams } from '@/utils/request'
+import api from '@/api'
 
+async function pageRequest(params: any, sort: any, filter: any) {
+  return api.menu.page(queryParams(params, sort, filter))
+}
 
-const pageRequest = async (params: any, sort: any, filter: any) =>
-  api.menu.page(queryParams(params, sort, filter));
-
-const MenuTable = () => {
+function MenuTable() {
   const access = useAccess()
-  const actionRef = useRef<ActionType>(null);
-  const columns = useMenuColumns();
+  const actionRef = useRef<ActionType>(null)
+  const columns = useMenuColumns()
   return (
     <ProTable<API.MenuVO>
       rowKey="id"
       actionRef={actionRef}
       request={pageRequest}
       columns={columns}
-      toolbar={ {
+      toolbar={{
         actions: [
-          access.SYSTEM__MENU__CREATE && <MenuSaveForm
-            key="save"
-            onFinish={actionRef.current?.reload}
-            trigger={<Button type="primary">创建菜单</Button>}
-          />,
+          access.SYSTEM__MENU__CREATE && (
+            <MenuSaveForm
+              key="save"
+              onFinish={actionRef.current?.reload}
+              trigger={<Button type="primary">创建菜单</Button>}
+            />
+          ),
         ],
-      } }
-    ></ProTable>
-  );
-};
+      }}
+    >
+    </ProTable>
+  )
+}
 
-export default MenuTable;
+export default MenuTable

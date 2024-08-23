@@ -1,12 +1,12 @@
-import { PageContainer } from '@ant-design/pro-components';
-import MenuTable from './MenuTable';
+import { PageContainer } from '@ant-design/pro-components'
+import MenuTable from './MenuTable'
 
-const Menu = () => {
+function Menu() {
   return (
     <PageContainer>
       <MenuTable />
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu

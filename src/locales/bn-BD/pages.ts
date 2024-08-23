@@ -67,4 +67,4 @@ export default {
   'pages.searchTable.tenThousand': '000',
   'pages.searchTable.batchDeletion': 'একসাখে ডিলিট',
   'pages.searchTable.batchApproval': 'একসাখে অনুমোদন',
-};
+}

@@ -1,32 +1,32 @@
-import api from "@/api";
-import { ProColumns } from "@ant-design/pro-components";
-import { useAccess } from "@umijs/max";
-import { Button, Popconfirm } from "antd";
-import UserSaveForm from "./UserSaveForm";
+import type { ProColumns } from '@ant-design/pro-components'
+import { useAccess } from '@umijs/max'
+import { Button, Popconfirm } from 'antd'
+import UserSaveForm from './UserSaveForm'
+import api from '@/api'
 
-export const useUserColumns = (): ProColumns<API.UserVO>[] => {
-  const access = useAccess();
+export function useUserColumns(): ProColumns<API.UserVO>[] {
+  const access = useAccess()
   return [
     {
-      dataIndex: "id",
-      title: "ID",
+      dataIndex: 'id',
+      title: 'ID',
       hideInSearch: true,
       sorter: true,
       filters: true,
       hidden: true,
     },
     {
-      dataIndex: "avatar",
-      title: "头像",
+      dataIndex: 'avatar',
+      title: '头像',
       hideInSearch: true,
       sorter: true,
       filters: true,
       width: 200,
-      valueType: "avatar",
+      valueType: 'avatar',
     },
     {
-      dataIndex: "name",
-      title: "姓名",
+      dataIndex: 'name',
+      title: '姓名',
       hideInSearch: true,
       sorter: true,
       filters: true,
@@ -34,31 +34,31 @@ export const useUserColumns = (): ProColumns<API.UserVO>[] => {
     },
 
     {
-      dataIndex: "phone",
-      title: "手机号",
+      dataIndex: 'phone',
+      title: '手机号',
       hideInSearch: true,
       sorter: true,
       filters: true,
       width: 200,
     },
     {
-      dataIndex: "roleIds",
-      title: "角色",
+      dataIndex: 'roleIds',
+      title: '角色',
       sorter: true,
       filters: true,
       width: 200,
-      valueType: "select",
+      valueType: 'select',
       request: api.role.list,
       fieldProps: {
-        fieldNames: { label: "name", value: "id" },
+        fieldNames: { label: 'name', value: 'id' },
       },
     },
     {
-      valueType: "index",
-      title: "操作",
-      align: "center",
+      valueType: 'index',
+      title: '操作',
+      align: 'center',
       width: 200,
-      fixed: "right",
+      fixed: 'right',
       render(dom, record, index, action) {
         return (
           <>
@@ -66,11 +66,11 @@ export const useUserColumns = (): ProColumns<API.UserVO>[] => {
               <UserSaveForm
                 id={record.id}
                 onFinish={action?.reload}
-                trigger={
+                trigger={(
                   <Button size="small" type="link">
                     编辑
                   </Button>
-                }
+                )}
               />
             )}
             {access.SYSTEM__USER__DELETE && (
@@ -81,8 +81,8 @@ export const useUserColumns = (): ProColumns<API.UserVO>[] => {
               </Popconfirm>
             )}
           </>
-        );
+        )
       },
     },
-  ];
-};
+  ]
+}

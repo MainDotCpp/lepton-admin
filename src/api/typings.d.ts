@@ -5,22 +5,41 @@ declare namespace API {
     sorter?: string[];
   };
 
-  type CustomerSaveDTO = {
+  type ChannelSaveDTO = {
     id?: number;
     name?: string;
+    icon?: string;
+    textColor?: string;
+    backgroundColor?: string;
+  };
+
+  type ChannelVO = {
+    id?: number;
+    name?: string;
+    icon?: string;
+    textColor?: string;
+    backgroundColor?: string;
+  };
+
+  type CustomerSaveDTO = {
+    id?: number;
+    createdAt?: string;
+    name?: string;
     phone?: string;
-    wx?: string;
+    wechat?: string;
+    channelId?: number;
+    photoType?: string;
+    saleId?: number;
   };
 
   type CustomerVO = {
     id?: number;
     name?: string;
-    createdAt?: string;
-    updatedBy?: number;
     phone?: string;
-    wx?: string;
-    createdById?: number;
-    createdByName?: string;
+    wechat?: string;
+    channelId?: number;
+    photoType?: string;
+    saleId?: number;
   };
 
   type deleteById1Params = {
@@ -43,8 +62,43 @@ declare namespace API {
     id: number;
   };
 
+  type deleteById6Params = {
+    id: number;
+  };
+
+  type deleteById7Params = {
+    id: number;
+  };
+
   type deleteByIdParams = {
     id: number;
+  };
+
+  type Dict = {
+    id?: number;
+    type?: string;
+    name?: string;
+    items?: DictItem[];
+  };
+
+  type DictItem = {
+    id?: number;
+    item?: string;
+    value?: string;
+    sort?: number;
+    enabled?: boolean;
+    dict?: Dict;
+  };
+
+  type DictSaveDTO = {
+    id?: number;
+  };
+
+  type DictVO = {
+    id?: number;
+    type?: string;
+    name?: string;
+    items?: DictItem[];
   };
 
   type export1Params = {
@@ -77,6 +131,24 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type export5Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export6Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export7Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type exportParams = {
     id?: number;
     current?: number;
@@ -101,7 +173,14 @@ declare namespace API {
   };
 
   type getById5Params = {
-    /** 客资ID */
+    id: number;
+  };
+
+  type getById6Params = {
+    id: number;
+  };
+
+  type getById7Params = {
     id: number;
   };
 
@@ -140,7 +219,18 @@ declare namespace API {
   };
 
   type list5Params = {
-    id?: number;
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list6Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list7Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -197,10 +287,33 @@ declare namespace API {
   };
 
   type page5Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
+  };
+
+  type page6Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page7Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type PageDTOChannelVO = {
+    params?: BaseQueryDTO;
+    data?: ChannelVO[];
+    total?: number;
+    offset?: number;
+    pageSize?: number;
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOCustomerVO = {
@@ -208,9 +321,21 @@ declare namespace API {
     data?: CustomerVO[];
     total?: number;
     offset?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
+  };
+
+  type PageDTODictVO = {
+    params?: BaseQueryDTO;
+    data?: DictVO[];
+    total?: number;
+    offset?: number;
     pageSize?: number;
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
     current?: number;
     pages?: number;
   };
@@ -220,9 +345,9 @@ declare namespace API {
     data?: MenuVO[];
     total?: number;
     offset?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     current?: number;
     pages?: number;
   };
@@ -232,9 +357,9 @@ declare namespace API {
     data?: RoleVO[];
     total?: number;
     offset?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     current?: number;
     pages?: number;
   };
@@ -244,9 +369,9 @@ declare namespace API {
     data?: SysPackageVO[];
     total?: number;
     offset?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     current?: number;
     pages?: number;
   };
@@ -256,9 +381,9 @@ declare namespace API {
     data?: TenantVO[];
     total?: number;
     offset?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     current?: number;
     pages?: number;
   };
@@ -268,9 +393,9 @@ declare namespace API {
     data?: UserVO[];
     total?: number;
     offset?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     current?: number;
     pages?: number;
   };
@@ -339,9 +464,9 @@ declare namespace API {
   type TreeLong = {
     name?: { empty?: boolean };
     id?: number;
-    parentId?: number;
-    weight?: Record<string, any>;
     config?: TreeNodeConfig;
+    weight?: Record<string, any>;
+    parentId?: number;
     empty?: boolean;
   };
 

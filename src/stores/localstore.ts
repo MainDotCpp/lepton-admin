@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { combine, devtools, persist } from 'zustand/middleware';
+import { create } from 'zustand'
+import { combine, devtools, persist } from 'zustand/middleware'
 
 export const useLocalStore = create(
   devtools(
@@ -8,16 +8,16 @@ export const useLocalStore = create(
         {
           tenantId: undefined as number | undefined,
         },
-        (set) => ({
+        set => ({
           setTenantId: (tenantId?: number) => {
-            set({ tenantId });
+            set({ tenantId })
           },
         }),
       ),
       { name: 'localStore' },
     ),
   ),
-);
+)
 
-export const useTenantId = () => useLocalStore((state) => state.tenantId);
-export const useSetTenantId = () => useLocalStore((state) => state.setTenantId);
+export const useTenantId = () => useLocalStore(state => state.tenantId)
+export const useSetTenantId = () => useLocalStore(state => state.setTenantId)
