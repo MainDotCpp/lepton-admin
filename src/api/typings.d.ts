@@ -30,6 +30,7 @@ declare namespace API {
     channelId?: number;
     photoType?: string;
     saleId?: number;
+    source?: string;
   };
 
   type CustomerVO = {
@@ -40,6 +41,7 @@ declare namespace API {
     channelId?: number;
     photoType?: string;
     saleId?: number;
+    source?: string;
   };
 
   type deleteById1Params = {
@@ -309,10 +311,10 @@ declare namespace API {
     data?: ChannelVO[];
     total?: number;
     offset?: number;
-    pageSize?: number;
+    current?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    current?: number;
+    pageSize?: number;
     pages?: number;
   };
 
@@ -321,10 +323,10 @@ declare namespace API {
     data?: CustomerVO[];
     total?: number;
     offset?: number;
-    pageSize?: number;
+    current?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    current?: number;
+    pageSize?: number;
     pages?: number;
   };
 
@@ -333,10 +335,10 @@ declare namespace API {
     data?: DictVO[];
     total?: number;
     offset?: number;
-    pageSize?: number;
+    current?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    current?: number;
+    pageSize?: number;
     pages?: number;
   };
 
@@ -345,10 +347,10 @@ declare namespace API {
     data?: MenuVO[];
     total?: number;
     offset?: number;
-    pageSize?: number;
+    current?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    current?: number;
+    pageSize?: number;
     pages?: number;
   };
 
@@ -357,10 +359,10 @@ declare namespace API {
     data?: RoleVO[];
     total?: number;
     offset?: number;
-    pageSize?: number;
+    current?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    current?: number;
+    pageSize?: number;
     pages?: number;
   };
 
@@ -369,10 +371,10 @@ declare namespace API {
     data?: SysPackageVO[];
     total?: number;
     offset?: number;
-    pageSize?: number;
+    current?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    current?: number;
+    pageSize?: number;
     pages?: number;
   };
 
@@ -381,10 +383,10 @@ declare namespace API {
     data?: TenantVO[];
     total?: number;
     offset?: number;
-    pageSize?: number;
+    current?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    current?: number;
+    pageSize?: number;
     pages?: number;
   };
 
@@ -393,10 +395,10 @@ declare namespace API {
     data?: UserVO[];
     total?: number;
     offset?: number;
-    pageSize?: number;
+    current?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    current?: number;
+    pageSize?: number;
     pages?: number;
   };
 
@@ -464,9 +466,9 @@ declare namespace API {
   type TreeLong = {
     name?: { empty?: boolean };
     id?: number;
-    config?: TreeNodeConfig;
-    weight?: Record<string, any>;
     parentId?: number;
+    weight?: Record<string, any>;
+    config?: TreeNodeConfig;
     empty?: boolean;
   };
 

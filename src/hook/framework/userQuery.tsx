@@ -25,12 +25,13 @@ export function useUserOptions(options?: Omit<UseQueryOptions<API.UserVO[], unde
   const { data: users, refetch } = useUserQuery(options)
 
   const convertOptions = (data?: any[]): BaseOptionType[] => {
-    return convert.convertOptions(data, { label: 'name', value: 'id' })
+    return convert.convertOptions(data, { label: it => it.name, value: 'id' })
   }
 
   return {
     options: convertOptions(users),
-    async request(params?: any) {
+    enums: convert.convertEnums(users, { label: it => it.name, value: 'id' }),
+    async request(params: any = {}) {
       return convertOptions((await refetch(params)).data)
     },
   }

@@ -1,6 +1,7 @@
 import type { UseQueryOptions } from 'react-query'
 import { useMutation, useQuery } from 'react-query'
 import type { BaseOptionType } from 'antd/es/select'
+import { Tag } from 'antd'
 import api from '@/api'
 import { LTag } from '@/components/common/LTag'
 import { DEFAULT_STABLE_TIME } from '@/constants/cache'
@@ -32,8 +33,8 @@ export function useChannelOptions(options?: Omit<UseQueryOptions<API.ChannelVO[]
 export function useChannelEnums(options?: Omit<UseQueryOptions<API.ChannelVO[], undefined, API.ChannelVO[], string[]>, 'queryKey'> | undefined) {
   const { data: channels, refetch } = useChannelQuery(options)
 
-  const convertEnums = (data?: any[]): Record<any, any> => {
-    return convert.convertEnums(data, { label: 'name', value: 'id' })
+  const convertEnums = (data: any[] = []): Record<any, any> => {
+    return convert.convertEnums(data, { label: it => <LTag textColor={it.textColor} backgroundColor={it.backgroundColor}>{it.name}</LTag>, value: 'id' })
   }
 
   return {

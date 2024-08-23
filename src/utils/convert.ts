@@ -10,7 +10,7 @@ export default {
     return data?.map(it => ({ label: l(it), value: v(it) })) || []
   },
 
-  convertEnums: <T extends any>(data: T[], { label = (it: T) => it.name, value = 'value' }) => {
+  convertEnums: <T extends any>(data: T[] = [], { label = (it: T) => it.name, value = 'value' }) => {
     return data.reduce((acc, item) => {
       acc[item[value]] = label(item)
       return acc

@@ -12,7 +12,7 @@ interface GlobalState {
 const initialState: Partial<GlobalState> = {}
 
 export const useGlobalStore = create<GlobalState>(
-  devtools(immer(set => ({
+          devtools(immer(set => ({
     ...initialState,
     async setUserInfo(userInfo: API.UserInfoVO) {
       set((state) => {

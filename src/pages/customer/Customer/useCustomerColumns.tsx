@@ -7,17 +7,19 @@ import { useUserOptions } from '@/hook/framework/userQuery'
 import { useChannelEnums, useChannelOptions } from '@/hook/channelQuery'
 
 export function useCustomerColumns(): ProColumns<API.CustomerVO>[] {
-  const { request: requestUserOptions } = useUserOptions({ enabled: false })
-  const { enums: requestChannelOptions } = useChannelEnums({ enabled: false })
+  const { enums: requestUserOptions } = useUserOptions({ enabled: true })
+  const { enums: requestChannelOptions } = useChannelEnums({ enabled: true })
   const access = useAccess()
   return [
     { dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true, hidden: true },
     { dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true },
     { dataIndex: 'name', title: '客户名称', hideInSearch: true, sorter: true, filters: true },
-    { dataIndex: 'phone', title: '手机号码', hideInSearch: true, sorter: true, filters: true },
-    { dataIndex: 'wechat', title: '微信号', hideInSearch: true, sorter: true, filters: true },
+    { dataIndex: 'phone', title: '手机号码', hideInSearch: true, sorter: true, filters: true, copyable: true },
+    { dataIndex: 'wechat', title: '微信号', hideInSearch: true, sorter: true, filters: true, copyable: true },
     { dataIndex: 'channelId', sorter: true, filters: true, title: '渠道', valueEnum: requestChannelOptions },
-    { dataIndex: 'saleId', title: '销售', hideInSearch: true, request: requestUserOptions },
+    { dataIndex: 'saleId', title: '销售', valueEnum: requestUserOptions },
+    { dataIndex: 'createTime', title: '创建时间', hideInSearch: true, sorter: true, filters: true },
+    { dataIndex: 'createdById', title: '创建人', valueEnum: requestUserOptions },
     {
       valueType: 'index',
       title: '操作',

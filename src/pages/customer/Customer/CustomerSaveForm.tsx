@@ -2,6 +2,7 @@ import { ModalForm, ProForm, ProFormGroup, ProFormRadio, ProFormSelect, ProFormT
 import { Grid, message } from 'antd'
 import { useQuery } from '@umijs/max'
 import { useEffect, useState } from 'react'
+import type { CheckboxOptionType } from 'antd/lib'
 import api from '@/api'
 import { Modal } from '@/components'
 import convert from '@/utils/convert'
@@ -31,7 +32,7 @@ function CustomerSaveForm(props: SaveFormProps) {
       requestUserOption(),
     ])
     let initialValue: API.CustomerSaveDTO = {
-      source: customerSource.at(0)?.value,
+      source: customerSource.at(0)?.value as string,
       channelId: channels?.at(0)?.value,
       saleId: users?.at(0)?.value,
     }
@@ -63,7 +64,7 @@ function CustomerSaveForm(props: SaveFormProps) {
         <ProFormRadio.Group
           name="source"
           label="客资来源"
-          options={customerSource}
+          options={customerSource as CheckboxOptionType[]}
         >
         </ProFormRadio.Group>
       </ProForm.Group>
@@ -72,7 +73,7 @@ function CustomerSaveForm(props: SaveFormProps) {
         <ProFormRadio.Group
           name="channelId"
           label="渠道"
-          options={channelOptions}
+          options={channelOptions as CheckboxOptionType[]}
         >
         </ProFormRadio.Group>
       </ProForm.Group>
