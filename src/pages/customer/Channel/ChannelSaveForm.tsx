@@ -1,10 +1,8 @@
-import { ProFormColorPicker, ProFormDependency, ProFormGroup, ProFormItem, ProFormText } from '@ant-design/pro-components'
-import { ColorPicker, Tag, message } from 'antd'
+import { ProFormColorPicker, ProFormGroup, ProFormText } from '@ant-design/pro-components'
+import { message } from 'antd'
 import api from '@/api'
 import { Modal } from '@/components'
-import LColorPicker from '@/components/framework/ColorPicker'
 import convert from '@/utils/convert'
-import { useDictOptions } from '@/stores/system/dictStore'
 
 function ChannelSaveFormItems() {
   return (

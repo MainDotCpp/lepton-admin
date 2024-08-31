@@ -7,7 +7,6 @@ import { useCustomerColumns } from './useCustomerColumns'
 import CustomerSaveForm from './CustomerSaveForm'
 import { queryParams } from '@/utils/request'
 import api from '@/api'
-import { useUserOptions } from '@/hook/framework/userQuery'
 
 async function pageRequest(params: any, sort: any, filter: any) {
   return api.customer.page(queryParams(params, sort, filter))

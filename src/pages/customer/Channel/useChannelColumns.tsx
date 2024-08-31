@@ -1,6 +1,6 @@
 import type { ProColumns } from '@ant-design/pro-components'
 import { useAccess } from '@umijs/max'
-import { Button, Popconfirm, Tag } from 'antd'
+import { Button, Popconfirm } from 'antd'
 import ChannelSaveForm from './ChannelSaveForm'
 import api from '@/api'
 import { LTag } from '@/components/common/LTag'

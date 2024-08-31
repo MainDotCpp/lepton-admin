@@ -84,7 +84,7 @@
     "@umijs/max": "^4.1.1",
     "@unocss/eslint-plugin": "^0.61.9",
     "cross-env": "^7.0.3",
-    "eslint": "^8.56.0",
+    "eslint": "^9.9.1",
     "express": "^4.18.2",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.4",

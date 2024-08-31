@@ -20,7 +20,7 @@ export const useDictStore = create(
           return convert.convertEnums(get().dicts.find(it => it.type === type)?.items || [], { label: it => it.item, value: 'value' })
         },
         dictOptions(type: string) {
-          return convert.convertOptions(get().dicts.find(it => it.type === type)?.items || [], { label: 'item', value: 'value' })
+          return convert.convertOptions(get().dicts.find(it => it.type === type)?.items || [], { label: 'item', value: 'value' }) as ({ label: string, value: string } & API.DictItem)[]
         },
       }),
     ),

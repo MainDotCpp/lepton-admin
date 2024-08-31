@@ -1,7 +1,6 @@
 import { ColorPicker } from 'antd'
 import { useState } from 'react'
 import type { Color } from 'antd/es/color-picker'
-import { useGlobalStore } from '@/stores/global'
 import { useDictOptions } from '@/stores/system/dictStore'
 
 /**

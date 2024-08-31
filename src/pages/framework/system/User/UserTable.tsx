@@ -27,7 +27,7 @@ function UserTable() {
           access.SYSTEM__USER__CREATE && (
             <UserSaveForm
               key="save"
-              onFinish={actionRef.current?.reload}
+              onFinish={() => actionRef.current?.reload()}
               trigger={<Button type="primary">创建用户</Button>}
             />
           ),

@@ -29,7 +29,7 @@ function RoleTable() {
           access.SYSTEM__ROLE__CREATE && (
             <RoleSaveForm
               key="save"
-              onFinish={actionRef.current?.reload.bind(null)}
+              onFinish={() => actionRef.current?.reload()}
               trigger={<Button type="primary">创建角色</Button>}
             />
           ),

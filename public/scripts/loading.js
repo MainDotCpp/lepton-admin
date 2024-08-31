@@ -2,8 +2,8 @@
  * loading 占位
  * 解决首次加载时白屏的问题
  */
- (function () {
-  const _root = document.querySelector('#root');
+(function () {
+  const _root = document.querySelector('#root')
   if (_root && _root.innerHTML === '') {
     _root.innerHTML = `
       <style>
@@ -197,6 +197,6 @@
           初次加载资源可能需要较多时间 请耐心等待
         </div>
       </div>
-    `;
+    `
   }
-})();
+})()

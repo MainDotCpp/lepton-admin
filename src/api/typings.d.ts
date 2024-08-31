@@ -31,6 +31,8 @@ declare namespace API {
     photoType?: string;
     saleId?: number;
     source?: string;
+    createdById?: number;
+    followStatus?: string;
   };
 
   type CustomerVO = {
@@ -42,6 +44,9 @@ declare namespace API {
     photoType?: string;
     saleId?: number;
     source?: string;
+    createdAt?: string;
+    createdById?: number;
+    followStatus?: string;
   };
 
   type deleteById1Params = {
@@ -72,6 +77,10 @@ declare namespace API {
     id: number;
   };
 
+  type deleteById8Params = {
+    id: number;
+  };
+
   type deleteByIdParams = {
     id: number;
   };
@@ -89,6 +98,7 @@ declare namespace API {
     value?: string;
     sort?: number;
     enabled?: boolean;
+    default?: boolean;
     dict?: Dict;
   };
 
@@ -104,17 +114,18 @@ declare namespace API {
   };
 
   type export1Params = {
-    id?: number[];
-    logo?: string[];
-    name?: string[];
-    type?: ('ACTIVE' | 'INACTIVE')[];
-    code?: string[];
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type export2Params = {
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -127,13 +138,13 @@ declare namespace API {
   };
 
   type export4Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type export5Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -146,13 +157,21 @@ declare namespace API {
   };
 
   type export7Params = {
+    /** 渠道ID */
+    channelId?: string;
+    keywords?: string;
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export8Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type exportParams = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -186,22 +205,27 @@ declare namespace API {
     id: number;
   };
 
+  type getById8Params = {
+    id: number;
+  };
+
   type getByIdParams = {
     id: number;
   };
 
   type list1Params = {
-    id?: number[];
-    logo?: string[];
-    name?: string[];
-    type?: ('ACTIVE' | 'INACTIVE')[];
-    code?: string[];
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list2Params = {
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -214,13 +238,13 @@ declare namespace API {
   };
 
   type list4Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list5Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -233,13 +257,21 @@ declare namespace API {
   };
 
   type list7Params = {
+    /** 渠道ID */
+    channelId?: string;
+    keywords?: string;
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list8Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type listParams = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -259,17 +291,18 @@ declare namespace API {
   };
 
   type page1Params = {
-    id?: number[];
-    logo?: string[];
-    name?: string[];
-    type?: ('ACTIVE' | 'INACTIVE')[];
-    code?: string[];
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page2Params = {
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -282,13 +315,13 @@ declare namespace API {
   };
 
   type page4Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page5Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -301,6 +334,15 @@ declare namespace API {
   };
 
   type page7Params = {
+    /** 渠道ID */
+    channelId?: string;
+    keywords?: string;
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page8Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -312,9 +354,9 @@ declare namespace API {
     total?: number;
     offset?: number;
     current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     pages?: number;
   };
 
@@ -324,9 +366,9 @@ declare namespace API {
     total?: number;
     offset?: number;
     current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     pages?: number;
   };
 
@@ -336,9 +378,9 @@ declare namespace API {
     total?: number;
     offset?: number;
     current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     pages?: number;
   };
 
@@ -348,9 +390,9 @@ declare namespace API {
     total?: number;
     offset?: number;
     current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     pages?: number;
   };
 
@@ -360,9 +402,9 @@ declare namespace API {
     total?: number;
     offset?: number;
     current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     pages?: number;
   };
 
@@ -372,9 +414,9 @@ declare namespace API {
     total?: number;
     offset?: number;
     current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     pages?: number;
   };
 
@@ -384,9 +426,9 @@ declare namespace API {
     total?: number;
     offset?: number;
     current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
-    pageSize?: number;
     pages?: number;
   };
 
@@ -396,14 +438,25 @@ declare namespace API {
     total?: number;
     offset?: number;
     current?: number;
+    pageSize?: number;
     hasNextPage?: boolean;
     hasPreviousPage?: boolean;
+    pages?: number;
+  };
+
+  type PageDTOXhsNoteVO = {
+    params?: BaseQueryDTO;
+    data?: XhsNoteVO[];
+    total?: number;
+    offset?: number;
+    current?: number;
     pageSize?: number;
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
     pages?: number;
   };
 
   type pageParams = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -495,6 +548,12 @@ declare namespace API {
     credentialsNonExpired?: boolean;
   };
 
+  type UserOptionsVO = {
+    id?: number;
+    name?: string;
+    avatar?: string;
+  };
+
   type UserSaveDTO = {
     id?: number;
     name?: string;
@@ -510,5 +569,33 @@ declare namespace API {
     phone?: string;
     avatar?: string;
     roleIds?: number[];
+  };
+
+  type XhsNoteSaveDTO = {
+    id?: number;
+  };
+
+  type XhsNoteVO = {
+    id?: number;
+    userId: string;
+    nickname?: string;
+    avatar?: string;
+    ipLocation?: string;
+    addTs: number;
+    lastModifyTs: number;
+    noteId: string;
+    type?: string;
+    title?: string;
+    desc?: string;
+    videoUrl?: string;
+    time: number;
+    lastUpdateTime: number;
+    likedCount?: string;
+    collectedCount?: string;
+    commentCount?: string;
+    shareCount?: string;
+    imageList?: string;
+    tagList?: string;
+    noteUrl?: string;
   };
 }

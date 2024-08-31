@@ -1,15 +1,15 @@
 // @ts-ignore
 // https://umijs.org/config/
-import { defineConfig } from '@umijs/max';
-import defaultSettings from './defaultSettings';
-import proxy from './proxy';
-import routes from './routes';
+import { defineConfig } from '@umijs/max'
+import defaultSettings from './defaultSettings'
+import proxy from './proxy'
+import routes from './routes'
 
-const { REACT_APP_ENV = 'dev' } = process.env;
+const { REACT_APP_ENV = 'dev' } = process.env
 
 export default defineConfig({
   plugins: [
-    require.resolve('@umijs/plugins/dist/unocss')
+    require.resolve('@umijs/plugins/dist/unocss'),
   ],
 
   /**
@@ -64,7 +64,7 @@ export default defineConfig({
    * @description 一个不错的热更新组件，更新时可以保留 state
    */
   fastRefresh: true,
-  //============== 以下都是max的插件配置 ===============
+  // ============== 以下都是max的插件配置 ===============
   /**
    * @name 数据流插件
    * @@doc https://umijs.org/docs/max/data-flow
@@ -130,7 +130,7 @@ export default defineConfig({
     // 解决首次加载时白屏的问题
     { src: '/scripts/loading.js', async: true },
   ],
-  //================ pro 插件配置 =================
+  // ================ pro 插件配置 =================
   presets: ['umi-presets-pro'],
   /**
    * @name openAPI 插件的配置
@@ -140,15 +140,15 @@ export default defineConfig({
   openAPI: [
     {
       schemaPath: 'http://localhost:5555/v3/api-docs', // 可以是.json文件，也可以是远程json地址
-      requestLibPath: "import { request } from '@umijs/max'",
+      requestLibPath: 'import { request } from \'@umijs/max\'',
       hook: {
         customFunctionName: (data) => {
-          let path = data.path;
-          path = path.replaceAll(/\/{.*?}/g, '');
-          return path.split('/').at(-1);
+          let path = data.path
+          path = path.replaceAll(/\/\{.*?\}/g, '')
+          return path.split('/').at(-1)
         },
         customClassName: (data) => {
-          return data.path.split('/').at(-1);
+          return data.path.split('/').at(-1)
         },
       },
     },
@@ -161,7 +161,7 @@ export default defineConfig({
 
   unocss: {
     // 检测 className 的文件范围，若项目不包含 src 目录，可使用 `pages/**/*.tsx`
-    watch: ['src/**/*.tsx']
+    watch: ['src/**/*.tsx'],
   },
   reactQuery: {},
-});
+})

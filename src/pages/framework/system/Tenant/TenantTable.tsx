@@ -24,7 +24,7 @@ function TenantTable() {
         actions: [
           <TenantSaveForm
             key="save"
-            onFinish={actionRef.current?.reload}
+            onFinish={() => actionRef.current?.reload()}
             trigger={<Button type="primary">创建租户</Button>}
           />,
         ],

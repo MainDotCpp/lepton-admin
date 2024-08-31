@@ -1,10 +1,7 @@
 import {
-  AlipayOutlined,
   LockOutlined,
   MobileOutlined,
-  TaobaoOutlined,
   UserOutlined,
-  WeiboOutlined,
 } from '@ant-design/icons'
 import {
   LoginFormPage,
@@ -14,7 +11,7 @@ import {
   ProFormText,
 } from '@ant-design/pro-components'
 import { useNavigate } from '@umijs/max'
-import { Button, Divider, Space, Tabs, message, theme } from 'antd'
+import { Tabs, message, theme } from 'antd'
 import type { CSSProperties } from 'react'
 import { useState } from 'react'
 import { useSetTenantId } from '@/stores/localstore'
@@ -46,9 +43,9 @@ function Page() {
     >
       <LoginFormPage
         backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
-        logo="https://github.githubassets.com/favicons/favicon.png"
+        // logo="https://github.githubassets.com/favicons/favicon.png"
         backgroundVideoUrl="https://gw.alipayobjects.com/v/huamei_gcee1x/afts/video/jXRBRK_VAwoAAAAAAAAAAAAAK4eUAQBr"
-        title="Github"
+        title="Fision Admin"
         containerStyle={{
           backgroundColor: 'rgba(0, 0, 0,0.65)',
           backdropFilter: 'blur(4px)',
@@ -67,97 +64,6 @@ function Page() {
 
           navigate('/')
         }}
-        subTitle="全球最大的代码托管平台"
-        activityConfig={{
-          style: {
-            boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.2)',
-            color: token.colorTextHeading,
-            borderRadius: 8,
-            backgroundColor: 'rgba(255,255,255,0.25)',
-            backdropFilter: 'blur(4px)',
-          },
-          title: '活动标题，可配置图片',
-          subTitle: '活动介绍说明文字',
-          action: (
-            <Button
-              size="large"
-              style={{
-                borderRadius: 20,
-                background: token.colorBgElevated,
-                color: token.colorPrimary,
-                width: 120,
-              }}
-            >
-              去看看
-            </Button>
-          ),
-        }}
-        actions={(
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column',
-            }}
-          >
-            <Divider plain>
-              <span
-                style={{
-                  color: token.colorTextPlaceholder,
-                  fontWeight: 'normal',
-                  fontSize: 14,
-                }}
-              >
-                其他登录方式
-              </span>
-            </Divider>
-            <Space align="center" size={24}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexDirection: 'column',
-                  height: 40,
-                  width: 40,
-                  border: `1px solid ${token.colorPrimaryBorder}`,
-                  borderRadius: '50%',
-                }}
-              >
-                <AlipayOutlined style={{ ...iconStyles, color: '#1677FF' }} />
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexDirection: 'column',
-                  height: 40,
-                  width: 40,
-                  border: `1px solid ${token.colorPrimaryBorder}`,
-                  borderRadius: '50%',
-                }}
-              >
-                <TaobaoOutlined style={{ ...iconStyles, color: '#FF6A10' }} />
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexDirection: 'column',
-                  height: 40,
-                  width: 40,
-                  border: `1px solid ${token.colorPrimaryBorder}`,
-                  borderRadius: '50%',
-                }}
-              >
-                <WeiboOutlined style={{ ...iconStyles, color: '#1890ff' }} />
-              </div>
-            </Space>
-          </div>
-        )}
       >
         <Tabs
           centered
@@ -165,7 +71,7 @@ function Page() {
           onChange={activeKey => setLoginType(activeKey as LoginType)}
         >
           <Tabs.TabPane key="account" tab="账号密码登录" />
-          <Tabs.TabPane key="phone" tab="手机号登录" />
+          {/* <Tabs.TabPane key="phone" tab="手机号登录" /> */}
         </Tabs>
         {loginType === 'account' && (
           <>

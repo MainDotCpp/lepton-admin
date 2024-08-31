@@ -11,7 +11,9 @@ import * as role from './role';
 import * as sysPackage from './sysPackage';
 import * as tenant from './tenant';
 import * as user from './user';
+import * as xhsNote from './xhsNote';
 export default {
+  xhsNote,
   user,
   tenant,
   sysPackage,

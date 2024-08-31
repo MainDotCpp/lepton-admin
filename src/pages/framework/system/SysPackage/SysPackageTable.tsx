@@ -27,7 +27,7 @@ function SysPackageTable() {
           access.SYSTEM__SYS_PACKAGE__CREATE && (
             <SysPackageSaveForm
               key="save"
-              onFinish={actionRef.current?.reload.bind(null)}
+              onFinish={() => actionRef.current?.reload()}
               trigger={<Button type="primary">创建套餐</Button>}
             />
           ),

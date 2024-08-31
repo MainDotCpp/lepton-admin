@@ -7,7 +7,7 @@ import convert from '@/utils/convert'
 
 export function useGetUserById(options?: Omit<UseQueryOptions<API.UserVO[], undefined, API.UserVO[], string[]>, 'queryKey'> | undefined) {
   return useQuery(['system', 'user'], {
-    queryFn: async () => api.user.list({}),
+    queryFn: async () => api.user.userOptions({}),
     staleTime: DEFAULT_STABLE_TIME,
     ...options,
   })
@@ -15,7 +15,7 @@ export function useGetUserById(options?: Omit<UseQueryOptions<API.UserVO[], unde
 
 export function useUserQuery(options?: Omit<UseQueryOptions<API.UserVO[], undefined, API.UserVO[], string[]>, 'queryKey'> | undefined) {
   return useQuery(['system', 'user', 'list'], {
-    queryFn: async () => api.user.list({}),
+    queryFn: async () => api.user.userOptions({}),
     staleTime: DEFAULT_STABLE_TIME,
     ...options,
   })

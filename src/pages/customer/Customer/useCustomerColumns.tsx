@@ -4,22 +4,27 @@ import { Button, Popconfirm } from 'antd'
 import CustomerSaveForm from './CustomerSaveForm'
 import api from '@/api'
 import { useUserOptions } from '@/hook/framework/userQuery'
-import { useChannelEnums, useChannelOptions } from '@/hook/channelQuery'
+import { useChannelEnums } from '@/hook/channelQuery'
+import { useDictMap, useDictOptions } from '@/stores/system/dictStore'
 
 export function useCustomerColumns(): ProColumns<API.CustomerVO>[] {
-  const { enums: requestUserOptions } = useUserOptions({ enabled: true })
-  const { enums: requestChannelOptions } = useChannelEnums({ enabled: true })
+  const customerSourceEnums = useDictMap('customer:source')
+  const followStatusEnums = useDictMap('customer:follow_up_status')
+  const { enums: userEnums } = useUserOptions({ enabled: true })
+  const { enums: channelEnums } = useChannelEnums({ enabled: true })
   const access = useAccess()
   return [
     { dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true, hidden: true },
-    { dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true },
+    { dataIndex: 'keywords', title: '关键词', hideInTable: true, tooltip: '支持客户名称、手机号码、微信号模糊搜索' },
+    { dataIndex: 'source', title: '客资来源', hideInSearch: true, sorter: true, filters: true, valueEnum: customerSourceEnums },
     { dataIndex: 'name', title: '客户名称', hideInSearch: true, sorter: true, filters: true },
     { dataIndex: 'phone', title: '手机号码', hideInSearch: true, sorter: true, filters: true, copyable: true },
     { dataIndex: 'wechat', title: '微信号', hideInSearch: true, sorter: true, filters: true, copyable: true },
-    { dataIndex: 'channelId', sorter: true, filters: true, title: '渠道', valueEnum: requestChannelOptions },
-    { dataIndex: 'saleId', title: '销售', valueEnum: requestUserOptions },
-    { dataIndex: 'createTime', title: '创建时间', hideInSearch: true, sorter: true, filters: true },
-    { dataIndex: 'createdById', title: '创建人', valueEnum: requestUserOptions },
+    { dataIndex: 'channelId', filters: true, title: '渠道', valueEnum: channelEnums },
+    { dataIndex: 'followStatus', title: '跟进状态', hideInSearch: true, sorter: true, filters: true, valueEnum: followStatusEnums },
+    { dataIndex: 'saleId', title: '销售', filters: true, valueEnum: userEnums },
+    { dataIndex: 'createdAt', title: '创建时间', hideInSearch: true, sorter: true, filters: true },
+    { dataIndex: 'createdById', title: '创建人', filters: true, valueEnum: userEnums },
     {
       valueType: 'index',
       title: '操作',

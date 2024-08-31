@@ -1,7 +1,6 @@
 import type { UseQueryOptions } from 'react-query'
-import { useMutation, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 import type { BaseOptionType } from 'antd/es/select'
-import { Tag } from 'antd'
 import api from '@/api'
 import { LTag } from '@/components/common/LTag'
 import { DEFAULT_STABLE_TIME } from '@/constants/cache'

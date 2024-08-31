@@ -1,4 +1,3 @@
-import { ProFormItem } from '@ant-design/pro-components'
 import type { ColorPickerProps } from 'antd'
 import { ColorPicker } from 'antd'
 

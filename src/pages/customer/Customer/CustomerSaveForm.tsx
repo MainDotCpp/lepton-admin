@@ -1,15 +1,12 @@
-import { ModalForm, ProForm, ProFormGroup, ProFormRadio, ProFormSelect, ProFormText } from '@ant-design/pro-components'
-import { Grid, message } from 'antd'
-import { useQuery } from '@umijs/max'
-import { useEffect, useState } from 'react'
+import { ModalForm, ProForm, ProFormDateTimePicker, ProFormRadio, ProFormSelect, ProFormText, ProFormTimePicker } from '@ant-design/pro-components'
+import { message } from 'antd'
 import type { CheckboxOptionType } from 'antd/lib'
+import dayjs from 'dayjs'
 import api from '@/api'
-import { Modal } from '@/components'
-import convert from '@/utils/convert'
-import { LTag, LTagRadio } from '@/components/common/LTag'
 import { useDictOptions } from '@/stores/system/dictStore'
 import { useChannelOptions } from '@/hook/channelQuery'
-import { useUserOptions, useUserQuery } from '@/hook/framework/userQuery'
+import { useUserOptions } from '@/hook/framework/userQuery'
+import { useUserInfo } from '@/stores/global'
 
 interface SaveFormProps {
   id?: number
@@ -19,8 +16,10 @@ interface SaveFormProps {
 
 function CustomerSaveForm(props: SaveFormProps) {
   const customerSource = useDictOptions('customer:source')
+  const followUpStatus = useDictOptions('customer:follow_up_status')
   const { options: channelOptions, request: requestChannelOptions } = useChannelOptions({ enabled: false })
   const { options: userOptions, request: requestUserOption } = useUserOptions({ enabled: false })
+  const userInfo = useUserInfo()
 
   /**
    * 获取表单初始数据
@@ -32,9 +31,12 @@ function CustomerSaveForm(props: SaveFormProps) {
       requestUserOption(),
     ])
     let initialValue: API.CustomerSaveDTO = {
-      source: customerSource.at(0)?.value as string,
+      source: customerSource.find(it => it.default)?.value,
+      followStatus: followUpStatus.find(it => it.default)?.value,
       channelId: channels?.at(0)?.value,
       saleId: users?.at(0)?.value,
+      createdById: userInfo?.id,
+      createdAt: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     }
     if (props.id)
       initialValue = await api.customer.getById({ id: props.id })
@@ -83,9 +85,12 @@ function CustomerSaveForm(props: SaveFormProps) {
         <ProFormText colProps={{ span: 6 }} name="name" label="姓名" rules={[{ required: true }]} />
         <ProFormText colProps={{ span: 6 }} name="phone" label="手机号码" />
         <ProFormText colProps={{ span: 6 }} name="wechat" label="微信号" />
+        <ProFormSelect colProps={{ span: 6 }} name="followStatus" label="跟进状态" options={followUpStatus} />
       </ProForm.Group>
       <ProForm.Group>
         <ProFormSelect colProps={{ span: 6 }} name="saleId" label="销售" options={userOptions} />
+        <ProFormSelect colProps={{ span: 6 }} name="createdById" label="创建人" options={userOptions} />
+        <ProFormDateTimePicker colProps={{ span: 6 }} name="createdAt" label="创建时间" />
       </ProForm.Group>
     </ModalForm>
   )
