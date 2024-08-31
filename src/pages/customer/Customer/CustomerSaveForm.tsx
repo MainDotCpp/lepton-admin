@@ -74,7 +74,7 @@ function CustomerSaveForm(props: SaveFormProps) {
 
       <ProForm.Group>
         <ProFormText name="id" label="ID" hidden />
-        <ProFormSelect colProps={{ span: 6 }} name="photoType" label="照片类型" options={photoType} rules={[{ required: true }]} />
+        <ProFormSelect colProps={{ span: 6 }} name="photoType" label="拍摄类型" options={photoType} rules={[{ required: true }]} />
         <ProFormText colProps={{ span: 6 }} name="name" label="姓名" rules={[{ required: true }]} />
         <ProFormText colProps={{ span: 6 }} name="phone" label="手机号码" rules={[{ type: 'regexp', pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码' }]} />
         <ProFormText colProps={{ span: 6 }} name="wechat" label="微信号" />

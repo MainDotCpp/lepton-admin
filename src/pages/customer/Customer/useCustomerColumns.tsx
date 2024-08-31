@@ -19,7 +19,7 @@ export function useCustomerColumns(): ProColumns<API.CustomerVO>[] {
     { width: 150, ellipsis: true, dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true, hidden: true },
     { width: 150, ellipsis: true, dataIndex: 'keywords', title: '关键词', hideInTable: true, tooltip: '支持客户名称、手机号码、微信号模糊搜索' },
     { width: 150, ellipsis: true, dataIndex: 'source', title: '客资来源', hideInSearch: true, sorter: true, filters: true, valueEnum: customerSourceEnums },
-    { width: 150, ellipsis: true, dataIndex: 'photoType', title: '照片类型', hideInSearch: true, sorter: true, filters: true, valueEnum: photoType },
+    { width: 150, ellipsis: true, dataIndex: 'photoType', title: '拍摄类型', hideInSearch: true, sorter: true, filters: true, valueEnum: photoType },
     { width: 150, ellipsis: true, dataIndex: 'name', title: '客户名称', hideInSearch: true, sorter: true, filters: true },
     { width: 150, ellipsis: true, dataIndex: 'phone', title: '手机号码', hideInSearch: true, sorter: true, filters: true, copyable: true },
     { width: 150, ellipsis: true, dataIndex: 'wechat', title: '微信号', hideInSearch: true, sorter: true, filters: true, copyable: true },

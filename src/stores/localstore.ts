@@ -10,6 +10,7 @@ export const useLocalStore = create(
         },
         set => ({
           setTenantId: (tenantId?: number) => {
+            console.log('setTenantId', tenantId)
             set({ tenantId })
           },
         }),

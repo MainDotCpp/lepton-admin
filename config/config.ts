@@ -80,7 +80,7 @@ export default defineConfig({
    * @name layout 插件
    * @doc https://umijs.org/docs/max/layout-menu
    */
-  title: 'Lepton 管理后台',
+  title: 'Fision 管理后台',
   layout: {
     ...defaultSettings,
   },

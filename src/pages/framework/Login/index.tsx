@@ -57,7 +57,7 @@ function Page() {
             return false
           }
           message.success('登录成功！')
-          if (userInfo.tenants!.length > 1) {
+          if (userInfo.tenants!.length >= 1) {
             setTenant(userInfo.tenants![0].id)
           }
           setUserInfo(await api.user.userInfo())

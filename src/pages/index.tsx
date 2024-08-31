@@ -9,12 +9,9 @@ import { useDictOptions } from '@/stores/system/dictStore'
  * @constructor
  */
 function Index() {
-  const [color, setColor] = useState<Color>()
-  const customerSource = useDictOptions('customer:source')
   return (
     <>
-      <h1>{JSON.stringify(customerSource)}</h1>
-      <ColorPicker value={color} onChange={setColor} format="hex" />
+      <h1>首页</h1>
     </>
   )
 }
