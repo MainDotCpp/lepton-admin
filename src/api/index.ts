@@ -6,7 +6,9 @@ import * as auth from './auth';
 import * as channel from './channel';
 import * as customer from './customer';
 import * as dict from './dict';
+import * as goods from './goods';
 import * as menu from './menu';
+import * as order from './order';
 import * as role from './role';
 import * as sysPackage from './sysPackage';
 import * as tenant from './tenant';
@@ -18,7 +20,9 @@ export default {
   tenant,
   sysPackage,
   role,
+  order,
   menu,
+  goods,
   dict,
   customer,
   channel,

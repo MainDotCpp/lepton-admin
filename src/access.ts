@@ -6,6 +6,8 @@ import { useGlobalStore } from './stores/global'
 export default function access() {
   const permissions = useGlobalStore.getState()?.userInfo?.permissions || []
   return {
+    
+    
 
     // -------- 用户 --------
     SYSTEM__USER__MENU: permissions.includes('system:user:menu'),
@@ -49,19 +51,12 @@ export default function access() {
     CUSTOMER__CHANNEL__DELETE: permissions.includes('customer:channel:delete'),
     CUSTOMER__CHANNEL__EXPORT: permissions.includes('customer:channel:export'),
 
-    // -------- 客资渠道 --------
-    CUSTOMER__CUSTOMER_CHANNEL__MENU: permissions.includes('customer:customerChannel:menu'),
-    CUSTOMER__CUSTOMER_CHANNEL__CREATE: permissions.includes('customer:customerChannel:create'),
-    CUSTOMER__CUSTOMER_CHANNEL__UPDATE: permissions.includes('customer:customerChannel:update'),
-    CUSTOMER__CUSTOMER_CHANNEL__DELETE: permissions.includes('customer:customerChannel:delete'),
-    CUSTOMER__CUSTOMER_CHANNEL__EXPORT: permissions.includes('customer:customerChannel:export'),
-
-    // -------- 客资渠道 --------
-    CUSTOMER__CHANNEL__MENU: permissions.includes('customer:channel:menu'),
-    CUSTOMER__CHANNEL__CREATE: permissions.includes('customer:channel:create'),
-    CUSTOMER__CHANNEL__UPDATE: permissions.includes('customer:channel:update'),
-    CUSTOMER__CHANNEL__DELETE: permissions.includes('customer:channel:delete'),
-    CUSTOMER__CHANNEL__EXPORT: permissions.includes('customer:channel:export'),
+    // // -------- 客资渠道 --------
+    // CUSTOMER__CUSTOMER_CHANNEL__MENU: permissions.includes('customer:customerChannel:menu'),
+    // CUSTOMER__CUSTOMER_CHANNEL__CREATE: permissions.includes('customer:customerChannel:create'),
+    // CUSTOMER__CUSTOMER_CHANNEL__UPDATE: permissions.includes('customer:customerChannel:update'),
+    // CUSTOMER__CUSTOMER_CHANNEL__DELETE: permissions.includes('customer:customerChannel:delete'),
+    // CUSTOMER__CUSTOMER_CHANNEL__EXPORT: permissions.includes('customer:customerChannel:export'),
 
     // -------- 客资 --------
     CUSTOMER__CUSTOMER__MENU: permissions.includes('customer:customer:menu'),
@@ -69,5 +64,19 @@ export default function access() {
     CUSTOMER__CUSTOMER__UPDATE: permissions.includes('customer:customer:update'),
     CUSTOMER__CUSTOMER__DELETE: permissions.includes('customer:customer:delete'),
     CUSTOMER__CUSTOMER__EXPORT: permissions.includes('customer:customer:export'),
-  }
+  
+    // -------- 订单 --------
+    ORDER__ORDER__MENU: permissions.includes("order:order:menu"),
+    ORDER__ORDER__CREATE: permissions.includes("order:order:create"),
+    ORDER__ORDER__UPDATE: permissions.includes("order:order:update"),
+    ORDER__ORDER__DELETE: permissions.includes("order:order:delete"),
+    ORDER__ORDER__EXPORT: permissions.includes("order:order:export"),
+
+    // -------- 商品 --------
+    ORDER__GOODS__MENU: permissions.includes("order:goods:menu"),
+    ORDER__GOODS__CREATE: permissions.includes("order:goods:create"),
+    ORDER__GOODS__UPDATE: permissions.includes("order:goods:update"),
+    ORDER__GOODS__DELETE: permissions.includes("order:goods:delete"),
+    ORDER__GOODS__EXPORT: permissions.includes("order:goods:export"),
+}
 }

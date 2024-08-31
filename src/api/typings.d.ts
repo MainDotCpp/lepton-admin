@@ -33,6 +33,7 @@ declare namespace API {
     source?: string;
     createdById?: number;
     followStatus?: string;
+    remark?: string;
   };
 
   type CustomerVO = {
@@ -47,6 +48,11 @@ declare namespace API {
     createdAt?: string;
     createdById?: number;
     followStatus?: string;
+    remark?: string;
+  };
+
+  type deleteById10Params = {
+    id: number;
   };
 
   type deleteById1Params = {
@@ -78,6 +84,10 @@ declare namespace API {
   };
 
   type deleteById8Params = {
+    id: number;
+  };
+
+  type deleteById9Params = {
     id: number;
   };
 
@@ -113,6 +123,12 @@ declare namespace API {
     items?: DictItem[];
   };
 
+  type export10Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type export1Params = {
     id?: number;
     current?: number;
@@ -144,22 +160,19 @@ declare namespace API {
   };
 
   type export5Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type export6Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type export7Params = {
-    /** 渠道ID */
-    channelId?: string;
-    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -171,10 +184,23 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type export9Params = {
+    /** 渠道ID */
+    channelId?: string;
+    keywords?: string;
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type exportParams = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
+  };
+
+  type getById10Params = {
+    id: number;
   };
 
   type getById1Params = {
@@ -209,8 +235,32 @@ declare namespace API {
     id: number;
   };
 
+  type getById9Params = {
+    id: number;
+  };
+
   type getByIdParams = {
     id: number;
+  };
+
+  type GoodsSaveDTO = {
+    id?: number;
+    name?: string;
+    price?: number;
+    status?: number;
+  };
+
+  type GoodsVO = {
+    id?: number;
+    name?: string;
+    price?: number;
+    status?: number;
+  };
+
+  type list10Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
   };
 
   type list1Params = {
@@ -244,28 +294,34 @@ declare namespace API {
   };
 
   type list5Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list6Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list7Params = {
-    /** 渠道ID */
-    channelId?: string;
-    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list8Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list9Params = {
+    /** 渠道ID */
+    channelId?: string;
+    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -288,6 +344,29 @@ declare namespace API {
 
   type MenuVO = {
     id?: number;
+  };
+
+  type OrderSaveDTO = {
+    id?: number;
+    customerId?: number;
+    goodsId?: number;
+    payAmount?: number;
+    sellerId?: number;
+  };
+
+  type OrderVO = {
+    id?: number;
+    customer?: CustomerVO;
+    goods?: GoodsVO;
+    sellerId?: number;
+    createdAt?: string;
+    payAmount?: number;
+  };
+
+  type page10Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
   };
 
   type page1Params = {
@@ -321,28 +400,34 @@ declare namespace API {
   };
 
   type page5Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page6Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page7Params = {
-    /** 渠道ID */
-    channelId?: string;
-    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page8Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page9Params = {
+    /** 渠道ID */
+    channelId?: string;
+    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -384,9 +469,33 @@ declare namespace API {
     pages?: number;
   };
 
+  type PageDTOGoodsVO = {
+    params?: BaseQueryDTO;
+    data?: GoodsVO[];
+    total?: number;
+    offset?: number;
+    current?: number;
+    pageSize?: number;
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    pages?: number;
+  };
+
   type PageDTOMenuVO = {
     params?: BaseQueryDTO;
     data?: MenuVO[];
+    total?: number;
+    offset?: number;
+    current?: number;
+    pageSize?: number;
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    pages?: number;
+  };
+
+  type PageDTOOrderVO = {
+    params?: BaseQueryDTO;
+    data?: OrderVO[];
     total?: number;
     offset?: number;
     current?: number;

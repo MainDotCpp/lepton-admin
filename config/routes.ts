@@ -14,6 +14,7 @@
 import base from './routes/base'
 import customer from './routes/customer'
 import framework from './routes/system'
+import order from './routes/order'
 
 // 读取某个目录下的所有文件
-export default [...base, ...customer, ...framework]
+export default [...base, ...customer, ...order, ...framework]
