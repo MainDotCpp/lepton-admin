@@ -5,6 +5,7 @@ export default [
     icon: 'TeamOutlined',
     routes: [
       // 路由定义 START
+
       {
         name: '客资管理',
         icon: 'TeamOutlined',
@@ -20,7 +21,15 @@ export default [
         component: 'customer/Channel',
       },
 
-      // 路由定义 END
+      
+{
+  name: "品牌管理",
+  icon: "AppstoreOutlined",
+  path: "/customer/brand",
+  access: "CUSTOMER__BRAND__MENU",
+  component: "customer/Brand",
+},
+// 路由定义 END
     ],
   },
 ]

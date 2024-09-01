@@ -5,6 +5,14 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type BrandSaveDTO = {
+    id?: number;
+  };
+
+  type BrandVO = {
+    id?: number;
+  };
+
   type ChannelSaveDTO = {
     id?: number;
     name?: string;
@@ -50,6 +58,7 @@ declare namespace API {
     createdById?: number;
     followStatus?: string;
     remark?: string;
+    brandId?: number;
   };
 
   type CustomerVO = {
@@ -65,6 +74,7 @@ declare namespace API {
     createdById?: number;
     followStatus?: string;
     remark?: string;
+    brandId?: number;
   };
 
   type deleteById10Params = {
@@ -72,6 +82,10 @@ declare namespace API {
   };
 
   type deleteById11Params = {
+    id: number;
+  };
+
+  type deleteById12Params = {
     id: number;
   };
 
@@ -155,6 +169,12 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type export12Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type export1Params = {
     id?: number;
     current?: number;
@@ -213,6 +233,11 @@ declare namespace API {
   type export9Params = {
     /** 渠道ID */
     channelId?: string;
+    source?: string[];
+    photoType?: string[];
+    followStatus?: string[];
+    saleId?: number[];
+    createdById?: number[];
     keywords?: string;
     current?: number;
     pageSize?: number;
@@ -230,6 +255,10 @@ declare namespace API {
   };
 
   type getById11Params = {
+    id: number;
+  };
+
+  type getById12Params = {
     id: number;
   };
 
@@ -303,6 +332,12 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type list12Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type list1Params = {
     id?: number;
     current?: number;
@@ -361,6 +396,11 @@ declare namespace API {
   type list9Params = {
     /** 渠道ID */
     channelId?: string;
+    source?: string[];
+    photoType?: string[];
+    followStatus?: string[];
+    saleId?: number[];
+    createdById?: number[];
     keywords?: string;
     current?: number;
     pageSize?: number;
@@ -410,6 +450,12 @@ declare namespace API {
   };
 
   type page11Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page12Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -473,10 +519,27 @@ declare namespace API {
   type page9Params = {
     /** 渠道ID */
     channelId?: string;
+    source?: string[];
+    photoType?: string[];
+    followStatus?: string[];
+    saleId?: number[];
+    createdById?: number[];
     keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
+  };
+
+  type PageDTOBrandVO = {
+    params?: BaseQueryDTO;
+    data?: BrandVO[];
+    total?: number;
+    offset?: number;
+    current?: number;
+    pageSize?: number;
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    pages?: number;
   };
 
   type PageDTOChannelVO = {
@@ -692,8 +755,8 @@ declare namespace API {
     name?: { empty?: boolean };
     id?: number;
     parentId?: number;
-    weight?: Record<string, any>;
     config?: TreeNodeConfig;
+    weight?: Record<string, any>;
     empty?: boolean;
   };
 

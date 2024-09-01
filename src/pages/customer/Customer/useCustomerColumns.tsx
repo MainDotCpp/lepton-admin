@@ -7,6 +7,7 @@ import { useUserOptions } from '@/hook/framework/userQuery'
 import { useChannelEnums } from '@/hook/channelQuery'
 import { useDictMap, useDictOptions } from '@/stores/system/dictStore'
 import OrderSaveForm from '@/pages/order/Order/OrderSaveForm'
+import { useBrandEnums } from '@/hook/brandQuery'
 
 export function useCustomerColumns(): ProColumns<API.CustomerVO>[] {
   const customerSourceEnums = useDictMap('customer:source')
@@ -14,10 +15,12 @@ export function useCustomerColumns(): ProColumns<API.CustomerVO>[] {
   const photoType = useDictMap('customer:photo_type')
   const { enums: userEnums } = useUserOptions({ enabled: true })
   const { enums: channelEnums } = useChannelEnums({ enabled: true })
+  const { enums: brandEnums } = useBrandEnums({ enabled: true })
   const access = useAccess()
   return [
     { width: 150, ellipsis: true, dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true, hidden: true },
     { width: 150, ellipsis: true, dataIndex: 'keywords', title: '关键词', hideInTable: true, tooltip: '支持客户名称、手机号码、微信号模糊搜索' },
+    { width: 150, ellipsis: true, dataIndex: 'brandId', title: '品牌', filters: true, valueEnum: brandEnums },
     { width: 150, ellipsis: true, dataIndex: 'source', title: '客资来源', hideInSearch: true, sorter: true, filters: true, valueEnum: customerSourceEnums },
     { width: 150, ellipsis: true, dataIndex: 'photoType', title: '拍摄类型', hideInSearch: true, sorter: true, filters: true, valueEnum: photoType },
     { width: 150, ellipsis: true, dataIndex: 'name', title: '客户名称', hideInSearch: true, sorter: true, filters: true },

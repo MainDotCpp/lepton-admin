@@ -3,6 +3,7 @@
 // API 更新时间：
 // API 唯一标识：
 import * as auth from './auth';
+import * as brand from './brand';
 import * as channel from './channel';
 import * as config from './config';
 import * as customer from './customer';
@@ -28,5 +29,6 @@ export default {
   customer,
   config,
   channel,
+  brand,
   auth,
 };

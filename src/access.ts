@@ -8,6 +8,7 @@ export default function access() {
   return {
     
     
+    
 
     // -------- 用户 --------
     SYSTEM__USER__MENU: permissions.includes('system:user:menu'),
@@ -78,5 +79,12 @@ export default function access() {
     ORDER__GOODS__UPDATE: permissions.includes("order:goods:update"),
     ORDER__GOODS__DELETE: permissions.includes("order:goods:delete"),
     ORDER__GOODS__EXPORT: permissions.includes("order:goods:export"),
+
+    // -------- 品牌 --------
+    CUSTOMER__BRAND__MENU: permissions.includes("customer:brand:menu"),
+    CUSTOMER__BRAND__CREATE: permissions.includes("customer:brand:create"),
+    CUSTOMER__BRAND__UPDATE: permissions.includes("customer:brand:update"),
+    CUSTOMER__BRAND__DELETE: permissions.includes("customer:brand:delete"),
+    CUSTOMER__BRAND__EXPORT: permissions.includes("customer:brand:export"),
 }
 }

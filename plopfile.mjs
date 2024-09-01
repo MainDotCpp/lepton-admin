@@ -45,24 +45,23 @@ export default function Plopfile(plop) {
           type: 'addMany',
           base: '_templates/curd',
           destination: './',
-          // force: true,
           templateFiles: '_templates/curd',
           data: {
             basePackage: 'com.leuan.lepton',
           },
         },
-        // {
-        //   type: 'modify',
-        //   pattern: /return \{(.*?)\}/gs,
-        //   templateFile: '_templates/access.ts.hbs',
-        //   path: 'src/access.ts',
-        // },
-        // {
-        //   type: 'modify',
-        //   pattern: /\/\/ 路由定义 START(.*?)\/\/ 路由定义 END/gs,
-        //   templateFile: '_templates/routes.ts.hbs',
-        //   path: 'config/routes/{{module.name}}.ts',
-        // },
+        {
+          type: 'modify',
+          pattern: /return \{(.*?)\}/gs,
+          templateFile: '_templates/access.ts.hbs',
+          path: 'src/access.ts',
+        },
+        {
+          type: 'modify',
+          pattern: /\/\/ 路由定义 START(.*?)\/\/ 路由定义 END/gs,
+          templateFile: '_templates/routes.ts.hbs',
+          path: 'config/routes/{{module.name}}.ts',
+        },
       ]
     },
   })

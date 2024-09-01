@@ -7,6 +7,7 @@ import { useDictOptions } from '@/stores/system/dictStore'
 import { useChannelOptions } from '@/hook/channelQuery'
 import { useUserOptions } from '@/hook/framework/userQuery'
 import { useUserInfo } from '@/stores/global'
+import { useBrandOptions } from '@/hook/brandQuery'
 
 interface SaveFormProps {
   id?: number
@@ -20,6 +21,7 @@ function CustomerSaveForm(props: SaveFormProps) {
   const photoType = useDictOptions('customer:photo_type')
   const { options: channelOptions, request: requestChannelOptions } = useChannelOptions({ enabled: false })
   const { options: userOptions, request: requestUserOption } = useUserOptions({ enabled: false })
+  const { options: brandOptions } = useBrandOptions({ enabled: false })
   const userInfo = useUserInfo()
 
   /**
@@ -38,6 +40,7 @@ function CustomerSaveForm(props: SaveFormProps) {
       saleId: users?.at(0)?.value,
       createdById: userInfo?.id,
       photoType: photoType.find(it => it.default)?.value,
+      brandId: brandOptions?.at(0)?.value,
       createdAt: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     }
     if (props.id)
@@ -69,6 +72,7 @@ function CustomerSaveForm(props: SaveFormProps) {
       </ProForm.Group>
 
       <ProForm.Group>
+        <ProFormSelect colProps={{ span: 6 }} rules={[{ required: true }]} name="brandId" label="品牌" options={brandOptions as CheckboxOptionType[]} />
         <ProFormSelect colProps={{ span: 6 }} rules={[{ required: true }]} name="channelId" label="渠道" options={channelOptions as CheckboxOptionType[]} />
       </ProForm.Group>
 
