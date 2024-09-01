@@ -69,7 +69,7 @@ function CustomerSaveForm(props: SaveFormProps) {
       </ProForm.Group>
 
       <ProForm.Group>
-        <ProFormRadio.Group rules={[{ required: true }]} name="channelId" label="渠道" options={channelOptions as CheckboxOptionType[]} />
+        <ProFormSelect colProps={{ span: 6 }} rules={[{ required: true }]} name="channelId" label="渠道" options={channelOptions as CheckboxOptionType[]} />
       </ProForm.Group>
 
       <ProForm.Group>

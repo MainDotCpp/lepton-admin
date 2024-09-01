@@ -21,6 +21,22 @@ declare namespace API {
     backgroundColor?: string;
   };
 
+  type Config = {
+    id?: number;
+    type?: 'GLOBAL' | 'TENANT';
+    globalConfig?: GlobalConfig;
+    tenantConfig?: TenantConfig;
+    tenantId?: number;
+  };
+
+  type ConfigSaveDTO = {
+    id?: number;
+  };
+
+  type ConfigVO = {
+    id?: number;
+  };
+
   type CustomerSaveDTO = {
     id?: number;
     createdAt?: string;
@@ -52,6 +68,10 @@ declare namespace API {
   };
 
   type deleteById10Params = {
+    id: number;
+  };
+
+  type deleteById11Params = {
     id: number;
   };
 
@@ -124,6 +144,12 @@ declare namespace API {
   };
 
   type export10Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export11Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -203,6 +229,10 @@ declare namespace API {
     id: number;
   };
 
+  type getById11Params = {
+    id: number;
+  };
+
   type getById1Params = {
     id: number;
   };
@@ -243,6 +273,10 @@ declare namespace API {
     id: number;
   };
 
+  type GlobalConfig = {
+    notifyTemplate?: string;
+  };
+
   type GoodsSaveDTO = {
     id?: number;
     name?: string;
@@ -258,6 +292,12 @@ declare namespace API {
   };
 
   type list10Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list11Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -369,6 +409,12 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type page11Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type page1Params = {
     id?: number;
     current?: number;
@@ -436,6 +482,18 @@ declare namespace API {
   type PageDTOChannelVO = {
     params?: BaseQueryDTO;
     data?: ChannelVO[];
+    total?: number;
+    offset?: number;
+    current?: number;
+    pageSize?: number;
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    pages?: number;
+  };
+
+  type PageDTOConfigVO = {
+    params?: BaseQueryDTO;
+    data?: ConfigVO[];
     total?: number;
     offset?: number;
     current?: number;
@@ -598,6 +656,11 @@ declare namespace API {
     id?: number;
     name?: string;
     menuIds?: number[];
+  };
+
+  type TenantConfig = {
+    customerNotifyUrl?: string;
+    orderNotifyUrl?: string;
   };
 
   type TenantDto = {

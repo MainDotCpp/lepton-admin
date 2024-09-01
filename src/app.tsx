@@ -39,7 +39,7 @@ export const layout: RunTimeLayoutConfig = ({
   return {
     actionsRender: () => [],
     avatarProps: {
-      src: 'https://api.multiavatar.com/tom.png',
+      src: 'https://api.dicebear.com/9.x/shapes/svg?seed=Smokey',
       title: <AvatarName />,
       render: (_, avatarChildren) => {
         return <AvatarDropdown>{avatarChildren}</AvatarDropdown>

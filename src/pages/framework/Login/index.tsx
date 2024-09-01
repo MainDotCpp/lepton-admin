@@ -42,12 +42,12 @@ function Page() {
       }}
     >
       <LoginFormPage
-        backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
+        // backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
         // logo="https://github.githubassets.com/favicons/favicon.png"
-        backgroundVideoUrl="https://gw.alipayobjects.com/v/huamei_gcee1x/afts/video/jXRBRK_VAwoAAAAAAAAAAAAAK4eUAQBr"
+        backgroundVideoUrl="https://videos.pexels.com/video-files/2911222/2911222-uhd_2560_1440_25fps.mp4"
         title="Fision Admin"
         containerStyle={{
-          backgroundColor: 'rgba(0, 0, 0,0.65)',
+          backgroundColor: 'rgba(0, 0, 0,0.85)',
           backdropFilter: 'blur(4px)',
         }}
         onFinish={async (values) => {

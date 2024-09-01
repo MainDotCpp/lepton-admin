@@ -4,6 +4,7 @@
 // API 唯一标识：
 import * as auth from './auth';
 import * as channel from './channel';
+import * as config from './config';
 import * as customer from './customer';
 import * as dict from './dict';
 import * as goods from './goods';
@@ -25,6 +26,7 @@ export default {
   goods,
   dict,
   customer,
+  config,
   channel,
   auth,
 };
