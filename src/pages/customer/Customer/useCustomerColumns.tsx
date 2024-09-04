@@ -1,6 +1,7 @@
 import type { ProColumns } from '@ant-design/pro-components'
 import { useAccess } from '@umijs/max'
 import { Button, Popconfirm } from 'antd'
+import dayjs from 'dayjs'
 import CustomerSaveForm from './CustomerSaveForm'
 import api from '@/api'
 import { useUserOptions } from '@/hook/framework/userQuery'
@@ -29,7 +30,16 @@ export function useCustomerColumns(): ProColumns<API.CustomerVO>[] {
     { width: 150, ellipsis: true, dataIndex: 'channelId', filters: true, title: '渠道', valueEnum: channelEnums },
     { width: 150, ellipsis: true, dataIndex: 'followStatus', title: '跟进状态', hideInSearch: true, sorter: true, filters: true, valueEnum: followStatusEnums },
     { width: 150, ellipsis: true, dataIndex: 'saleId', title: '销售', filters: true, valueEnum: userEnums },
-    { width: 150, ellipsis: true, dataIndex: 'createdAt', title: '创建时间', hideInSearch: true, sorter: true, filters: true },
+    { width: 150, ellipsis: true, dataIndex: 'createdAt', title: '创建时间', sorter: true, defaultSortOrder: 'descend', valueType: 'dateRange', render: (_, record) => record.createdAt, initialValue: [
+      dayjs().startOf('month').format('YYYY-MM-DD'),
+      dayjs().endOf('month').format('YYYY-MM-DD'),
+    ], search: {
+      transform: (value) => {
+        return {
+          createdAt: [`${value[0]} 00:00:00`, `${value[1]} 23:59:59`],
+        }
+      },
+    } },
     { width: 150, ellipsis: true, dataIndex: 'createdById', title: '创建人', filters: true, valueEnum: userEnums },
     { width: 150, ellipsis: true, dataIndex: 'remark', title: '备注', hideInSearch: true },
     {
