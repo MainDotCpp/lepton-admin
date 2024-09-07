@@ -45,6 +45,9 @@ const {{pascalCase name}}SaveForm = (props: SaveFormProps) => {
       title={props.id ? "编辑{{comment}}" : "创建{{comment}}"}
       request={getInitialValues}
       trigger={props.trigger}
+      modalProps={ {
+        destroyOnClose: true,
+      } }
       onFinish={handleFinish}>
       <{{pascalCase name}}SaveFormItems />
     </Modal>

@@ -61,6 +61,9 @@ function CustomerSaveForm(props: SaveFormProps) {
   }
   return (
     <ModalForm
+      modalProps={{
+        destroyOnClose: true,
+      }}
       title={props.id ? '编辑客资' : '创建客资'}
       request={getInitialValues}
       trigger={props.trigger}
@@ -72,22 +75,22 @@ function CustomerSaveForm(props: SaveFormProps) {
       </ProForm.Group>
 
       <ProForm.Group>
-        <ProFormSelect colProps={{ span: 6 }} rules={[{ required: true }]} name="brandId" label="品牌" options={brandOptions as CheckboxOptionType[]} />
-        <ProFormSelect colProps={{ span: 6 }} rules={[{ required: true }]} name="channelId" label="渠道" options={channelOptions as CheckboxOptionType[]} />
+        <ProFormSelect colProps={{ span: 6, xs: 24 }} rules={[{ required: true }]} name="brandId" label="品牌" options={brandOptions as CheckboxOptionType[]} />
+        <ProFormSelect colProps={{ span: 6, xs: 24 }} rules={[{ required: true }]} name="channelId" label="渠道" options={channelOptions as CheckboxOptionType[]} />
       </ProForm.Group>
 
       <ProForm.Group>
         <ProFormText name="id" label="ID" hidden />
-        <ProFormSelect colProps={{ span: 6 }} name="photoType" label="拍摄类型" options={photoType} rules={[{ required: true }]} />
-        <ProFormText colProps={{ span: 6 }} name="name" label="姓名" rules={[{ required: true }]} />
-        <ProFormText colProps={{ span: 6 }} name="phone" label="手机号码" rules={[{ type: 'regexp', pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码' }]} />
-        <ProFormText colProps={{ span: 6 }} name="wechat" label="微信号" />
-        <ProFormSelect colProps={{ span: 6 }} name="followStatus" label="跟进状态" options={followUpStatus} rules={[{ required: true }]} />
+        <ProFormSelect colProps={{ span: 6, xs: 24 }} name="photoType" label="拍摄类型" options={photoType} rules={[{ required: true }]} />
+        <ProFormText colProps={{ span: 6, xs: 24 }} name="name" label="姓名" rules={[{ required: true }]} />
+        <ProFormText colProps={{ span: 6, xs: 24 }} name="phone" label="手机号码" rules={[{ type: 'regexp', pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码' }]} />
+        <ProFormText colProps={{ span: 6, xs: 24 }} name="wechat" label="微信号" />
+        <ProFormSelect colProps={{ span: 6, xs: 24 }} name="followStatus" label="跟进状态" options={followUpStatus} rules={[{ required: true }]} />
       </ProForm.Group>
       <ProForm.Group>
-        <ProFormSelect colProps={{ span: 6 }} name="saleId" label="销售" options={userOptions} rules={[{ required: true }]} />
-        <ProFormSelect colProps={{ span: 6 }} name="createdById" label="创建人" options={userOptions} rules={[{ required: true }]} />
-        <ProFormDateTimePicker colProps={{ span: 6 }} name="createdAt" label="创建时间" />
+        <ProFormSelect colProps={{ span: 6, xs: 24 }} name="saleId" label="销售" options={userOptions} rules={[{ required: true }]} />
+        <ProFormSelect colProps={{ span: 6, xs: 24 }} name="createdById" label="创建人" options={userOptions} rules={[{ required: true }]} />
+        <ProFormDateTimePicker colProps={{ span: 6, xs: 24 }} name="createdAt" label="创建时间" />
       </ProForm.Group>
       <ProForm.Group>
         <ProFormTextArea name="remark" label="备注" />
