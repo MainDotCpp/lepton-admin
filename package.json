@@ -44,7 +44,7 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.8.1",
-    "@ant-design/pro-components": "^2.6.48",
+    "@ant-design/pro-components": "^2.7.16",
     "@umijs/route-utils": "^2.2.2",
     "@unocss/cli": "^0.61.9",
     "ahooks": "^3.8.0",

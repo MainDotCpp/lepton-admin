@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除角色 GET /role/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById4Params,
+  params: API.deleteById5Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/role/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出角色 GET /role/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export4Params,
+  params: API.export5Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/role/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取角色 GET /role/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById4Params,
+  params: API.getById5Params,
   options?: { [key: string]: any },
 ) {
   return request<API.RoleVO>(`/api/role/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询角色列表 GET /role/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list4Params,
+  params: API.list5Params,
   options?: { [key: string]: any },
 ) {
   return request<API.RoleVO[]>(`/api/role/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询角色列表 GET /role/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page4Params,
+  params: API.page5Params,
   options?: { [key: string]: any },
 ) {
   return request<API.RoleVO[]>(`/api/role/page`, {

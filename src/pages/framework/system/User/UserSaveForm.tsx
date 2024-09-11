@@ -1,10 +1,14 @@
-import { ProFormSelect, ProFormText } from '@ant-design/pro-components'
+import { ProFormRadio, ProFormSelect, ProFormText } from '@ant-design/pro-components'
 import { message } from 'antd'
 import api from '@/api'
 import { Modal } from '@/components'
 import convert from '@/utils/convert'
+import { useDict, useDictMap, useDictOptions } from '@/stores/system/dictStore'
+import { useDeptEnums, useDeptOptions } from '@/hook/deptQuery'
 
 function UserSaveFormItems() {
+  const dataPermissionEnum = useDictMap('system:data_permission')
+  const { options: deptOptions } = useDeptOptions({ enabled: true })
   return (
     <>
       <ProFormText name="id" label="ID" hidden />
@@ -18,6 +22,16 @@ function UserSaveFormItems() {
           convert.fetchOptions(api.role.list, { label: 'name', value: 'id' })}
         mode="multiple"
       />
+      <ProFormSelect
+        name="deptId"
+        label="部门"
+        options={deptOptions}
+      />
+      <ProFormRadio.Group
+        name="dataPermission"
+        label="数据权限"
+        valueEnum={dataPermissionEnum}
+      />
     </>
   )
 }
@@ -29,12 +43,15 @@ interface SaveFormProps {
 }
 
 function UserSaveForm(props: SaveFormProps) {
+  const dataPermissionOptions = useDictOptions('system:data_permission')
   /**
    * 获取表单初始数据
    * @returns 表单初始数据
    */
   const getInitialValues = async () => {
-    let initialValue: API.UserSaveDTO = {}
+    let initialValue: API.UserSaveDTO = {
+      dataPermission: dataPermissionOptions.find(it => it.default)?.value,
+    }
     if (props.id)
       initialValue = await api.user.getById({ id: props.id })
 

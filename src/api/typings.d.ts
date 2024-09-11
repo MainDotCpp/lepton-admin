@@ -7,10 +7,12 @@ declare namespace API {
 
   type BrandSaveDTO = {
     id?: number;
+    name?: string;
   };
 
   type BrandVO = {
     id?: number;
+    name?: string;
   };
 
   type ChannelSaveDTO = {
@@ -89,6 +91,14 @@ declare namespace API {
     id: number;
   };
 
+  type deleteById13Params = {
+    id: number;
+  };
+
+  type deleteById14Params = {
+    id: number;
+  };
+
   type deleteById1Params = {
     id: number;
   };
@@ -129,6 +139,22 @@ declare namespace API {
     id: number;
   };
 
+  type DeptSaveDTO = {
+    id?: number;
+    name?: string;
+    code?: string;
+    parentId?: number;
+    sort?: number;
+  };
+
+  type DeptVO = {
+    id?: number;
+    name?: string;
+    code?: string;
+    parentId?: number;
+    sort?: number;
+  };
+
   type Dict = {
     id?: number;
     type?: string;
@@ -164,6 +190,16 @@ declare namespace API {
   };
 
   type export11Params = {
+    /** 渠道ID */
+    channelId?: string;
+    source?: string[];
+    photoType?: string[];
+    followStatus?: string[];
+    saleId?: number[];
+    createdById?: number[];
+    brandId?: number[];
+    createdAt?: string[];
+    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -175,25 +211,37 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type export13Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export14Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type export1Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type export2Params = {
-    id?: number[];
-    logo?: string[];
-    name?: string[];
-    type?: ('ACTIVE' | 'INACTIVE')[];
-    code?: string[];
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type export3Params = {
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -212,13 +260,13 @@ declare namespace API {
   };
 
   type export6Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type export7Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -231,14 +279,6 @@ declare namespace API {
   };
 
   type export9Params = {
-    /** 渠道ID */
-    channelId?: string;
-    source?: string[];
-    photoType?: string[];
-    followStatus?: string[];
-    saleId?: number[];
-    createdById?: number[];
-    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -259,6 +299,14 @@ declare namespace API {
   };
 
   type getById12Params = {
+    id: number;
+  };
+
+  type getById13Params = {
+    id: number;
+  };
+
+  type getById14Params = {
     id: number;
   };
 
@@ -327,6 +375,16 @@ declare namespace API {
   };
 
   type list11Params = {
+    /** 渠道ID */
+    channelId?: string;
+    source?: string[];
+    photoType?: string[];
+    followStatus?: string[];
+    saleId?: number[];
+    createdById?: number[];
+    brandId?: number[];
+    createdAt?: string[];
+    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -338,25 +396,37 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type list13Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list14Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type list1Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list2Params = {
-    id?: number[];
-    logo?: string[];
-    name?: string[];
-    type?: ('ACTIVE' | 'INACTIVE')[];
-    code?: string[];
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list3Params = {
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -375,13 +445,13 @@ declare namespace API {
   };
 
   type list6Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list7Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -394,14 +464,6 @@ declare namespace API {
   };
 
   type list9Params = {
-    /** 渠道ID */
-    channelId?: string;
-    source?: string[];
-    photoType?: string[];
-    followStatus?: string[];
-    saleId?: number[];
-    createdById?: number[];
-    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -450,6 +512,16 @@ declare namespace API {
   };
 
   type page11Params = {
+    /** 渠道ID */
+    channelId?: string;
+    source?: string[];
+    photoType?: string[];
+    followStatus?: string[];
+    saleId?: number[];
+    createdById?: number[];
+    brandId?: number[];
+    createdAt?: string[];
+    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -461,25 +533,37 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type page13Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page14Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
   type page1Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page2Params = {
-    id?: number[];
-    logo?: string[];
-    name?: string[];
-    type?: ('ACTIVE' | 'INACTIVE')[];
-    code?: string[];
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page3Params = {
+    id?: number[];
+    logo?: string[];
+    name?: string[];
+    type?: ('ACTIVE' | 'INACTIVE')[];
+    code?: string[];
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -498,13 +582,13 @@ declare namespace API {
   };
 
   type page6Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page7Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -517,14 +601,6 @@ declare namespace API {
   };
 
   type page9Params = {
-    /** 渠道ID */
-    channelId?: string;
-    source?: string[];
-    photoType?: string[];
-    followStatus?: string[];
-    saleId?: number[];
-    createdById?: number[];
-    keywords?: string;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -534,156 +610,180 @@ declare namespace API {
     params?: BaseQueryDTO;
     data?: BrandVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOChannelVO = {
     params?: BaseQueryDTO;
     data?: ChannelVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOConfigVO = {
     params?: BaseQueryDTO;
     data?: ConfigVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOCustomerVO = {
     params?: BaseQueryDTO;
     data?: CustomerVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
+  };
+
+  type PageDTODeptVO = {
+    params?: BaseQueryDTO;
+    data?: DeptVO[];
+    total?: number;
+    current?: number;
+    offset?: number;
+    pageSize?: number;
+    hasNextPage?: boolean;
+    pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTODictVO = {
     params?: BaseQueryDTO;
     data?: DictVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOGoodsVO = {
     params?: BaseQueryDTO;
     data?: GoodsVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOMenuVO = {
     params?: BaseQueryDTO;
     data?: MenuVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOOrderVO = {
     params?: BaseQueryDTO;
     data?: OrderVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTORoleVO = {
     params?: BaseQueryDTO;
     data?: RoleVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOSysPackageVO = {
     params?: BaseQueryDTO;
     data?: SysPackageVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOTenantVO = {
     params?: BaseQueryDTO;
     data?: TenantVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOUserVO = {
     params?: BaseQueryDTO;
     data?: UserVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
+  };
+
+  type PageDTOXhsNoteCommentVO = {
+    params?: BaseQueryDTO;
+    data?: XhsNoteCommentVO[];
+    total?: number;
+    current?: number;
+    offset?: number;
+    pageSize?: number;
+    hasNextPage?: boolean;
+    pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type PageDTOXhsNoteVO = {
     params?: BaseQueryDTO;
     data?: XhsNoteVO[];
     total?: number;
-    offset?: number;
     current?: number;
+    offset?: number;
     pageSize?: number;
     hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pages?: number;
+    hasPreviousPage?: boolean;
   };
 
   type pageParams = {
@@ -722,7 +822,9 @@ declare namespace API {
   };
 
   type TenantConfig = {
+    customerTarget?: number;
     customerNotifyUrl?: string;
+    orderTarget?: number;
     orderNotifyUrl?: string;
   };
 
@@ -777,10 +879,11 @@ declare namespace API {
     permissions?: string[];
     tenants?: TenantDto[];
     avatar?: string;
+    deptCode?: string;
     enabled?: boolean;
     accountNonExpired?: boolean;
-    accountNonLocked?: boolean;
     credentialsNonExpired?: boolean;
+    accountNonLocked?: boolean;
   };
 
   type UserOptionsVO = {
@@ -796,6 +899,7 @@ declare namespace API {
     password?: string;
     avatar?: string;
     roleIds?: number[];
+    dataPermissionType?: 'ALL' | 'SELF' | 'DEPT_AND_CHILD';
   };
 
   type UserVO = {
@@ -804,6 +908,14 @@ declare namespace API {
     phone?: string;
     avatar?: string;
     roleIds?: number[];
+  };
+
+  type XhsNoteCommentSaveDTO = {
+    id?: number;
+  };
+
+  type XhsNoteCommentVO = {
+    id?: number;
   };
 
   type XhsNoteSaveDTO = {

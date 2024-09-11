@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除系统套餐 GET /sysPackage/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById3Params,
+  params: API.deleteById4Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/sysPackage/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出系统套餐 GET /sysPackage/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export3Params,
+  params: API.export4Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/sysPackage/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取系统套餐 GET /sysPackage/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById3Params,
+  params: API.getById4Params,
   options?: { [key: string]: any },
 ) {
   return request<API.SysPackageVO>(`/api/sysPackage/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询系统套餐列表 GET /sysPackage/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list3Params,
+  params: API.list4Params,
   options?: { [key: string]: any },
 ) {
   return request<API.SysPackageVO[]>(`/api/sysPackage/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询系统套餐列表 GET /sysPackage/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page3Params,
+  params: API.page4Params,
   options?: { [key: string]: any },
 ) {
   return request<API.SysPackageVO[]>(`/api/sysPackage/page`, {

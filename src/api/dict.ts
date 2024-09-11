@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除字典 GET /dict/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById8Params,
+  params: API.deleteById9Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/dict/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出字典 GET /dict/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export8Params,
+  params: API.export9Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/dict/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取字典 GET /dict/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById8Params,
+  params: API.getById9Params,
   options?: { [key: string]: any },
 ) {
   return request<API.DictVO>(`/api/dict/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询字典列表 GET /dict/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list8Params,
+  params: API.list9Params,
   options?: { [key: string]: any },
 ) {
   return request<API.DictVO[]>(`/api/dict/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询字典列表 GET /dict/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page8Params,
+  params: API.page9Params,
   options?: { [key: string]: any },
 ) {
   return request<API.DictVO[]>(`/api/dict/page`, {

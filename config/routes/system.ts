@@ -5,6 +5,7 @@ export default [
     icon: 'SettingOutlined',
     routes: [
       // 路由定义 START
+
       {
         name: '角色管理',
         icon: 'UsergroupAddOutlined',
@@ -41,7 +42,15 @@ export default [
         access: 'SYSTEM__SYS_PACKAGE__MENU',
         component: 'framework/system/SysPackage',
       },
-      // 路由定义 END
+      
+{
+  name: "部门管理",
+  icon: "AppstoreOutlined",
+  path: "/system/dept",
+  access: "SYSTEM__DEPT__MENU",
+  component: "framework/system/Dept",
+},
+// 路由定义 END
     ],
   },
 ]

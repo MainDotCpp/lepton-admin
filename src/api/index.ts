@@ -7,6 +7,7 @@ import * as brand from './brand';
 import * as channel from './channel';
 import * as config from './config';
 import * as customer from './customer';
+import * as dept from './dept';
 import * as dict from './dict';
 import * as goods from './goods';
 import * as menu from './menu';
@@ -16,7 +17,9 @@ import * as sysPackage from './sysPackage';
 import * as tenant from './tenant';
 import * as user from './user';
 import * as xhsNote from './xhsNote';
+import * as xhsNoteComment from './xhsNoteComment';
 export default {
+  xhsNoteComment,
   xhsNote,
   user,
   tenant,
@@ -26,6 +29,7 @@ export default {
   menu,
   goods,
   dict,
+  dept,
   customer,
   config,
   channel,

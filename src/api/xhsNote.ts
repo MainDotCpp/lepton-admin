@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除小红书笔记 GET /xhsNote/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteByIdParams,
+  params: API.deleteById1Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/xhsNote/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出小红书笔记 GET /xhsNote/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.exportParams,
+  params: API.export1Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/xhsNote/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取小红书笔记 GET /xhsNote/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getByIdParams,
+  params: API.getById1Params,
   options?: { [key: string]: any },
 ) {
   return request<API.XhsNoteVO>(`/api/xhsNote/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询小红书笔记列表 GET /xhsNote/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.listParams,
+  params: API.list1Params,
   options?: { [key: string]: any },
 ) {
   return request<API.XhsNoteVO[]>(`/api/xhsNote/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询小红书笔记列表 GET /xhsNote/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.pageParams,
+  params: API.page1Params,
   options?: { [key: string]: any },
 ) {
   return request<API.XhsNoteVO[]>(`/api/xhsNote/page`, {

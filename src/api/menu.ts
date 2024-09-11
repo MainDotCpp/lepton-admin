@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除菜单 GET /menu/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById6Params,
+  params: API.deleteById7Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/menu/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出菜单 GET /menu/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export6Params,
+  params: API.export7Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/menu/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取菜单 GET /menu/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById6Params,
+  params: API.getById7Params,
   options?: { [key: string]: any },
 ) {
   return request<API.MenuVO>(`/api/menu/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询菜单列表 GET /menu/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list6Params,
+  params: API.list7Params,
   options?: { [key: string]: any },
 ) {
   return request<API.MenuVO[]>(`/api/menu/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询菜单列表 GET /menu/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page6Params,
+  params: API.page7Params,
   options?: { [key: string]: any },
 ) {
   return request<API.MenuVO[]>(`/api/menu/page`, {

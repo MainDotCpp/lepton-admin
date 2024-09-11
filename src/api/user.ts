@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除用户 GET /user/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById1Params,
+  params: API.deleteById2Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/user/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出用户 GET /user/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export1Params,
+  params: API.export2Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/user/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取用户 GET /user/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById1Params,
+  params: API.getById2Params,
   options?: { [key: string]: any },
 ) {
   return request<API.UserVO>(`/api/user/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询用户列表 GET /user/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list1Params,
+  params: API.list2Params,
   options?: { [key: string]: any },
 ) {
   return request<API.UserVO[]>(`/api/user/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询用户列表 GET /user/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page1Params,
+  params: API.page2Params,
   options?: { [key: string]: any },
 ) {
   return request<API.UserVO[]>(`/api/user/page`, {
