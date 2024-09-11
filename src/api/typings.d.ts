@@ -610,180 +610,180 @@ declare namespace API {
     params?: BaseQueryDTO;
     data?: BrandVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOChannelVO = {
     params?: BaseQueryDTO;
     data?: ChannelVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOConfigVO = {
     params?: BaseQueryDTO;
     data?: ConfigVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOCustomerVO = {
     params?: BaseQueryDTO;
     data?: CustomerVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTODeptVO = {
     params?: BaseQueryDTO;
     data?: DeptVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTODictVO = {
     params?: BaseQueryDTO;
     data?: DictVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOGoodsVO = {
     params?: BaseQueryDTO;
     data?: GoodsVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOMenuVO = {
     params?: BaseQueryDTO;
     data?: MenuVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOOrderVO = {
     params?: BaseQueryDTO;
     data?: OrderVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTORoleVO = {
     params?: BaseQueryDTO;
     data?: RoleVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOSysPackageVO = {
     params?: BaseQueryDTO;
     data?: SysPackageVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOTenantVO = {
     params?: BaseQueryDTO;
     data?: TenantVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOUserVO = {
     params?: BaseQueryDTO;
     data?: UserVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOXhsNoteCommentVO = {
     params?: BaseQueryDTO;
     data?: XhsNoteCommentVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOXhsNoteVO = {
     params?: BaseQueryDTO;
     data?: XhsNoteVO[];
     total?: number;
-    current?: number;
     offset?: number;
-    pageSize?: number;
     hasNextPage?: boolean;
-    pages?: number;
     hasPreviousPage?: boolean;
+    pageSize?: number;
+    current?: number;
+    pages?: number;
   };
 
   type pageParams = {
@@ -880,10 +880,11 @@ declare namespace API {
     tenants?: TenantDto[];
     avatar?: string;
     deptCode?: string;
+    dataPermission?: 'ALL' | 'SELF' | 'DEPT_AND_CHILD';
     enabled?: boolean;
+    accountNonLocked?: boolean;
     accountNonExpired?: boolean;
     credentialsNonExpired?: boolean;
-    accountNonLocked?: boolean;
   };
 
   type UserOptionsVO = {
@@ -899,7 +900,8 @@ declare namespace API {
     password?: string;
     avatar?: string;
     roleIds?: number[];
-    dataPermissionType?: 'ALL' | 'SELF' | 'DEPT_AND_CHILD';
+    dataPermission?: 'ALL' | 'SELF' | 'DEPT_AND_CHILD';
+    deptId?: number;
   };
 
   type UserVO = {
@@ -908,6 +910,8 @@ declare namespace API {
     phone?: string;
     avatar?: string;
     roleIds?: number[];
+    dataPermission?: 'ALL' | 'SELF' | 'DEPT_AND_CHILD';
+    deptId?: number;
   };
 
   type XhsNoteCommentSaveDTO = {
