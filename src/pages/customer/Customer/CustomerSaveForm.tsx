@@ -2,6 +2,7 @@ import { ModalForm, ProForm, ProFormDateTimePicker, ProFormRadio, ProFormSelect,
 import { message } from 'antd'
 import type { CheckboxOptionType } from 'antd/lib'
 import dayjs from 'dayjs'
+import { useDebounceFn, useRequest } from 'ahooks'
 import api from '@/api'
 import { useDictOptions } from '@/stores/system/dictStore'
 import { useChannelOptions } from '@/hook/channelQuery'
@@ -24,6 +25,7 @@ function CustomerSaveForm(props: SaveFormProps) {
   const { options: brandOptions } = useBrandOptions({ enabled: false })
   const userInfo = useUserInfo()
 
+  const { run: customerList } = useDebounceFn(api.customer.list, { wait: 500 })
   /**
    * 获取表单初始数据
    * @returns 表单初始数据
@@ -59,6 +61,14 @@ function CustomerSaveForm(props: SaveFormProps) {
     props.onFinish?.()
     return true
   }
+
+  const validContact = async (rule: any, value: any) => {
+    const r = await api.customer.list({ keywords: value })
+    if (r && r.length > 0) {
+      return Promise.reject(new Error(`检测到 ${r.length} 个可能重复的客资`))
+    }
+    return Promise.resolve()
+  }
   return (
     <ModalForm
       modalProps={{
@@ -83,8 +93,8 @@ function CustomerSaveForm(props: SaveFormProps) {
         <ProFormText name="id" label="ID" hidden />
         <ProFormSelect colProps={{ md: 6, xs: 24 }} name="photoType" label="拍摄类型" options={photoType} rules={[{ required: true }]} />
         <ProFormText colProps={{ md: 6, xs: 24 }} name="name" label="姓名" rules={[{ required: true }]} />
-        <ProFormText colProps={{ md: 6, xs: 24 }} name="phone" label="手机号码" rules={[{ type: 'regexp', pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码' }]} />
-        <ProFormText colProps={{ md: 6, xs: 24 }} name="wechat" label="微信号" />
+        <ProFormText colProps={{ md: 6, xs: 24 }} name="phone" label="手机号码" rules={[{ type: 'regexp', pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码' }, { validator: validContact }]} />
+        <ProFormText colProps={{ md: 6, xs: 24 }} name="wechat" label="微信号" validateDebounce={5000} rules={[{ validator: validContact }]} />
         <ProFormSelect colProps={{ md: 6, xs: 24 }} name="followStatus" label="跟进状态" options={followUpStatus} rules={[{ required: true }]} />
       </ProForm.Group>
       <ProForm.Group>
