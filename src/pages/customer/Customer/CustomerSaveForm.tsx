@@ -63,6 +63,8 @@ function CustomerSaveForm(props: SaveFormProps) {
   }
 
   const validContact = async (rule: any, value: any) => {
+    if (!value || value.length === 0 || props.id)
+      return Promise.resolve()
     const r = await api.customer.list({ keywords: value })
     if (r && r.length > 0) {
       return Promise.reject(new Error(`检测到 ${r.length} 个可能重复的客资`))
@@ -93,8 +95,8 @@ function CustomerSaveForm(props: SaveFormProps) {
         <ProFormText name="id" label="ID" hidden />
         <ProFormSelect colProps={{ md: 6, xs: 24 }} name="photoType" label="拍摄类型" options={photoType} rules={[{ required: true }]} />
         <ProFormText colProps={{ md: 6, xs: 24 }} name="name" label="姓名" rules={[{ required: true }]} />
-        <ProFormText colProps={{ md: 6, xs: 24 }} name="phone" label="手机号码" rules={[{ type: 'regexp', pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码' }, { validator: validContact }]} />
-        <ProFormText colProps={{ md: 6, xs: 24 }} name="wechat" label="微信号" validateDebounce={5000} rules={[{ validator: validContact }]} />
+        <ProFormText colProps={{ md: 6, xs: 24 }} name="phone" label="手机号码" rules={[{ type: 'regexp', pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码' }, { validator: validContact, warningOnly: true }]} />
+        <ProFormText colProps={{ md: 6, xs: 24 }} name="wechat" label="微信号" validateDebounce={5000} rules={[{ validator: validContact, warningOnly: true }]} />
         <ProFormSelect colProps={{ md: 6, xs: 24 }} name="followStatus" label="跟进状态" options={followUpStatus} rules={[{ required: true }]} />
       </ProForm.Group>
       <ProForm.Group>
