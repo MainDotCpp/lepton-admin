@@ -2,13 +2,13 @@
 /* eslint-disable */
 import { request } from '@/utils/request';
 
-/** 根据ID删除客资 GET /customer/deleteById */
+/** 根据ID删除表单组件 GET /component/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById12Params,
+  params: API.deleteById14Params,
   options?: { [key: string]: any },
 ) {
-  return request<boolean>(`/api/customer/deleteById`, {
+  return request<boolean>(`/api/component/deleteById`, {
     method: 'GET',
     params: {
       ...params,
@@ -17,13 +17,13 @@ export async function deleteById(
   });
 }
 
-/** 导出客资 GET /customer/export */
+/** 导出表单组件 GET /component/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export12Params,
+  params: API.export14Params,
   options?: { [key: string]: any },
 ) {
-  return request<string>(`/api/customer/export`, {
+  return request<string>(`/api/component/export`, {
     method: 'GET',
     params: {
       ...params,
@@ -32,13 +32,13 @@ export async function exportExcel(
   });
 }
 
-/** 根据ID获取客资 GET /customer/getById */
+/** 根据ID获取表单组件 GET /component/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById12Params,
+  params: API.getById14Params,
   options?: { [key: string]: any },
 ) {
-  return request<API.CustomerVO>(`/api/customer/getById`, {
+  return request<API.ComponentVO>(`/api/component/getById`, {
     method: 'GET',
     params: {
       ...params,
@@ -47,13 +47,13 @@ export async function getById(
   });
 }
 
-/** 查询客资列表 GET /customer/list */
+/** 查询表单组件列表 GET /component/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list12Params,
+  params: API.list14Params,
   options?: { [key: string]: any },
 ) {
-  return request<API.CustomerVO[]>(`/api/customer/list`, {
+  return request<API.ComponentVO[]>(`/api/component/list`, {
     method: 'GET',
     params: {
       ...params,
@@ -62,13 +62,13 @@ export async function list(
   });
 }
 
-/** 分页查询客资列表 GET /customer/page */
+/** 分页查询表单组件列表 GET /component/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page12Params,
+  params: API.page14Params,
   options?: { [key: string]: any },
 ) {
-  return request<API.CustomerVO[]>(`/api/customer/page`, {
+  return request<API.ComponentVO[]>(`/api/component/page`, {
     method: 'GET',
     params: {
       ...params,
@@ -77,29 +77,14 @@ export async function page(
   });
 }
 
-/** 保存客资 POST /customer/save */
-export async function save(body: API.CustomerSaveDTO, options?: { [key: string]: any }) {
-  return request<API.CustomerVO>(`/api/customer/save`, {
+/** 保存表单组件 POST /component/save */
+export async function save(body: API.ComponentSaveDTO, options?: { [key: string]: any }) {
+  return request<API.ComponentVO>(`/api/component/save`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     data: body,
-    ...(options || {}),
-  });
-}
-
-/** 校验客资是否存在 GET /customer/validateExist */
-export async function validateExist(
-  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.validateExistParams,
-  options?: { [key: string]: any },
-) {
-  return request<Record<string, any>>(`/api/customer/validateExist`, {
-    method: 'GET',
-    params: {
-      ...params,
-    },
     ...(options || {}),
   });
 }

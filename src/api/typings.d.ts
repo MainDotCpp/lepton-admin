@@ -15,6 +15,57 @@ declare namespace API {
     name?: string;
   };
 
+  type callback2Params = {
+    appId: string;
+    signature?: string;
+    timestamp?: string;
+    nonce?: string;
+    openid?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
+  type callback3Params = {
+    appId: string;
+    signature?: string;
+    timestamp?: string;
+    nonce?: string;
+    openid?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
+  type callback4Params = {
+    appId: string;
+    signature?: string;
+    timestamp?: string;
+    nonce?: string;
+    openid?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
+  type callback5Params = {
+    appId: string;
+    signature?: string;
+    timestamp?: string;
+    nonce?: string;
+    openid?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
+  type callbackParams = {
+    requestBody: string;
+    appId: string;
+    signature?: string;
+    timestamp?: string;
+    nonce?: string;
+    openid?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
   type ChannelSaveDTO = {
     id?: number;
     name?: string;
@@ -29,6 +80,14 @@ declare namespace API {
     icon?: string;
     textColor?: string;
     backgroundColor?: string;
+  };
+
+  type ComponentSaveDTO = {
+    id?: number;
+  };
+
+  type ComponentVO = {
+    id?: number;
   };
 
   type Config = {
@@ -96,6 +155,14 @@ declare namespace API {
   };
 
   type deleteById14Params = {
+    id: number;
+  };
+
+  type deleteById15Params = {
+    id: number;
+  };
+
+  type deleteById16Params = {
     id: number;
   };
 
@@ -190,6 +257,12 @@ declare namespace API {
   };
 
   type export11Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export12Params = {
     /** 渠道ID */
     channelId?: string;
     source?: string[];
@@ -205,12 +278,6 @@ declare namespace API {
     sorter?: string[];
   };
 
-  type export12Params = {
-    current?: number;
-    pageSize?: number;
-    sorter?: string[];
-  };
-
   type export13Params = {
     current?: number;
     pageSize?: number;
@@ -218,6 +285,18 @@ declare namespace API {
   };
 
   type export14Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export15Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export16Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -266,13 +345,13 @@ declare namespace API {
   };
 
   type export7Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type export8Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -307,6 +386,14 @@ declare namespace API {
   };
 
   type getById14Params = {
+    id: number;
+  };
+
+  type getById15Params = {
+    id: number;
+  };
+
+  type getById16Params = {
     id: number;
   };
 
@@ -375,6 +462,12 @@ declare namespace API {
   };
 
   type list11Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list12Params = {
     /** 渠道ID */
     channelId?: string;
     source?: string[];
@@ -390,12 +483,6 @@ declare namespace API {
     sorter?: string[];
   };
 
-  type list12Params = {
-    current?: number;
-    pageSize?: number;
-    sorter?: string[];
-  };
-
   type list13Params = {
     current?: number;
     pageSize?: number;
@@ -403,6 +490,18 @@ declare namespace API {
   };
 
   type list14Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list15Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list16Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -451,13 +550,13 @@ declare namespace API {
   };
 
   type list7Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type list8Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -512,6 +611,12 @@ declare namespace API {
   };
 
   type page11Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page12Params = {
     /** 渠道ID */
     channelId?: string;
     source?: string[];
@@ -527,12 +632,6 @@ declare namespace API {
     sorter?: string[];
   };
 
-  type page12Params = {
-    current?: number;
-    pageSize?: number;
-    sorter?: string[];
-  };
-
   type page13Params = {
     current?: number;
     pageSize?: number;
@@ -540,6 +639,18 @@ declare namespace API {
   };
 
   type page14Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page15Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page16Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -588,13 +699,13 @@ declare namespace API {
   };
 
   type page7Params = {
-    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
   };
 
   type page8Params = {
+    id?: number;
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -611,11 +722,11 @@ declare namespace API {
     data?: BrandVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOChannelVO = {
@@ -623,11 +734,23 @@ declare namespace API {
     data?: ChannelVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
+  };
+
+  type PageDTOComponentVO = {
+    params?: BaseQueryDTO;
+    data?: ComponentVO[];
+    total?: number;
+    offset?: number;
+    pageSize?: number;
+    current?: number;
+    hasPreviousPage?: boolean;
+    pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOConfigVO = {
@@ -635,11 +758,11 @@ declare namespace API {
     data?: ConfigVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOCustomerVO = {
@@ -647,11 +770,11 @@ declare namespace API {
     data?: CustomerVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTODeptVO = {
@@ -659,11 +782,11 @@ declare namespace API {
     data?: DeptVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTODictVO = {
@@ -671,11 +794,11 @@ declare namespace API {
     data?: DictVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOGoodsVO = {
@@ -683,11 +806,11 @@ declare namespace API {
     data?: GoodsVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOMenuVO = {
@@ -695,11 +818,11 @@ declare namespace API {
     data?: MenuVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOOrderVO = {
@@ -707,11 +830,23 @@ declare namespace API {
     data?: OrderVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
+  };
+
+  type PageDTOPageVO = {
+    params?: BaseQueryDTO;
+    data?: PageVO[];
+    total?: number;
+    offset?: number;
+    pageSize?: number;
+    current?: number;
+    hasPreviousPage?: boolean;
+    pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTORoleVO = {
@@ -719,11 +854,11 @@ declare namespace API {
     data?: RoleVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOSysPackageVO = {
@@ -731,11 +866,11 @@ declare namespace API {
     data?: SysPackageVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOTenantVO = {
@@ -743,11 +878,11 @@ declare namespace API {
     data?: TenantVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOUserVO = {
@@ -755,11 +890,11 @@ declare namespace API {
     data?: UserVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOXhsNoteCommentVO = {
@@ -767,11 +902,11 @@ declare namespace API {
     data?: XhsNoteCommentVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type PageDTOXhsNoteVO = {
@@ -779,17 +914,66 @@ declare namespace API {
     data?: XhsNoteVO[];
     total?: number;
     offset?: number;
-    hasNextPage?: boolean;
-    hasPreviousPage?: boolean;
     pageSize?: number;
     current?: number;
+    hasPreviousPage?: boolean;
     pages?: number;
+    hasNextPage?: boolean;
   };
 
   type pageParams = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
+  };
+
+  type PageSaveDTO = {
+    id?: number;
+  };
+
+  type PageVO = {
+    id?: number;
+  };
+
+  type receiveTicket2Params = {
+    timestamp?: string;
+    nonce?: string;
+    signature?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
+  type receiveTicket3Params = {
+    timestamp?: string;
+    nonce?: string;
+    signature?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
+  type receiveTicket4Params = {
+    timestamp?: string;
+    nonce?: string;
+    signature?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
+  type receiveTicket5Params = {
+    timestamp?: string;
+    nonce?: string;
+    signature?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
+  };
+
+  type receiveTicketParams = {
+    requestBody?: string;
+    timestamp?: string;
+    nonce?: string;
+    signature?: string;
+    encrypt_type?: string;
+    msg_signature?: string;
   };
 
   type RoleSaveDTO = {
@@ -882,9 +1066,9 @@ declare namespace API {
     deptCode?: string;
     dataPermission?: 'ALL' | 'SELF' | 'DEPT_AND_CHILD';
     enabled?: boolean;
-    accountNonLocked?: boolean;
-    accountNonExpired?: boolean;
     credentialsNonExpired?: boolean;
+    accountNonExpired?: boolean;
+    accountNonLocked?: boolean;
   };
 
   type UserOptionsVO = {
@@ -912,6 +1096,11 @@ declare namespace API {
     roleIds?: number[];
     dataPermission?: 'ALL' | 'SELF' | 'DEPT_AND_CHILD';
     deptId?: number;
+  };
+
+  type validateExistParams = {
+    phone?: string;
+    wechat?: string;
   };
 
   type XhsNoteCommentSaveDTO = {

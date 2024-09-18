@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除客资渠道 GET /channel/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById13Params,
+  params: API.deleteById15Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/channel/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出客资渠道 GET /channel/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export13Params,
+  params: API.export15Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/channel/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取客资渠道 GET /channel/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById13Params,
+  params: API.getById15Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ChannelVO>(`/api/channel/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询客资渠道列表 GET /channel/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list13Params,
+  params: API.list15Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ChannelVO[]>(`/api/channel/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询客资渠道列表 GET /channel/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page13Params,
+  params: API.page15Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ChannelVO[]>(`/api/channel/page`, {

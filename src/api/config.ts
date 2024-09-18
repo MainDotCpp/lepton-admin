@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除系统设置 GET /config/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById12Params,
+  params: API.deleteById13Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/config/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出系统设置 GET /config/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export12Params,
+  params: API.export13Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/config/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取系统设置 GET /config/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById12Params,
+  params: API.getById13Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ConfigVO>(`/api/config/getById`, {
@@ -58,7 +58,7 @@ export async function getTenantConfig(options?: { [key: string]: any }) {
 /** 查询系统设置列表 GET /config/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list12Params,
+  params: API.list13Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ConfigVO[]>(`/api/config/list`, {
@@ -73,7 +73,7 @@ export async function list(
 /** 分页查询系统设置列表 GET /config/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page12Params,
+  params: API.page13Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ConfigVO[]>(`/api/config/page`, {

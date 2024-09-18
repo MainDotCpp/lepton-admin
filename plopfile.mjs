@@ -11,6 +11,10 @@ const moduleMapping = {
     name: 'order',
     dir: 'src/pages/order',
   },
+  form: {
+    name: 'form',
+    dir: 'src/pages/form',
+  },
 }
 
 export default function Plopfile(plop) {
@@ -46,6 +50,7 @@ export default function Plopfile(plop) {
           base: '_templates/curd',
           destination: './',
           templateFiles: '_templates/curd',
+          force: true,
           data: {
             basePackage: 'com.leuan.lepton',
           },

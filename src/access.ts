@@ -10,6 +10,8 @@ export default function access() {
     
     
     
+    
+    
 
     // -------- 用户 --------
     SYSTEM__USER__MENU: permissions.includes('system:user:menu'),
@@ -94,5 +96,19 @@ export default function access() {
     SYSTEM__DEPT__UPDATE: permissions.includes("system:dept:update"),
     SYSTEM__DEPT__DELETE: permissions.includes("system:dept:delete"),
     SYSTEM__DEPT__EXPORT: permissions.includes("system:dept:export"),
+
+    // -------- 表单 --------
+    FORM__PAGE__MENU: permissions.includes("form:page:menu"),
+    FORM__PAGE__CREATE: permissions.includes("form:page:create"),
+    FORM__PAGE__UPDATE: permissions.includes("form:page:update"),
+    FORM__PAGE__DELETE: permissions.includes("form:page:delete"),
+    FORM__PAGE__EXPORT: permissions.includes("form:page:export"),
+
+    // -------- 表单 --------
+    FORM__PAGE__MENU: permissions.includes("form:page:menu"),
+    FORM__PAGE__CREATE: permissions.includes("form:page:create"),
+    FORM__PAGE__UPDATE: permissions.includes("form:page:update"),
+    FORM__PAGE__DELETE: permissions.includes("form:page:delete"),
+    FORM__PAGE__EXPORT: permissions.includes("form:page:export"),
 }
 }
