@@ -88,6 +88,8 @@ declare namespace API {
 
   type ComponentVO = {
     id?: number;
+    type?: string;
+    props?: Record<string, any>;
   };
 
   type Config = {
@@ -163,6 +165,10 @@ declare namespace API {
   };
 
   type deleteById16Params = {
+    id: number;
+  };
+
+  type deleteById17Params = {
     id: number;
   };
 
@@ -263,6 +269,12 @@ declare namespace API {
   };
 
   type export12Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export13Params = {
     /** 渠道ID */
     channelId?: string;
     source?: string[];
@@ -273,12 +285,6 @@ declare namespace API {
     brandId?: number[];
     createdAt?: string[];
     keywords?: string;
-    current?: number;
-    pageSize?: number;
-    sorter?: string[];
-  };
-
-  type export13Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -297,6 +303,12 @@ declare namespace API {
   };
 
   type export16Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type export17Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -369,6 +381,14 @@ declare namespace API {
     sorter?: string[];
   };
 
+  type FileSaveDTO = {
+    id?: number;
+  };
+
+  type FileVO = {
+    id?: number;
+  };
+
   type getById10Params = {
     id: number;
   };
@@ -394,6 +414,10 @@ declare namespace API {
   };
 
   type getById16Params = {
+    id: number;
+  };
+
+  type getById17Params = {
     id: number;
   };
 
@@ -468,6 +492,12 @@ declare namespace API {
   };
 
   type list12Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list13Params = {
     /** 渠道ID */
     channelId?: string;
     source?: string[];
@@ -478,12 +508,6 @@ declare namespace API {
     brandId?: number[];
     createdAt?: string[];
     keywords?: string;
-    current?: number;
-    pageSize?: number;
-    sorter?: string[];
-  };
-
-  type list13Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -502,6 +526,12 @@ declare namespace API {
   };
 
   type list16Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type list17Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -617,6 +647,12 @@ declare namespace API {
   };
 
   type page12Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page13Params = {
     /** 渠道ID */
     channelId?: string;
     source?: string[];
@@ -627,12 +663,6 @@ declare namespace API {
     brandId?: number[];
     createdAt?: string[];
     keywords?: string;
-    current?: number;
-    pageSize?: number;
-    sorter?: string[];
-  };
-
-  type page13Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -651,6 +681,12 @@ declare namespace API {
   };
 
   type page16Params = {
+    current?: number;
+    pageSize?: number;
+    sorter?: string[];
+  };
+
+  type page17Params = {
     current?: number;
     pageSize?: number;
     sorter?: string[];
@@ -723,10 +759,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOChannelVO = {
@@ -735,10 +771,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOComponentVO = {
@@ -747,10 +783,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOConfigVO = {
@@ -759,10 +795,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOCustomerVO = {
@@ -771,10 +807,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTODeptVO = {
@@ -783,10 +819,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTODictVO = {
@@ -795,10 +831,22 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
+  };
+
+  type PageDTOFileVO = {
+    params?: BaseQueryDTO;
+    data?: FileVO[];
+    total?: number;
+    offset?: number;
+    pageSize?: number;
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOGoodsVO = {
@@ -807,10 +855,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOMenuVO = {
@@ -819,10 +867,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOOrderVO = {
@@ -831,10 +879,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOPageVO = {
@@ -843,10 +891,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTORoleVO = {
@@ -855,10 +903,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOSysPackageVO = {
@@ -867,10 +915,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOTenantVO = {
@@ -879,10 +927,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOUserVO = {
@@ -891,10 +939,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOXhsNoteCommentVO = {
@@ -903,10 +951,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type PageDTOXhsNoteVO = {
@@ -915,10 +963,10 @@ declare namespace API {
     total?: number;
     offset?: number;
     pageSize?: number;
-    current?: number;
-    hasPreviousPage?: boolean;
-    pages?: number;
     hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    current?: number;
+    pages?: number;
   };
 
   type pageParams = {
@@ -933,6 +981,8 @@ declare namespace API {
 
   type PageVO = {
     id?: number;
+    name?: string;
+    components?: ComponentVO[];
   };
 
   type receiveTicket2Params = {
@@ -1041,8 +1091,8 @@ declare namespace API {
     name?: { empty?: boolean };
     id?: number;
     parentId?: number;
-    config?: TreeNodeConfig;
     weight?: Record<string, any>;
+    config?: TreeNodeConfig;
     empty?: boolean;
   };
 
@@ -1066,9 +1116,9 @@ declare namespace API {
     deptCode?: string;
     dataPermission?: 'ALL' | 'SELF' | 'DEPT_AND_CHILD';
     enabled?: boolean;
-    credentialsNonExpired?: boolean;
     accountNonExpired?: boolean;
     accountNonLocked?: boolean;
+    credentialsNonExpired?: boolean;
   };
 
   type UserOptionsVO = {

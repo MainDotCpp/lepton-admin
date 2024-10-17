@@ -15,7 +15,10 @@ export default function DesignerPreview() {
           <div className="h-full" ref={provided.innerRef} {...provided.droppableProps}>
             {components.map((component, index) => {
               const type = component.type
-              const { preview: Preview, metadata } = componentsLib.flatMap(it => it.components).find(c => c.metadata.type === type)!
+              const {
+                preview: Preview,
+                metadata,
+              } = componentsLib.flatMap(it => it.components).find(c => c.metadata.type === type)!
               return (
                 <Draggable draggableId={`${index}`} index={index}>
                   {(provided, snapshot) => {
@@ -36,7 +39,9 @@ export default function DesignerPreview() {
                         <div className="pointer-events-none">
                           <Preview key={component.id} {...component.props as any} />
                         </div>
-                        <div className="text-md absolute left-full top-2 h-full w-32 group-hover:block">
+                        <div
+                          className={`text-md absolute left-full top-2 h-full w-32  `}
+                        >
                           <span
                             className="ml-2 cursor-pointer rounded-full px-4 py-1 text-white transition-all"
                             style={{ backgroundColor: tagColor }}

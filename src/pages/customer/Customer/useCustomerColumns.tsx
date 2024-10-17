@@ -6,7 +6,7 @@ import CustomerSaveForm from './CustomerSaveForm'
 import api from '@/api'
 import { useUserOptions } from '@/hook/framework/userQuery'
 import { useChannelEnums } from '@/hook/channelQuery'
-import { useDictMap, useDictOptions } from '@/stores/system/dictStore'
+import { useDictMap } from '@/stores/system/dictStore'
 import OrderSaveForm from '@/pages/order/Order/OrderSaveForm'
 import { useBrandEnums } from '@/hook/brandQuery'
 
@@ -21,15 +21,15 @@ export function useCustomerColumns(): ProColumns<API.CustomerVO>[] {
   return [
     { width: 150, ellipsis: true, dataIndex: 'id', title: 'ID', hideInSearch: true, sorter: true, filters: true, hidden: true },
     { width: 150, ellipsis: true, dataIndex: 'keywords', title: '关键词', hideInTable: true, tooltip: '支持客户名称、手机号码、微信号模糊搜索' },
-    { width: 150, ellipsis: true, dataIndex: 'brandId', title: '品牌', filters: true, valueEnum: brandEnums },
+    { width: 150, ellipsis: true, dataIndex: 'brandId', title: '品牌', filters: true, hideInSearch: true, valueEnum: brandEnums },
     { width: 150, ellipsis: true, dataIndex: 'source', title: '客资来源', hideInSearch: true, sorter: true, filters: true, valueEnum: customerSourceEnums },
     { width: 150, ellipsis: true, dataIndex: 'photoType', title: '拍摄类型', hideInSearch: true, sorter: true, filters: true, valueEnum: photoType },
     { width: 150, ellipsis: true, dataIndex: 'name', title: '客户名称', hideInSearch: true, sorter: true, filters: true },
     { width: 150, ellipsis: true, dataIndex: 'phone', title: '手机号码', hideInSearch: true, sorter: true, filters: true, copyable: true },
     { width: 150, ellipsis: true, dataIndex: 'wechat', title: '微信号', hideInSearch: true, sorter: true, filters: true, copyable: true },
-    { width: 150, ellipsis: true, dataIndex: 'channelId', filters: true, title: '渠道', valueEnum: channelEnums },
+    { width: 150, ellipsis: true, dataIndex: 'channelId', filters: true, title: '渠道', valueEnum: channelEnums, hideInSearch: true },
     { width: 150, ellipsis: true, dataIndex: 'followStatus', title: '跟进状态', hideInSearch: true, sorter: true, filters: true, valueEnum: followStatusEnums },
-    { width: 150, ellipsis: true, dataIndex: 'saleId', title: '销售', filters: true, valueEnum: userEnums },
+    { width: 150, ellipsis: true, dataIndex: 'saleId', title: '销售', filters: true, valueEnum: userEnums, hideInSearch: true },
     { width: 150, ellipsis: true, dataIndex: 'createdAt', title: '创建时间', sorter: true, defaultSortOrder: 'descend', valueType: 'dateRange', render: (_, record) => record.createdAt, initialValue: [
       dayjs().startOf('month').format('YYYY-MM-DD'),
       dayjs().endOf('month').format('YYYY-MM-DD'),
@@ -40,7 +40,7 @@ export function useCustomerColumns(): ProColumns<API.CustomerVO>[] {
         }
       },
     } },
-    { width: 150, ellipsis: true, dataIndex: 'createdById', title: '创建人', filters: true, valueEnum: userEnums },
+    { width: 150, ellipsis: true, dataIndex: 'createdById', title: '创建人', filters: true, valueEnum: userEnums, hideInSearch: true },
     { width: 150, ellipsis: true, dataIndex: 'remark', title: '备注', hideInSearch: true },
     {
       valueType: 'index',

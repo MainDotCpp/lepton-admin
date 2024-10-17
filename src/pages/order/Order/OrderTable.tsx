@@ -4,7 +4,6 @@ import { Button } from 'antd'
 import { useRef } from 'react'
 import { useAccess } from '@umijs/max'
 import { useOrderColumns } from './useOrderColumns'
-import OrderSaveForm from './OrderSaveForm'
 import { queryParams } from '@/utils/request'
 import api from '@/api'
 
@@ -16,6 +15,19 @@ function OrderTable() {
   const access = useAccess()
   const actionRef = useRef<ActionType>(null)
   const columns = useOrderColumns()
+
+  const exportExcel = () => {
+    api.order.exportExcel({}, {
+      responseType: 'blob',
+      getResponse: true,
+    }).then((data) => {
+      const url = window.URL.createObjectURL(new Blob([data]))
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `订单数据.xlsx`
+      a.click()
+    })
+  }
   return (
     <ProTable<API.OrderVO>
       rowKey="id"
@@ -33,6 +45,11 @@ function OrderTable() {
           //     trigger={<Button type="primary">创建订单</Button>}
           //   />
           // ),
+          access.ORDER__ORDER__EXPORT && (
+            <Button key="export" type="dashed" onClick={exportExcel}>
+              导出
+            </Button>
+          ),
         ],
       }}
     >

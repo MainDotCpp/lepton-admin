@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除表单组件 GET /component/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById14Params,
+  params: API.deleteById15Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/component/deleteById`, {
@@ -20,7 +20,7 @@ export async function deleteById(
 /** 导出表单组件 GET /component/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export14Params,
+  params: API.export15Params,
   options?: { [key: string]: any },
 ) {
   return request<string>(`/api/component/export`, {
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取表单组件 GET /component/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById14Params,
+  params: API.getById15Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ComponentVO>(`/api/component/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询表单组件列表 GET /component/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list14Params,
+  params: API.list15Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ComponentVO[]>(`/api/component/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询表单组件列表 GET /component/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page14Params,
+  params: API.page15Params,
   options?: { [key: string]: any },
 ) {
   return request<API.ComponentVO[]>(`/api/component/page`, {

@@ -10,6 +10,7 @@ import * as config from './config';
 import * as customer from './customer';
 import * as dept from './dept';
 import * as dict from './dict';
+import * as file from './file';
 import * as goods from './goods';
 import * as menu from './menu';
 import * as order from './order';
@@ -32,6 +33,7 @@ export default {
   order,
   menu,
   goods,
+  file,
   dict,
   dept,
   customer,

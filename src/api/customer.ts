@@ -5,7 +5,7 @@ import { request } from '@/utils/request';
 /** 根据ID删除客资 GET /customer/deleteById */
 export async function deleteById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.deleteById12Params,
+  params: API.deleteById13Params,
   options?: { [key: string]: any },
 ) {
   return request<boolean>(`/api/customer/deleteById`, {
@@ -20,10 +20,10 @@ export async function deleteById(
 /** 导出客资 GET /customer/export */
 export async function exportExcel(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.export12Params,
+  params: API.export13Params,
   options?: { [key: string]: any },
 ) {
-  return request<string>(`/api/customer/export`, {
+  return request<any>(`/api/customer/export`, {
     method: 'GET',
     params: {
       ...params,
@@ -35,7 +35,7 @@ export async function exportExcel(
 /** 根据ID获取客资 GET /customer/getById */
 export async function getById(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getById12Params,
+  params: API.getById13Params,
   options?: { [key: string]: any },
 ) {
   return request<API.CustomerVO>(`/api/customer/getById`, {
@@ -50,7 +50,7 @@ export async function getById(
 /** 查询客资列表 GET /customer/list */
 export async function list(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.list12Params,
+  params: API.list13Params,
   options?: { [key: string]: any },
 ) {
   return request<API.CustomerVO[]>(`/api/customer/list`, {
@@ -65,7 +65,7 @@ export async function list(
 /** 分页查询客资列表 GET /customer/page */
 export async function page(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.page12Params,
+  params: API.page13Params,
   options?: { [key: string]: any },
 ) {
   return request<API.CustomerVO[]>(`/api/customer/page`, {

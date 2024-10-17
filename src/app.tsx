@@ -2,7 +2,6 @@ import type { RunTimeLayoutConfig } from '@@/plugin-layout/types'
 import { PageLoading } from '@ant-design/pro-components'
 import { SettingDrawer } from '@ant-design/pro-layout'
 import { Link } from '@umijs/max'
-import { message } from 'antd'
 import queryString from 'query-string'
 import defaultSettings from '../config/defaultSettings'
 import { useGlobalStore } from './stores/global'
@@ -146,13 +145,12 @@ export const request = {
   responseInterceptors: [
     // 直接写一个 function，作为拦截器
     (response: any) => {
-      // 不再需要异步处理读取返回体内容，可直接在data中读出，部分字段可在 config 中找到
       const { data: body } = response
-
-      if (body.code !== 200) {
-        message.error(body.message)
-        throw new Error(body.message)
-      }
+      // if (body.code !== 200) {
+      //   message.error(body.message)
+      //   throw new Error(body.message)
+      // }
+      console.log(response)
       return body
     },
   ],

@@ -2,34 +2,26 @@ import { Collapse } from 'antd'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { components } from './components'
 import DesignerPreview from './DesignerPreview'
-import { useDesigner, useSortComponents } from './hooks/desgner'
+import { useDesigner } from './hooks/desgner'
 import DesignerConfig from '@/pages/form/Designer/DesignerConfig'
 
 export default function Designer() {
-  const sortComponents = useSortComponents()
   const addComponent = useDesigner(state => state.addComponent)
-
-  const removeComponent = useDesigner(state => state.removeComponent)
-  function onDragEnd(result: any) {
-    if (!result.destination) {
-      return
-    }
-    if (result.destination.droppableId === 'remove') {
-      removeComponent(result.draggableId)
-      return
-    }
-
-    sortComponents(result.source.index, result.destination.index)
-  }
+  const onDragEnd = useDesigner(state => state.onDragEnd)
+  const onSave = useDesigner(state => state.onSave)
 
   return (
     <div className="fixed left-0 top-0 z-[100] h-screen w-screen bg-white">
-      <div className="header h-10 flex items-center justify-center border-b border-b-gray-200 border-b-solid px-2">
+      <div className="header h-10 flex items-center justify-between border-b border-b-gray-200 border-b-solid px-8">
+        <div className="logo"></div>
         <span
           className="cursor-pointer rounded-3xl bg-gray-300 px-32 py-1 text-white transition-all hover:bg-gray"
         >
           首页
         </span>
+        <div className="action">
+          <span onClick={onSave}>保存</span>
+        </div>
       </div>
 
       <div
@@ -50,7 +42,7 @@ export default function Designer() {
                     {group.components.map(component => (
                       <>
                         <div
-                          className="flex cursor-pointer justify-center border border-gray-200 border-rounded border-solid bg-blue-200 py-1 text-white hover:bg-blue"
+                          className="flex cursor-pointer select-none justify-center border border-gray-200 border-rounded border-solid bg-blue-200 py-1 text-white hover:bg-blue"
                           onClick={() => addComponent({ id: Date.now(), sort: 0, type: component.metadata.type, props: component.metadata.initialValue })}
                         >
                           {component.metadata.name}
@@ -71,10 +63,7 @@ export default function Designer() {
                 <div className="mx-a h-full w-[375px] flex flex-col bg-white">
                   <DesignerPreview />
                 </div>
-                <div className="absolute left-0 top-0">
-                  TRANS
-                  {provided.placeholder}
-                </div>
+
               </div>
             )}
           </Droppable>

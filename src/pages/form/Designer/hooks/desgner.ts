@@ -1,6 +1,9 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
+import type { DropResult } from 'react-beautiful-dnd'
+import { terminal } from '@@/exports'
 import type { ComponentType } from '@/pages/form/Designer/components'
+import PageVO = API.PageVO
 
 interface Component {
   id: number
@@ -10,6 +13,7 @@ interface Component {
 }
 
 interface State {
+  page: PageVO | null
   currentComponent: Component | null
   components: Component[]
 }
@@ -17,12 +21,16 @@ interface State {
 interface Action {
   setCurrentComponentById: (id: number) => void
   sortComponents: (from: number, to: number) => void
-  removeComponent: (id: number) => void
+  removeComponent: (id: number | string) => void
   addComponent: (component: Component) => void
   updateComponentProps: (id: number, props: Record<string, any>) => void
+  onDragEnd: (result: DropResult) => void
+  // 保存页面数据
+  onSave: () => void
 }
 export const useDesigner = create<State & Action>()(
-  immer(set => ({
+  immer((set, get) => ({
+    page: null,
     currentComponent: null,
     components: [],
     setCurrentComponentById: (id) => {
@@ -39,7 +47,11 @@ export const useDesigner = create<State & Action>()(
     },
     removeComponent: (index: number | string) => {
       set((state) => {
-        state.components.splice(index as number, 1)
+        const removalComponent = state.components.splice(index as number, 1)
+        // 如果删除的是当前选中的组件，清空当前选中组件
+        if (state.currentComponent?.id === removalComponent[0].id) {
+          state.currentComponent = null
+        }
       })
     },
     addComponent: (component) => {
@@ -52,9 +64,23 @@ export const useDesigner = create<State & Action>()(
         const component = state.components.find(c => c.id === id)
         if (component) {
           component.props = { ...component.props, ...props }
-          console.log(component.props)
+          terminal.log('updateComponentProps', component)
         }
       })
+    },
+    onDragEnd: (result) => {
+      if (!result.destination) {
+        return
+      }
+      if (result.destination.droppableId === 'remove') {
+        get().removeComponent(result.draggableId)
+        return
+      }
+
+      get().sortComponents(result.source.index, result.destination.index)
+    },
+    onSave: () => {
+      terminal.log(JSON.stringify(get().components))
     },
   })),
 )
